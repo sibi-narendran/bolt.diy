@@ -14,6 +14,15 @@ import { extractPropertiesFromMessage } from '~/lib/.server/llm/utils';
 import type { DesignScheme } from '~/types/design-scheme';
 import { MCPService } from '~/lib/services/mcpService';
 import { StreamRecoveryManager } from '~/lib/.server/llm/stream-recovery';
+import { requireSupabaseUser } from '~/lib/supabase/auth.server';
+import {
+  CREDITS_PER_LLM_CALL,
+  CreditLimitExceededError,
+  consumeUserPlanCredits,
+  getRemainingCredits,
+  UnauthorizedPlanAccessError,
+  type UserPlan,
+} from '~/lib/services/userPlan.server';
 
 export async function action(args: ActionFunctionArgs) {
   return chatAction(args);
@@ -40,6 +49,18 @@ function parseCookies(cookieHeader: string): Record<string, string> {
 }
 
 async function chatAction({ context, request }: ActionFunctionArgs) {
+  let authContext;
+
+  try {
+    authContext = await requireSupabaseUser(request);
+  } catch (error) {
+    if (error instanceof Response) {
+      return error;
+    }
+
+    throw error;
+  }
+
   const streamRecovery = new StreamRecoveryManager({
     timeout: 45000,
     maxRetries: 2,
@@ -82,6 +103,44 @@ async function chatAction({ context, request }: ActionFunctionArgs) {
   };
   const encoder: TextEncoder = new TextEncoder();
   let progressCounter: number = 1;
+
+  let plan: UserPlan | null = null;
+
+  try {
+    plan = await consumeUserPlanCredits(authContext.supabase, authContext.user.id, CREDITS_PER_LLM_CALL);
+  } catch (error) {
+    if (error instanceof CreditLimitExceededError) {
+      return new Response(
+        JSON.stringify({
+          error: true,
+          message: 'Credit limit exceeded. Upgrade your plan to continue.',
+          code: 'CREDIT_LIMIT_EXCEEDED',
+        }),
+        {
+          status: 402,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
+    }
+
+    if (error instanceof UnauthorizedPlanAccessError) {
+      return new Response('Unauthorized', { status: 401 });
+    }
+
+    throw error;
+  }
+
+  const planHeaders: Record<string, string> = {};
+
+  if (plan) {
+    const remaining = getRemainingCredits(plan);
+
+    planHeaders['X-User-Plan-Tier'] = plan.plan_tier;
+
+    if (remaining !== null) {
+      planHeaders['X-User-Credits-Remaining'] = remaining.toString();
+    }
+  }
 
   try {
     const mcpService = MCPService.getInstance();
@@ -425,6 +484,7 @@ async function chatAction({ context, request }: ActionFunctionArgs) {
         Connection: 'keep-alive',
         'Cache-Control': 'no-cache',
         'Text-Encoding': 'chunked',
+        ...planHeaders,
       },
     });
   } catch (error: any) {

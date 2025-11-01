@@ -8,6 +8,16 @@ import { LLMManager } from '~/lib/modules/llm/manager';
 import type { ModelInfo } from '~/lib/modules/llm/types';
 import { getApiKeysFromCookie, getProviderSettingsFromCookie } from '~/lib/api/cookies';
 import { createScopedLogger } from '~/utils/logger';
+import { MANAGED_MODEL_ID_SET } from '~/config/modelPolicy';
+import { requireSupabaseUser } from '~/lib/supabase/auth.server';
+import {
+  CREDITS_PER_LLM_CALL,
+  CreditLimitExceededError,
+  consumeUserPlanCredits,
+  getRemainingCredits,
+  UnauthorizedPlanAccessError,
+  type UserPlan,
+} from '~/lib/services/userPlan.server';
 
 export async function action(args: ActionFunctionArgs) {
   return llmCallAction(args);
@@ -73,6 +83,58 @@ async function llmCallAction({ context, request }: ActionFunctionArgs) {
     streamOutput?: boolean;
   }>();
 
+  let authContext;
+
+  try {
+    authContext = await requireSupabaseUser(request);
+  } catch (error) {
+    if (error instanceof Response) {
+      return error;
+    }
+
+    throw error;
+  }
+
+  const { supabase, user } = authContext;
+
+  let plan: UserPlan | null = null;
+
+  try {
+    plan = await consumeUserPlanCredits(supabase, user.id, CREDITS_PER_LLM_CALL);
+  } catch (error) {
+    if (error instanceof CreditLimitExceededError) {
+      return new Response(
+        JSON.stringify({
+          error: true,
+          message: 'Credit limit exceeded. Upgrade your plan to continue.',
+          code: 'CREDIT_LIMIT_EXCEEDED',
+        }),
+        {
+          status: 402,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
+    }
+
+    if (error instanceof UnauthorizedPlanAccessError) {
+      return new Response('Unauthorized', { status: 401 });
+    }
+
+    throw error;
+  }
+
+  const planHeaders: Record<string, string> = {};
+
+  if (plan) {
+    const remaining = getRemainingCredits(plan);
+
+    planHeaders['X-User-Plan-Tier'] = plan.plan_tier;
+
+    if (remaining !== null) {
+      planHeaders['X-User-Credits-Remaining'] = remaining.toString();
+    }
+  }
+
   const { name: providerName } = provider;
 
   // validate 'model' and 'provider' fields
@@ -87,6 +149,15 @@ async function llmCallAction({ context, request }: ActionFunctionArgs) {
     throw new Response('Invalid or missing provider', {
       status: 400,
       statusText: 'Bad Request',
+    });
+  }
+
+  const modelKey = `${providerName}::${model}`;
+
+  if (!MANAGED_MODEL_ID_SET.has(modelKey)) {
+    throw new Response('Requested model is not permitted', {
+      status: 403,
+      statusText: 'Forbidden',
     });
   }
 
@@ -115,6 +186,7 @@ async function llmCallAction({ context, request }: ActionFunctionArgs) {
         status: 200,
         headers: {
           'Content-Type': 'text/plain; charset=utf-8',
+          ...planHeaders,
         },
       });
     } catch (error: unknown) {
@@ -236,6 +308,7 @@ async function llmCallAction({ context, request }: ActionFunctionArgs) {
         status: 200,
         headers: {
           'Content-Type': 'application/json',
+          ...planHeaders,
         },
       });
     } catch (error: unknown) {

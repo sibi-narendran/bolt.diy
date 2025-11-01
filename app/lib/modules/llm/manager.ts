@@ -84,7 +84,19 @@ export class LLMManager {
     let enabledProviders = Array.from(this._providers.values()).map((p) => p.name);
 
     if (providerSettings && Object.keys(providerSettings).length > 0) {
-      enabledProviders = enabledProviders.filter((p) => providerSettings[p].enabled);
+      enabledProviders = enabledProviders.filter((providerName) => {
+        const settings = providerSettings[providerName];
+
+        if (!settings) {
+          return true;
+        }
+
+        if (typeof settings.enabled === 'boolean') {
+          return settings.enabled;
+        }
+
+        return true;
+      });
     }
 
     // Get dynamic models from all providers that support them

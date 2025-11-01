@@ -1,7 +1,15 @@
 import { convertToCoreMessages, streamText as _streamText, type Message } from 'ai';
 import { MAX_TOKENS, PROVIDER_COMPLETION_LIMITS, isReasoningModel, type FileMap } from './constants';
 import { getSystemPrompt } from '~/lib/common/prompts/prompts';
-import { DEFAULT_MODEL, DEFAULT_PROVIDER, MODIFICATIONS_TAG_NAME, PROVIDER_LIST, WORK_DIR } from '~/utils/constants';
+import {
+  DEFAULT_MODEL,
+  DEFAULT_PROVIDER,
+  MANAGED_MODEL_MAP,
+  MODIFICATIONS_TAG_NAME,
+  PROVIDER_LIST,
+  WORK_DIR,
+} from '~/utils/constants';
+import { MANAGED_MODEL_ID_SET } from '~/config/modelPolicy';
 import type { IProviderSetting } from '~/types/model';
 import { PromptLibrary } from '~/lib/common/prompt-library';
 import { allowedHTMLElements } from '~/utils/markdown';
@@ -87,8 +95,15 @@ export async function streamText(props: {
 
     if (message.role === 'user') {
       const { model, provider, content } = extractPropertiesFromMessage(message);
-      currentModel = model;
-      currentProvider = provider;
+      const candidateKey = `${provider}::${model}`;
+
+      if (MANAGED_MODEL_ID_SET.has(candidateKey)) {
+        currentModel = model;
+        currentProvider = provider;
+      } else if (model || provider) {
+        logger.warn(`Blocked unmanaged model selection attempt: ${provider}/${model}`);
+      }
+
       newMessage.content = sanitizeText(content);
     } else if (message.role == 'assistant') {
       newMessage.content = sanitizeText(message.content);
@@ -103,6 +118,16 @@ export async function streamText(props: {
 
     return newMessage;
   });
+
+  const normalizedKey = `${currentProvider}::${currentModel}`;
+
+  if (!MANAGED_MODEL_ID_SET.has(normalizedKey)) {
+    logger.warn(
+      `Model selection (${currentProvider}/${currentModel}) is not managed. Falling back to ${DEFAULT_PROVIDER.name}/${DEFAULT_MODEL}.`,
+    );
+    currentProvider = DEFAULT_PROVIDER.name;
+    currentModel = DEFAULT_MODEL;
+  }
 
   const provider = PROVIDER_LIST.find((p) => p.name === currentProvider) || DEFAULT_PROVIDER;
   const staticModels = LLMManager.getInstance().getStaticModelListFromProvider(provider);
@@ -138,6 +163,16 @@ export async function streamText(props: {
       );
       modelDetails = modelsList[0];
     }
+  }
+
+  const override = MANAGED_MODEL_MAP.get(currentModel);
+
+  if (override && modelDetails) {
+    modelDetails = {
+      ...modelDetails,
+      label: override.label ?? modelDetails.label,
+      maxTokenAllowed: override.maxTokenAllowed ?? modelDetails.maxTokenAllowed,
+    };
   }
 
   const dynamicMaxTokens = modelDetails ? getCompletionTokenLimit(modelDetails) : Math.min(MAX_TOKENS, 16384);

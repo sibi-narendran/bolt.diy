@@ -4,6 +4,15 @@ import { stripIndents } from '~/utils/stripIndent';
 import type { ProviderInfo } from '~/types/model';
 import { getApiKeysFromCookie, getProviderSettingsFromCookie } from '~/lib/api/cookies';
 import { createScopedLogger } from '~/utils/logger';
+import { requireSupabaseUser } from '~/lib/supabase/auth.server';
+import {
+  CREDITS_PER_LLM_CALL,
+  CreditLimitExceededError,
+  consumeUserPlanCredits,
+  getRemainingCredits,
+  UnauthorizedPlanAccessError,
+  type UserPlan,
+} from '~/lib/services/userPlan.server';
 
 export async function action(args: ActionFunctionArgs) {
   return enhancerAction(args);
@@ -18,6 +27,18 @@ async function enhancerAction({ context, request }: ActionFunctionArgs) {
     provider: ProviderInfo;
     apiKeys?: Record<string, string>;
   }>();
+
+  let authContext;
+
+  try {
+    authContext = await requireSupabaseUser(request);
+  } catch (error) {
+    if (error instanceof Response) {
+      return error;
+    }
+
+    throw error;
+  }
 
   const { name: providerName } = provider;
 
@@ -39,6 +60,44 @@ async function enhancerAction({ context, request }: ActionFunctionArgs) {
   const cookieHeader = request.headers.get('Cookie');
   const apiKeys = getApiKeysFromCookie(cookieHeader);
   const providerSettings = getProviderSettingsFromCookie(cookieHeader);
+
+  let plan: UserPlan | null = null;
+
+  try {
+    plan = await consumeUserPlanCredits(authContext.supabase, authContext.user.id, CREDITS_PER_LLM_CALL);
+  } catch (error) {
+    if (error instanceof CreditLimitExceededError) {
+      return new Response(
+        JSON.stringify({
+          error: true,
+          message: 'Credit limit exceeded. Upgrade your plan to continue.',
+          code: 'CREDIT_LIMIT_EXCEEDED',
+        }),
+        {
+          status: 402,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
+    }
+
+    if (error instanceof UnauthorizedPlanAccessError) {
+      return new Response('Unauthorized', { status: 401 });
+    }
+
+    throw error;
+  }
+
+  const planHeaders: Record<string, string> = {};
+
+  if (plan) {
+    const remaining = getRemainingCredits(plan);
+
+    planHeaders['X-User-Plan-Tier'] = plan.plan_tier;
+
+    if (remaining !== null) {
+      planHeaders['X-User-Credits-Remaining'] = remaining.toString();
+    }
+  }
 
   try {
     const result = await streamText({
@@ -117,6 +176,7 @@ async function enhancerAction({ context, request }: ActionFunctionArgs) {
         'Content-Type': 'text/event-stream',
         Connection: 'keep-alive',
         'Cache-Control': 'no-cache',
+        ...planHeaders,
       },
     });
   } catch (error: unknown) {

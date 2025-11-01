@@ -1,4 +1,6 @@
 import { AnimatePresence, cubicBezier, motion } from 'framer-motion';
+import { buttonVariants } from '~/components/ui/Button';
+import { classNames } from '~/utils/classNames';
 
 interface SendButtonProps {
   show: boolean;
@@ -15,7 +17,10 @@ export const SendButton = ({ show, isStreaming, disabled, onClick }: SendButtonP
     <AnimatePresence>
       {show ? (
         <motion.button
-          className="absolute flex justify-center items-center top-[18px] right-[22px] p-1 bg-accent-500 hover:brightness-94 color-white rounded-md w-[34px] h-[34px] transition-theme disabled:opacity-50 disabled:cursor-not-allowed"
+          className={classNames(
+            buttonVariants({ variant: 'primary', size: 'icon' }),
+            'absolute top-3 right-3 sm:top-4 sm:right-4',
+          )}
           transition={{ ease: customEasingFn, duration: 0.17 }}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -29,9 +34,11 @@ export const SendButton = ({ show, isStreaming, disabled, onClick }: SendButtonP
             }
           }}
         >
-          <div className="text-lg">
-            {!isStreaming ? <div className="i-ph:arrow-right"></div> : <div className="i-ph:stop-circle-bold"></div>}
-          </div>
+          {!isStreaming ? (
+            <div className="i-ph:arrow-right-bold text-xl" />
+          ) : (
+            <div className="i-ph:stop-circle-bold text-xl" />
+          )}
         </motion.button>
       ) : null}
     </AnimatePresence>

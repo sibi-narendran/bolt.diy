@@ -1,27 +1,43 @@
 import { type ActionFunctionArgs } from '@remix-run/cloudflare';
+import { getApiKeysFromCookie } from '~/lib/api/cookies';
 import { createScopedLogger } from '~/utils/logger';
 
 const logger = createScopedLogger('api.supabase.query');
 
-export async function action({ request }: ActionFunctionArgs) {
+export async function action({ request, context }: ActionFunctionArgs) {
   if (request.method !== 'POST') {
     return new Response('Method not allowed', { status: 405 });
   }
 
-  const authHeader = request.headers.get('Authorization');
+  const cookieHeader = request.headers.get('Cookie');
+  const apiKeys = getApiKeysFromCookie(cookieHeader);
+  const managementToken =
+    apiKeys.SUPABASE_MANAGEMENT_TOKEN ||
+    apiKeys.VITE_SUPABASE_ACCESS_TOKEN ||
+    context?.cloudflare?.env?.SUPABASE_MANAGEMENT_TOKEN ||
+    context?.cloudflare?.env?.VITE_SUPABASE_ACCESS_TOKEN ||
+    process.env.SUPABASE_MANAGEMENT_TOKEN ||
+    process.env.VITE_SUPABASE_ACCESS_TOKEN;
 
-  if (!authHeader) {
-    return new Response('No authorization token provided', { status: 401 });
+  if (!managementToken) {
+    return new Response('Supabase management token is not configured', { status: 503 });
   }
 
   try {
     const { projectId, query } = (await request.json()) as any;
     logger.debug('Executing query:', { projectId, query });
 
-    const response = await fetch(`https://api.supabase.com/v1/projects/${projectId}/database/query`, {
+    const resolvedProjectId =
+      projectId || context?.cloudflare?.env?.SUPABASE_DEFAULT_PROJECT_ID || process.env.SUPABASE_DEFAULT_PROJECT_ID;
+
+    if (!resolvedProjectId) {
+      return new Response('Supabase project ID is required', { status: 400 });
+    }
+
+    const response = await fetch(`https://api.supabase.com/v1/projects/${resolvedProjectId}/database/query`, {
       method: 'POST',
       headers: {
-        Authorization: authHeader,
+        Authorization: `Bearer ${managementToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ query }),

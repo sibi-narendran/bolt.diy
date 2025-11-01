@@ -35,17 +35,17 @@ const BASE_COLORS = {
     950: '#0A0A0A',
   },
   accent: {
-    50: '#F8F5FF',
-    100: '#F0EBFF',
-    200: '#E1D6FF',
-    300: '#CEBEFF',
-    400: '#B69EFF',
-    500: '#9C7DFF',
-    600: '#8A5FFF',
-    700: '#7645E8',
-    800: '#6234BB',
-    900: '#502D93',
-    950: '#2D1959',
+    50: '#FFF6E6',
+    100: '#FFE7C2',
+    200: '#FFD28A',
+    300: '#FFB755',
+    400: '#FF9C2A',
+    500: '#F79009',
+    600: '#DC6803',
+    700: '#B54708',
+    800: '#8A360A',
+    900: '#6C2A09',
+    950: '#431A05',
   },
   green: {
     50: '#F0FDF4',
@@ -98,7 +98,14 @@ const COLOR_PRIMITIVES = {
 };
 
 export default defineConfig({
-  safelist: [...Object.keys(customIconCollection[collectionName] || {}).map((x) => `i-bolt:${x}`)],
+  safelist: [
+    ...Object.keys(customIconCollection[collectionName] || {}).map((x) => `i-bolt:${x}`),
+    'i-ph:arrow-right',
+    'i-ph:arrow-right-bold',
+    'i-ph:stop-circle-bold',
+    'i-ph:sign-in',
+    'i-ph:rocket-launch',
+  ],
   shortcuts: {
     'bolt-ease-cubic-bezier': 'ease-[cubic-bezier(0.4,0,0.2,1)]',
     'transition-theme': 'transition-[background-color,border-color,color] duration-150 bolt-ease-cubic-bezier',
@@ -241,6 +248,12 @@ export default defineConfig({
       warn: true,
       collections: {
         ...customIconCollection,
+        ph: () => import('@iconify-json/ph/icons.json').then((i) => i.default),
+        'svg-spinners': () => import('@iconify-json/svg-spinners/icons.json').then((i) => i.default),
+      },
+      extraProperties: {
+        display: 'inline-block',
+        'vertical-align': 'middle',
       },
       unit: 'em',
     }),

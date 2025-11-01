@@ -18,26 +18,18 @@ export function SupabaseChatAlert({ alert, clearAlert, postMessage }: Props) {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   // Determine connection state
-  const isConnected = !!(connection.token && connection.selectedProjectId);
+  const isConnected = !!(connection.project?.id && connection.credentials?.anonKey);
 
   // Set title and description based on connection state
   const title = isConnected ? 'Supabase Query' : 'Supabase Connection Required';
   const description = isConnected ? 'Execute database query' : 'Supabase connection required';
   const message = isConnected
     ? 'Please review the proposed changes and apply them to your database.'
-    : 'Please connect to Supabase to continue with this operation.';
-
-  const handleConnectClick = () => {
-    // Dispatch an event to open the Supabase connection dialog
-    document.dispatchEvent(new CustomEvent('open-supabase-connection'));
-  };
-
-  // Determine if we should show the Connect button or Apply Changes button
-  const showConnectButton = !isConnected;
+    : 'Supabase integration is unavailable right now. Please try again later or contact support.';
 
   const executeSupabaseAction = async (sql: string) => {
-    if (!connection.token || !connection.selectedProjectId) {
-      console.error('No Supabase token or project selected');
+    if (!connection.project?.id) {
+      console.error('No Supabase project available for execution');
       return;
     }
 
@@ -48,10 +40,9 @@ export function SupabaseChatAlert({ alert, clearAlert, postMessage }: Props) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${connection.token}`,
         },
         body: JSON.stringify({
-          projectId: connection.selectedProjectId,
+          projectId: connection.project.id,
           query: sql,
         }),
       });
@@ -114,7 +105,7 @@ export function SupabaseChatAlert({ alert, clearAlert, postMessage }: Props) {
           {!isConnected ? (
             <div className="p-3 rounded-md bg-bolt-elements-background-depth-3">
               <span className="text-sm text-bolt-elements-textPrimary">
-                You must first connect to Supabase and select a project.
+                Supabase integration is currently unavailable. Our team has been notified.
               </span>
             </div>
           ) : (
@@ -146,37 +137,21 @@ export function SupabaseChatAlert({ alert, clearAlert, postMessage }: Props) {
           <p className="text-sm text-bolt-elements-textSecondary mb-4">{message}</p>
 
           <div className="flex gap-2">
-            {showConnectButton ? (
-              <button
-                onClick={handleConnectClick}
-                className={classNames(
-                  `px-3 py-2 rounded-md text-sm font-medium`,
-                  'bg-[#098F5F]',
-                  'hover:bg-[#0aa06c]',
-                  'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
-                  'text-white',
-                  'flex items-center gap-1.5',
-                )}
-              >
-                Connect to Supabase
-              </button>
-            ) : (
-              <button
-                onClick={() => executeSupabaseAction(content)}
-                disabled={isExecuting}
-                className={classNames(
-                  `px-3 py-2 rounded-md text-sm font-medium`,
-                  'bg-[#098F5F]',
-                  'hover:bg-[#0aa06c]',
-                  'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
-                  'text-white',
-                  'flex items-center gap-1.5',
-                  isExecuting ? 'opacity-70 cursor-not-allowed' : '',
-                )}
-              >
-                {isExecuting ? 'Applying...' : 'Apply Changes'}
-              </button>
-            )}
+            <button
+              onClick={() => executeSupabaseAction(content)}
+              disabled={!isConnected || isExecuting}
+              className={classNames(
+                `px-3 py-2 rounded-md text-sm font-medium`,
+                'bg-[#098F5F]',
+                'hover:bg-[#0aa06c]',
+                'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500',
+                'text-white',
+                'flex items-center gap-1.5',
+                !isConnected || isExecuting ? 'opacity-70 cursor-not-allowed' : '',
+              )}
+            >
+              {isExecuting ? 'Applying...' : 'Apply Changes'}
+            </button>
             <button
               onClick={clearAlert}
               disabled={isExecuting}

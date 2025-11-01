@@ -14,6 +14,8 @@ import { useSearchFilter } from '~/lib/hooks/useSearchFilter';
 import { classNames } from '~/utils/classNames';
 import { useStore } from '@nanostores/react';
 import { profileStore } from '~/lib/stores/profile';
+import { useSidebar } from '~/lib/hooks/useSidebar';
+import useViewport from '~/lib/hooks/useViewport';
 
 const menuVariants = {
   closed: {
@@ -67,12 +69,13 @@ export const Menu = () => {
   const { duplicateCurrentChat, exportChat } = useChatHistory();
   const menuRef = useRef<HTMLDivElement>(null);
   const [list, setList] = useState<ChatHistoryItem[]>([]);
-  const [open, setOpen] = useState(false);
+  const { sidebarOpen: open, closeSidebar } = useSidebar();
   const [dialogContent, setDialogContent] = useState<DialogContent>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const profile = useStore(profileStore);
   const [selectionMode, setSelectionMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const isSmallViewport = useViewport(1024);
 
   const { filteredItems: filteredList, handleSearchChange } = useSearchFilter({
     items: list,
@@ -279,29 +282,22 @@ export const Menu = () => {
   }, [open, selectionMode]);
 
   useEffect(() => {
-    const enterThreshold = 20;
-    const exitThreshold = 20;
-
-    function onMouseMove(event: MouseEvent) {
-      if (isSettingsOpen) {
-        return;
-      }
-
-      if (event.pageX < enterThreshold) {
-        setOpen(true);
-      }
-
-      if (menuRef.current && event.clientX > menuRef.current.getBoundingClientRect().right + exitThreshold) {
-        setOpen(false);
-      }
+    if (!open) {
+      return undefined;
     }
 
-    window.addEventListener('mousemove', onMouseMove);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeSidebar();
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('keydown', onKeyDown);
     };
-  }, [isSettingsOpen]);
+  }, [open, closeSidebar]);
 
   const handleDuplicate = async (id: string) => {
     await duplicateCurrentChat(id);
@@ -310,7 +306,7 @@ export const Menu = () => {
 
   const handleSettingsClick = () => {
     setIsSettingsOpen(true);
-    setOpen(false);
+    closeSidebar();
   };
 
   const handleSettingsClose = () => {
@@ -324,22 +320,40 @@ export const Menu = () => {
 
   return (
     <>
+      <div
+        className={classNames(
+          'fixed inset-0 z-[39] bg-black/40 transition-opacity duration-200 lg:hidden',
+          open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
+        )}
+        aria-hidden={!open}
+        onClick={closeSidebar}
+      />
       <motion.div
         ref={menuRef}
         initial="closed"
         animate={open ? 'open' : 'closed'}
         variants={menuVariants}
-        style={{ width: '340px' }}
+        style={{ width: 'min(320px, 90vw)' }}
         className={classNames(
-          'flex selection-accent flex-col side-menu fixed top-0 h-full rounded-r-2xl',
+          'flex selection-accent flex-col side-menu fixed top-0 left-0 h-full lg:w-[340px] lg:rounded-r-2xl',
           'bg-white dark:bg-gray-950 border-r border-bolt-elements-borderColor',
-          'shadow-sm text-sm',
+          'shadow-sm text-sm transition-theme',
           isSettingsOpen ? 'z-40' : 'z-sidebar',
+          open ? 'pointer-events-auto' : 'pointer-events-none lg:pointer-events-auto',
         )}
+        aria-hidden={!open && isSmallViewport}
       >
         <div className="h-12 flex items-center justify-between px-4 border-b border-gray-100 dark:border-gray-800/50 bg-gray-50/50 dark:bg-gray-900/50 rounded-tr-2xl">
           <div className="text-gray-900 dark:text-white font-medium"></div>
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={closeSidebar}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-bolt-elements-borderColor text-bolt-elements-textSecondary hover:text-bolt-elements-textPrimary hover:bg-bolt-elements-background-depth-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 lg:hidden"
+              aria-label="Close sidebar"
+            >
+              <div className="i-ph:x text-lg" />
+            </button>
             <HelpButton onClick={() => window.open('https://stackblitz-labs.github.io/bolt.diy/', '_blank')} />
             <span className="font-medium text-sm text-gray-900 dark:text-white truncate">
               {profile?.username || 'Guest User'}

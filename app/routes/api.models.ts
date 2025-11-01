@@ -3,6 +3,7 @@ import { LLMManager } from '~/lib/modules/llm/manager';
 import type { ModelInfo } from '~/lib/modules/llm/types';
 import type { ProviderInfo } from '~/types/model';
 import { getApiKeysFromCookie, getProviderSettingsFromCookie } from '~/lib/api/cookies';
+import { MODEL_POLICY, MANAGED_MODEL_ID_SET } from '~/config/modelPolicy';
 
 interface ModelsResponse {
   modelList: ModelInfo[];
@@ -14,18 +15,28 @@ let cachedProviders: ProviderInfo[] | null = null;
 let cachedDefaultProvider: ProviderInfo | null = null;
 
 function getProviderInfo(llmManager: LLMManager) {
+  const allowedProviderNames = new Set([MODEL_POLICY.provider]);
+
   if (!cachedProviders) {
-    cachedProviders = llmManager.getAllProviders().map((provider) => ({
-      name: provider.name,
-      staticModels: provider.staticModels,
-      getApiKeyLink: provider.getApiKeyLink,
-      labelForGetApiKey: provider.labelForGetApiKey,
-      icon: provider.icon,
-    }));
+    cachedProviders = llmManager
+      .getAllProviders()
+      .filter((provider) => allowedProviderNames.has(provider.name))
+      .map((provider) => ({
+        name: provider.name,
+        staticModels: provider.staticModels,
+        getApiKeyLink: provider.getApiKeyLink,
+        labelForGetApiKey: provider.labelForGetApiKey,
+        icon: provider.icon,
+      }));
   }
 
   if (!cachedDefaultProvider) {
-    const defaultProvider = llmManager.getDefaultProvider();
+    const defaultProvider = llmManager.getProvider(MODEL_POLICY.provider);
+
+    if (!defaultProvider) {
+      throw new Error(`MODEL_POLICY provider "${MODEL_POLICY.provider}" not registered.`);
+    }
+
     cachedDefaultProvider = {
       name: defaultProvider.name,
       staticModels: defaultProvider.staticModels,
@@ -82,8 +93,31 @@ export async function loader({
     });
   }
 
+  const managedModelOverrides = new Map(MODEL_POLICY.managedModels.map((model) => [model.id, model]));
+
+  let filteredModelList = modelList
+    .filter((model) => MANAGED_MODEL_ID_SET.has(`${model.provider}::${model.name}`))
+    .map((model) => {
+      const override = managedModelOverrides.get(model.name);
+
+      return {
+        ...model,
+        label: override?.label ?? model.label,
+        maxTokenAllowed: override?.maxTokenAllowed ?? model.maxTokenAllowed,
+      };
+    });
+
+  if (filteredModelList.length === 0) {
+    filteredModelList = MODEL_POLICY.managedModels.map((model) => ({
+      name: model.id,
+      provider: model.provider,
+      label: model.label ?? model.id,
+      maxTokenAllowed: model.maxTokenAllowed ?? 128000,
+    }));
+  }
+
   return json<ModelsResponse>({
-    modelList,
+    modelList: filteredModelList,
     providers,
     defaultProvider,
   });

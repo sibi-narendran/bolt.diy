@@ -20,15 +20,23 @@ if [ -f ".env.local" ]; then
 else
     echo "⚠️  No .env.local file found"
     
-    # Check if .env.example exists and offer to copy it
+    # Check if an env example file exists and offer to copy it
+    example_file=""
+
     if [ -f ".env.example" ]; then
-        echo "📋 Found .env.example file"
-        read -p "Would you like to create .env.local from .env.example? (y/n) " -n 1 -r
+        example_file=".env.example"
+    elif [ -f "env.example" ]; then
+        example_file="env.example"
+    fi
+
+    if [ -n "$example_file" ]; then
+        echo "📋 Found $example_file file"
+        read -p "Would you like to create .env.local from $example_file? (y/n) " -n 1 -r
         echo
         if [[ $REPLY =~ ^[Yy]$ ]]; then
-            cp .env.example .env.local
-            cp .env.example .env
-            echo "✅ Created .env.local and .env from .env.example"
+            cp "$example_file" .env.local
+            cp "$example_file" .env
+            echo "✅ Created .env.local and .env from $example_file"
             echo "📝 Please edit .env.local with your API keys"
         fi
     fi

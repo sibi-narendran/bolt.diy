@@ -19,4 +19,9 @@ interface Env {
   XAI_API_KEY: string;
   PERPLEXITY_API_KEY: string;
   AWS_BEDROCK_CONFIG: string;
+  SUPABASE_MANAGEMENT_TOKEN: string;
+  VITE_SUPABASE_ACCESS_TOKEN: string;
+  SUPABASE_DEFAULT_PROJECT_ID: string;
+  VITE_SUPABASE_URL: string;
+  VITE_SUPABASE_ANON_KEY: string;
 }

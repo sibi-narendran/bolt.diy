@@ -45,4 +45,6 @@ changelogUI.md
 docs/instructions/Roadmap.md
 .cursorrules
 *.md
+supabase-credentials.local.md
+supabase/.temp/
 .qodo

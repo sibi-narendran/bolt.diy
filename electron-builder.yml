@@ -1,5 +1,5 @@
-appId: com.stackblitz.bolt.diy
-productName: Bolt Local
+appId: com.appzap.appzap
+productName: Appzap Local
 directories:
   buildResources: build
   output: dist
@@ -56,7 +56,7 @@ npmRebuild: false
 publish:
   provider: github
   owner: Derek-X-Wang
-  repo: bolt.local
+  repo: appzap.local
   private: true
   releaseType: release
 

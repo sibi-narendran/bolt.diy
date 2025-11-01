@@ -16,9 +16,9 @@
   --bolt-elements-code-background: theme('colors.gray.100');
   --bolt-elements-code-text: theme('colors.gray.950');
 
-  --bolt-elements-button-primary-background: theme('colors.alpha.accent.10');
-  --bolt-elements-button-primary-backgroundHover: theme('colors.alpha.accent.20');
-  --bolt-elements-button-primary-text: theme('colors.accent.500');
+  --bolt-elements-button-primary-background: theme('colors.accent.500');
+  --bolt-elements-button-primary-backgroundHover: theme('colors.accent.600');
+  --bolt-elements-button-primary-text: theme('colors.white');
 
   --bolt-elements-button-secondary-background: theme('colors.alpha.gray.5');
   --bolt-elements-button-secondary-backgroundHover: theme('colors.alpha.gray.10');
@@ -107,7 +107,6 @@
 }
 
 /* Color Tokens Dark Theme */
-:root,
 :root[data-theme='dark'] {
   --bolt-elements-borderColor: theme('colors.alpha.white.10');
   --bolt-elements-borderColorActive: theme('colors.accent.500');
@@ -124,9 +123,9 @@
   --bolt-elements-code-background: theme('colors.gray.800');
   --bolt-elements-code-text: theme('colors.white');
 
-  --bolt-elements-button-primary-background: theme('colors.alpha.accent.10');
-  --bolt-elements-button-primary-backgroundHover: theme('colors.alpha.accent.20');
-  --bolt-elements-button-primary-text: theme('colors.accent.500');
+  --bolt-elements-button-primary-background: theme('colors.accent.500');
+  --bolt-elements-button-primary-backgroundHover: theme('colors.accent.600');
+  --bolt-elements-button-primary-text: theme('colors.white');
 
   --bolt-elements-button-secondary-background: theme('colors.alpha.white.5');
   --bolt-elements-button-secondary-backgroundHover: theme('colors.alpha.white.10');
@@ -252,4 +251,22 @@
   --bolt-elements-terminal-color-brightMagenta: var(--bolt-terminal-brightMagenta);
   --bolt-elements-terminal-color-brightCyan: var(--bolt-terminal-brightCyan);
   --bolt-elements-terminal-color-brightWhite: var(--bolt-terminal-brightWhite);
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --header-height: 64px;
+    --chat-max-width: min(100%, 48rem);
+    --chat-min-width: min(100%, 0px);
+    --workbench-width: 100%;
+    --workbench-inner-width: 100%;
+    --workbench-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 56px;
+    --chat-max-width: 100%;
+  }
 }

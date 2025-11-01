@@ -4,6 +4,8 @@
 
 Welcome to bolt.diy, the official open source version of Bolt.new, which allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, Groq, Cohere, Together, Perplexity, Moonshot (Kimi), Hyperbolic, GitHub Models, Amazon Bedrock, and OpenAI-like providers - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
 
+> **Deployment note:** This fork is configured to use centrally managed OpenRouter models. End users cannot switch providers or models; update `app/config/modelPolicy.ts` and set the `OPEN_ROUTER_API_KEY` environment variable to adjust the managed model list.
+
 -----
 Check the [bolt.diy Docs](https://stackblitz-labs.github.io/bolt.diy/) for more official installation instructions and additional information.
 
@@ -167,8 +169,8 @@ This option requires Docker and is great when you want an isolated environment o
    Copy the provided examples and add your provider keys:
 
    ```bash
-   cp .env.example .env
-   cp .env.example .env.local
+   cp env.example .env
+   cp env.example .env.local
    ```
 
    The runtime scripts inside the container source `.env` and `.env.local`, so keep any API keys you need in one of those files.
@@ -229,6 +231,16 @@ The desktop app provides the same full functionality as the web version with add
 ## Configuring API Keys and Providers
 
 Bolt.diy features a modern, intuitive settings interface for managing AI providers and API keys. The settings are organized into dedicated panels for easy navigation and configuration.
+
+### Environment-based API keys (recommended)
+
+For production-ready deployments keep provider credentials outside the browser UI. The development workflow now loads `.env.local` and `.env` automatically, so you can store the managed OpenRouter key (and any other secrets) securely on disk:
+
+1. Copy `env.example` to `.env.local`.
+2. Add `OPEN_ROUTER_API_KEY=<your key>` (and any other providers you enable).
+3. Run `pnpm run dev` – the new launcher reads the file and injects the variables into the Remix server.
+
+When deploying to Cloudflare Pages or another runtime, define the same `OPEN_ROUTER_API_KEY` as a platform secret (for Cloudflare: `wrangler secret put OPEN_ROUTER_API_KEY`). The server code will pick it up automatically; no cookies are required for managed providers.
 
 ### Accessing Provider Settings
 

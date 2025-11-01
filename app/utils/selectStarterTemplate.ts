@@ -1,5 +1,6 @@
 import ignore from 'ignore';
 import type { ProviderInfo } from '~/types/model';
+import { refreshUserPlan, updatePlanFromHeaders } from '~/lib/stores/userPlan';
 import type { Template } from '~/types/template';
 import { STARTER_TEMPLATES } from './constants';
 
@@ -82,22 +83,67 @@ const parseSelectedTemplate = (llmOutput: string): { template: string; title: st
   }
 };
 
-export const selectStarterTemplate = async (options: { message: string; model: string; provider: ProviderInfo }) => {
-  const { message, model, provider } = options;
+export const selectStarterTemplate = async (options: {
+  message: string;
+  model: string;
+  provider: ProviderInfo;
+  accessToken?: string | null;
+}) => {
+  const { message, model, provider, accessToken } = options;
   const requestBody = {
     message,
     model,
     provider,
     system: starterTemplateSelectionPrompt(templates),
   };
+  const headers: HeadersInit = {};
+
+  if (accessToken) {
+    headers.Authorization = `Bearer ${accessToken}`;
+  }
+
   const response = await fetch('/api/llmcall', {
     method: 'POST',
+    headers,
     body: JSON.stringify(requestBody),
   });
-  const respJson: { text: string } = await response.json();
-  console.log(respJson);
+  updatePlanFromHeaders(response.headers);
 
-  const { text } = respJson;
+  if (accessToken) {
+    refreshUserPlan(accessToken).catch(() => {
+      // Errors handled inside the store
+    });
+  }
+
+  let respJson: { text?: string; message?: string } | null = null;
+
+  try {
+    respJson = await response.json();
+  } catch (error) {
+    console.warn('Failed to parse LLM response payload. Defaulting to blank template.', error);
+  }
+
+  if (!response.ok) {
+    const errorMessage = respJson?.message || response.statusText || 'LLM call failed';
+    console.warn(`Starter template selection failed (${response.status}): ${errorMessage}`);
+
+    return {
+      template: 'blank',
+      title: '',
+    };
+  }
+
+  const text = respJson?.text;
+
+  if (typeof text !== 'string' || text.trim().length === 0) {
+    console.warn('LLM response missing template text. Defaulting to blank template.', respJson);
+
+    return {
+      template: 'blank',
+      title: '',
+    };
+  }
+
   const selectedTemplate = parseSelectedTemplate(text);
 
   if (selectedTemplate) {
@@ -184,7 +230,7 @@ export async function getTemplates(templateName: string, title?: string) {
   }
 
   const assistantMessage = `
-Bolt is initializing your project with the required files using the ${template.name} template.
+Appzap is initializing your project with the required files using the ${template.name} template.
 <boltArtifact id="imported-files" title="${title || 'Create initial files'}" type="bundled">
 ${filesToImport.files
   .map(

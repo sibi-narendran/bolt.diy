@@ -1,12 +1,14 @@
 import { LLMManager } from '~/lib/modules/llm/manager';
 import type { Template } from '~/types/template';
+import { MODEL_POLICY } from '~/config/modelPolicy';
+import type { ManagedModelConfig } from '~/types/model-policy';
 
 export const WORK_DIR_NAME = 'project';
 export const WORK_DIR = `/home/${WORK_DIR_NAME}`;
 export const MODIFICATIONS_TAG_NAME = 'bolt_file_modifications';
 export const MODEL_REGEX = /^\[Model: (.*?)\]\n\n/;
 export const PROVIDER_REGEX = /\[Provider: (.*?)\]\n\n/;
-export const DEFAULT_MODEL = 'claude-3-5-sonnet-latest';
+export const DEFAULT_MODEL = MODEL_POLICY.defaultModelId;
 export const PROMPT_COOKIE_KEY = 'cachedPrompt';
 export const TOOL_EXECUTION_APPROVAL = {
   APPROVE: 'Yes, approved.',
@@ -17,9 +19,26 @@ export const TOOL_EXECUTION_DENIED = 'Error: User denied access to tool executio
 export const TOOL_EXECUTION_ERROR = 'Error: An error occured while calling tool';
 
 const llmManager = LLMManager.getInstance(import.meta.env);
+const allProviders = llmManager.getAllProviders();
+const allowedProviderNames = new Set(MODEL_POLICY.managedModels.map((model) => model.provider));
+allowedProviderNames.add(MODEL_POLICY.provider);
 
-export const PROVIDER_LIST = llmManager.getAllProviders();
-export const DEFAULT_PROVIDER = llmManager.getDefaultProvider();
+export const PROVIDER_LIST = allProviders.filter((provider) => allowedProviderNames.has(provider.name));
+
+if (PROVIDER_LIST.length === 0) {
+  throw new Error(`MODEL_POLICY provider "${MODEL_POLICY.provider}" is not registered.`);
+}
+
+const resolvedDefaultProvider = PROVIDER_LIST.find((provider) => provider.name === MODEL_POLICY.provider);
+
+if (!resolvedDefaultProvider) {
+  throw new Error(`MODEL_POLICY default provider "${MODEL_POLICY.provider}" was filtered out.`);
+}
+
+export const DEFAULT_PROVIDER = resolvedDefaultProvider;
+
+export const MANAGED_MODELS: ManagedModelConfig[] = MODEL_POLICY.managedModels;
+export const MANAGED_MODEL_MAP = new Map(MANAGED_MODELS.map((model) => [model.id, model]));
 
 export const providerBaseUrlEnvKeys: Record<string, { baseUrlKey?: string; apiTokenKey?: string }> = {};
 PROVIDER_LIST.forEach((provider) => {

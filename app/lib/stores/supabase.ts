@@ -1,84 +1,29 @@
 import { atom } from 'nanostores';
-import type { SupabaseUser, SupabaseStats, SupabaseApiKey, SupabaseCredentials } from '~/types/supabase';
-
-export interface SupabaseProject {
-  id: string;
-  name: string;
-  region: string;
-  organization_id: string;
-  status: string;
-  database?: {
-    host: string;
-    version: string;
-    postgres_engine: string;
-    release_channel: string;
-  };
-  created_at: string;
-  stats?: {
-    database?: {
-      tables: number;
-      size: string;
-      size_mb?: number;
-      views?: number;
-      functions?: number;
-    };
-    storage?: {
-      objects: number;
-      size: string;
-      buckets?: number;
-      files?: number;
-      used_gb?: number;
-      available_gb?: number;
-    };
-    functions?: {
-      count: number;
-      deployed?: number;
-      invocations?: number;
-    };
-    auth?: {
-      users: number;
-    };
-  };
-}
+import type { SupabaseUser, SupabaseStats, SupabaseCredentials, SupabaseProject } from '~/types/supabase';
 
 export interface SupabaseConnectionState {
   user: SupabaseUser | null;
-  token: string;
   stats?: SupabaseStats;
   selectedProjectId?: string;
-  isConnected?: boolean;
   project?: SupabaseProject;
   credentials?: SupabaseCredentials;
+  isConnected: boolean;
+  isServerManaged: boolean;
+  error?: string;
+  lastSyncedAt?: number;
 }
 
-const storage =
-  typeof globalThis !== 'undefined' &&
-  typeof globalThis.localStorage !== 'undefined' &&
-  typeof globalThis.localStorage.getItem === 'function'
-    ? globalThis.localStorage
-    : null;
-
-const savedConnection = storage ? storage.getItem('supabase_connection') : null;
-const savedCredentials = storage ? storage.getItem('supabaseCredentials') : null;
-
-const initialState: SupabaseConnectionState = savedConnection
-  ? JSON.parse(savedConnection)
-  : {
-      user: null,
-      token: '',
-      stats: undefined,
-      selectedProjectId: undefined,
-      isConnected: false,
-      project: undefined,
-    };
-
-if (savedCredentials && !initialState.credentials) {
-  try {
-    initialState.credentials = JSON.parse(savedCredentials);
-  } catch (e) {
-    console.error('Failed to parse saved credentials:', e);
-  }
-}
+const initialState: SupabaseConnectionState = {
+  user: null,
+  stats: undefined,
+  selectedProjectId: undefined,
+  project: undefined,
+  credentials: undefined,
+  isConnected: false,
+  isServerManaged: false,
+  error: undefined,
+  lastSyncedAt: undefined,
+};
 
 export const supabaseConnection = atom<SupabaseConnectionState>(initialState);
 
@@ -86,147 +31,176 @@ export const isConnecting = atom(false);
 export const isFetchingStats = atom(false);
 export const isFetchingApiKeys = atom(false);
 
-if (initialState.token && !initialState.stats) {
-  fetchSupabaseStats(initialState.token).catch(console.error);
-}
-
-export function updateSupabaseConnection(connection: Partial<SupabaseConnectionState>) {
-  const currentState = supabaseConnection.get();
-
-  if (connection.user !== undefined || connection.token !== undefined) {
-    const newUser = connection.user !== undefined ? connection.user : currentState.user;
-    const newToken = connection.token !== undefined ? connection.token : currentState.token;
-    connection.isConnected = !!(newUser && newToken);
+function resolveProjectFromStats(
+  stats: SupabaseStats | undefined,
+  selectedProjectId?: string,
+): SupabaseProject | undefined {
+  if (!stats?.projects?.length) {
+    return undefined;
   }
 
-  if (connection.selectedProjectId !== undefined) {
-    if (connection.selectedProjectId && currentState.stats?.projects) {
-      const selectedProject = currentState.stats.projects.find(
-        (project) => project.id === connection.selectedProjectId,
-      );
+  if (selectedProjectId) {
+    const project = stats.projects.find((p) => p.id === selectedProjectId);
 
-      if (selectedProject) {
-        connection.project = selectedProject;
-      } else {
-        connection.project = {
-          id: connection.selectedProjectId,
-          name: `Project ${connection.selectedProjectId.substring(0, 8)}...`,
-          region: 'unknown',
-          organization_id: '',
-          status: 'active',
-          created_at: new Date().toISOString(),
-        };
-      }
-    } else if (connection.selectedProjectId === '') {
-      connection.project = undefined;
-      connection.credentials = undefined;
+    if (project) {
+      return project;
     }
   }
 
-  const newState = { ...currentState, ...connection };
-  supabaseConnection.set(newState);
-
-  /*
-   * Always save the connection state to localStorage to persist across chats
-   */
-  if (connection.user || connection.token || connection.selectedProjectId !== undefined || connection.credentials) {
-    storage?.setItem('supabase_connection', JSON.stringify(newState));
-
-    if (newState.credentials) {
-      storage?.setItem('supabaseCredentials', JSON.stringify(newState.credentials));
-    } else {
-      storage?.removeItem('supabaseCredentials');
-    }
-  } else {
-    storage?.removeItem('supabase_connection');
-    storage?.removeItem('supabaseCredentials');
-  }
+  return stats.projects[0];
 }
 
-export function initializeSupabaseConnection() {
-  // Auto-connect using environment variable if available
-  const envToken = import.meta.env?.VITE_SUPABASE_ACCESS_TOKEN;
+export function updateSupabaseConnection(patch: Partial<SupabaseConnectionState>) {
+  const current = supabaseConnection.get();
+  const next: SupabaseConnectionState = {
+    ...current,
+    ...patch,
+  };
 
-  if (envToken && !supabaseConnection.get().token) {
-    updateSupabaseConnection({ token: envToken });
-    fetchSupabaseStats(envToken).catch(console.error);
+  if (patch.stats || patch.selectedProjectId !== undefined) {
+    const stats = patch.stats ?? current.stats;
+    const selectedProjectId =
+      patch.selectedProjectId !== undefined
+        ? patch.selectedProjectId || undefined
+        : current.selectedProjectId || patch.stats?.projects?.[0]?.id;
+
+    next.stats = stats;
+    next.selectedProjectId = selectedProjectId;
+    next.project = resolveProjectFromStats(stats, selectedProjectId);
   }
+
+  if (patch.credentials !== undefined) {
+    next.credentials = patch.credentials;
+  }
+
+  if (patch.error !== undefined) {
+    next.error = patch.error;
+  }
+
+  if (patch.user !== undefined) {
+    next.user = patch.user;
+  }
+
+  if (patch.isServerManaged !== undefined) {
+    next.isServerManaged = patch.isServerManaged;
+  }
+
+  next.isConnected = !!next.project;
+
+  if (!next.isConnected) {
+    next.credentials = undefined;
+  }
+
+  supabaseConnection.set(next);
 }
 
-export async function fetchSupabaseStats(token: string) {
+async function requestSupabaseStats() {
   isFetchingStats.set(true);
 
   try {
-    // Use the internal API route instead of direct Supabase API call
     const response = await fetch('/api/supabase', {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        token,
-      }),
     });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch projects');
+      const errorData = (await response.json().catch(() => ({}))) as { error?: string };
+      throw new Error(errorData.error || `Failed to fetch Supabase projects (${response.status})`);
     }
 
-    const data = (await response.json()) as any;
+    const data = (await response.json()) as {
+      user?: SupabaseUser | null;
+      stats?: SupabaseStats;
+      defaultProjectId?: string | null;
+      isServerManaged?: boolean;
+    };
 
     updateSupabaseConnection({
-      user: data.user,
+      user: data.user ?? null,
       stats: data.stats,
+      selectedProjectId: data.defaultProjectId ?? data.stats?.projects?.[0]?.id,
+      isServerManaged: data.isServerManaged ?? true,
+      error: undefined,
+      lastSyncedAt: Date.now(),
     });
-  } catch (error) {
-    console.error('Failed to fetch Supabase stats:', error);
-    throw error;
+
+    return data;
   } finally {
     isFetchingStats.set(false);
   }
 }
 
-export async function fetchProjectApiKeys(projectId: string, token: string) {
+export async function refreshSupabaseConnection() {
+  try {
+    const data = await requestSupabaseStats();
+    const projectId = data.defaultProjectId ?? data.stats?.projects?.[0]?.id;
+
+    if (projectId) {
+      await fetchProjectApiKeys(projectId);
+    }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Failed to refresh Supabase connection';
+    updateSupabaseConnection({
+      user: null,
+      stats: undefined,
+      selectedProjectId: undefined,
+      project: undefined,
+      credentials: undefined,
+      isServerManaged: false,
+      error: message,
+      lastSyncedAt: Date.now(),
+    });
+
+    throw error;
+  }
+}
+
+export async function initializeSupabaseConnection() {
+  return refreshSupabaseConnection();
+}
+
+export async function fetchSupabaseStats() {
+  return refreshSupabaseConnection();
+}
+
+export async function fetchProjectApiKeys(projectId: string) {
   isFetchingApiKeys.set(true);
 
   try {
-    const response = await fetch('/api/supabase/variables', {
-      method: 'POST',
+    const response = await fetch(`/api/supabase/variables?projectId=${encodeURIComponent(projectId)}`, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        projectId,
-        token,
-      }),
     });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch API keys');
+      const errorData = (await response.json().catch(() => ({}))) as { error?: string };
+      throw new Error(errorData.error || `Failed to fetch Supabase credentials (${response.status})`);
     }
 
-    const data = (await response.json()) as any;
-    const apiKeys = data.apiKeys;
+    const data = (await response.json()) as {
+      apiKeys: Array<{ name: string; api_key: string }>;
+      projectId: string;
+    };
 
-    const anonKey = apiKeys.find((key: SupabaseApiKey) => key.name === 'anon' || key.name === 'public');
+    const anonKey = data.apiKeys.find((key) => key.name === 'anon' || key.name === 'public');
 
     if (anonKey) {
-      const supabaseUrl = `https://${projectId}.supabase.co`;
+      const supabaseUrl = `https://${data.projectId}.supabase.co`;
 
       updateSupabaseConnection({
+        selectedProjectId: data.projectId,
         credentials: {
           anonKey: anonKey.api_key,
           supabaseUrl,
         },
       });
-
-      return { anonKey: anonKey.api_key, supabaseUrl };
     }
 
-    return null;
-  } catch (error) {
-    console.error('Failed to fetch project API keys:', error);
-    throw error;
+    return data;
   } finally {
     isFetchingApiKeys.set(false);
   }

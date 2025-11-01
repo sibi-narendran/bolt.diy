@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ProviderInfo } from '~/types/model';
 import { createScopedLogger } from '~/utils/logger';
+import { refreshUserPlan, updatePlanFromHeaders } from '~/lib/stores/userPlan';
 
 const logger = createScopedLogger('usePromptEnhancement');
 
@@ -19,6 +20,7 @@ export function usePromptEnhancer() {
     model: string,
     provider: ProviderInfo,
     apiKeys?: Record<string, string>,
+    accessToken?: string | null,
   ) => {
     setEnhancingPrompt(true);
     setPromptEnhanced(false);
@@ -33,10 +35,24 @@ export function usePromptEnhancer() {
       requestBody.apiKeys = apiKeys;
     }
 
+    const headers: HeadersInit = { 'Content-Type': 'application/json' };
+
+    if (accessToken) {
+      headers.Authorization = `Bearer ${accessToken}`;
+    }
+
     const response = await fetch('/api/enhancer', {
       method: 'POST',
+      headers,
       body: JSON.stringify(requestBody),
     });
+    updatePlanFromHeaders(response.headers);
+
+    if (accessToken) {
+      refreshUserPlan(accessToken).catch(() => {
+        // Errors handled inside the store
+      });
+    }
 
     const reader = response.body?.getReader();
 
