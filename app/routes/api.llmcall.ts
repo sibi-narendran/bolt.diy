@@ -74,7 +74,7 @@ function validateTokenLimits(modelDetails: ModelInfo, requestedTokens: number): 
   return { valid: true };
 }
 
-async function llmCallAction({ context, request }: ActionFunctionArgs) {
+async function llmCallAction({ request, context }: ActionFunctionArgs) {
   const { system, message, model, provider, streamOutput } = await request.json<{
     system: string;
     message: string;
