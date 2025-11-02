@@ -4,3 +4,33 @@ compatibility_flags = ["nodejs_compat"]
 compatibility_date = "2025-03-28"
 pages_build_output_dir = "./build/client"
 send_metrics = false
+
+
+# Supabase Configuration 
+VITE_SUPABASE_URL=https://dpebpgvwkawspwbcaahr.supabase.co 
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwZWJwZ3Z3a2F3c3B3YmNhYWhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE5MDkzMDksImV4cCI6MjA3NzQ4NTMwOX0.SDITQYCAQtIVGouCviJu2Ih06wHpOgZKMAHcyBUFmG4 
+ 
+# Server-side only (DO NOT expose to client) 
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwZWJwZ3Z3a2F3c3B3YmNhYWhyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MTkwOTMwOSwiZXhwIjoyMDc3NDg1MzA5fQ.wTEb0JCHNwumQOgl827CE8mJjkXmMyIwLWK0GEx5xQU 
+ 
+# Optional server-side duplicates if needed by libraries 
+SUPABASE_URL=https://dpebpgvwkawspwbcaahr.supabase.co 
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwZWJwZ3Z3a2F3c3B3YmNhYWhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE5MDkzMDksImV4cCI6MjA3NzQ4NTMwOX0.SDITQYCAQtIVGouCviJu2Ih06wHpOgZKMAHcyBUFmG4 
+SUPABASE_MANAGEMENT_TOKEN=sbp_0cf8bfaefd7db6a1239fd4697f890e86da828557 
+SUPABASE_JWT_SECRET=5TONXKqSfxR+n98sp4BAAjzYsUlS2CBoIyuvKvqdF88+9UIEy0+QBxQ5WShGDCRXhrdUg2fL/HyvI/OPyrIYbg==
+OPEN_ROUTER_API_KEY=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
+
+
+# Connect to Supabase via connection pooling
+DATABASE_URL="postgresql://postgres.dpebpgvwkawspwbcaahr:[YOUR-PASSWORD]@aws-1-ap-southeast-2.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# Direct connection to the database. Used for migrations
+DIRECT_URL="postgresql://postgres.dpebpgvwkawspwbcaahr:[YOUR-PASSWORD]@aws-1-ap-southeast-2.pooler.supabase.com:5432/postgres"
+
+
+
+VITE_PUBLIC_APP_URL=http://localhost:5173
+
+ 
+
+ 
