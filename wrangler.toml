@@ -5,23 +5,12 @@ compatibility_date = "2025-03-28"
 pages_build_output_dir = "./build/client"
 send_metrics = false
 
-# These variables are available to the build process
+# These variables are available to the build process as plain text.
+# ONLY public keys should be here.
 [vars]
 VITE_SUPABASE_URL = "https://dpebpgvwkawspwbcaahr.supabase.co"
 VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwZWJwZ3Z3a2F3c3B3YmNhYWhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE5MDkzMDksImV4cCI6MjA3NzQ4NTMwOX0.SDITQYCAQtIVGouCviJu2Ih06wHpOgZKMAHcyBUFmG4"
-VITE_PUBLIC_APP_URL = "http://localhost:5173" # Note: This is for local, you may want your production URL here
-VITE_DISABLE_WEBCONTAINER = "true"
-
-# These variables are loaded from the Cloudflare Dashboard Secrets at runtime
-[secrets]
-SUPABASE_URL
-SUPABASE_ANON_KEY
-SUPABASE_SERVICE_ROLE_KEY
-SUPABASE_MANAGEMENT_TOKEN
-SUPABASE_JWT_SECRET
-OPEN_ROUTER_API_KEY
-DATABASE_URL
-DIRECT_URL
+VITE_PUBLIC_APP_URL = "https://appzap.co"
 
  
 
