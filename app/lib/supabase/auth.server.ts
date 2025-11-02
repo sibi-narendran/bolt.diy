@@ -24,10 +24,10 @@ export async function requireSupabaseUser(request: Request, env: any): Promise<S
     throw new Response('Unauthorized', { status: 401 });
   }
 
-  // Create client with Authorization header first
+  // Create client with the environment context to ensure it has service_role key
   const supabase = createServerSupabaseClientForRequest(request);
 
-  // Validate the token first
+  // Validate the user's token
   const { data, error } = await supabase.auth.getUser(accessToken);
 
   if (error || !data?.user) {
