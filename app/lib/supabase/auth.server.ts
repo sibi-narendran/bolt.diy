@@ -25,8 +25,8 @@ export async function requireSupabaseUser(request: Request): Promise<SupabaseAut
   }
 
   // Create client with Authorization header first
-  let supabase = createServerSupabaseClientForRequest(request);
-  
+  const supabase = createServerSupabaseClientForRequest(request);
+
   // Validate the token first
   const { data, error } = await supabase.auth.getUser(accessToken);
 
@@ -34,22 +34,29 @@ export async function requireSupabaseUser(request: Request): Promise<SupabaseAut
     throw new Response('Unauthorized', { status: 401 });
   }
 
-  // For Supabase RPC calls, the Authorization header should be sufficient.
-  // Optionally, if a refresh token is available in cookies, we can set the
-  // session more formally, but it's not critical for this flow.
+  /*
+   * For Supabase RPC calls, the Authorization header should be sufficient.
+   * Optionally, if a refresh token is available in cookies, we can set the
+   * session more formally, but it's not critical for this flow.
+   */
   try {
     const cookieHeader = request.headers.get('Cookie');
     let refreshToken: string | undefined;
-    
+
     if (cookieHeader) {
-      const cookies = cookieHeader.split(';').reduce((acc, cookie) => {
-        const [key, value] = cookie.trim().split('=');
-        if (key && value) {
-          acc[key] = decodeURIComponent(value);
-        }
-        return acc;
-      }, {} as Record<string, string>);
-      
+      const cookies = cookieHeader.split(';').reduce(
+        (acc, cookie) => {
+          const [key, value] = cookie.trim().split('=');
+
+          if (key && value) {
+            acc[key] = decodeURIComponent(value);
+          }
+
+          return acc;
+        },
+        {} as Record<string, string>,
+      );
+
       refreshToken = cookies['sb-refresh-token'] || cookies['sb-access-token'] || cookies['supabase-auth-token'];
     }
 

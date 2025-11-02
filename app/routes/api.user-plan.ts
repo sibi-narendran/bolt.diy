@@ -38,7 +38,7 @@ async function userPlanLoader({ request }: LoaderFunctionArgs) {
   } catch (error) {
     // Log the error for debugging
     console.error('Error in ensureUserPlanExists:', error);
-    
+
     // Handle specific plan service errors
     if (error instanceof UnauthorizedPlanAccessError) {
       return new Response('Unauthorized', { status: 401 });

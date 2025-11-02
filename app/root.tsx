@@ -127,14 +127,14 @@ function AuthInitializer() {
       // Check for session info in the URL hash
       if (location.hash.includes('access_token=')) {
         const supabase = getSupabaseClient();
-        
+
         // Let Supabase handle the session from the hash
         const { data, error } = await supabase.auth.getSession();
 
         if (!error && data.session?.user) {
           // Session is valid, update our auth store
           setAuthUser(data.session.user, data.session);
-          
+
           // Clean the hash from the URL
           navigate(location.pathname, { replace: true });
         }

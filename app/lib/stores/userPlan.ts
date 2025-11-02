@@ -94,7 +94,7 @@ export async function refreshUserPlan(accessToken: string | null | undefined) {
     if (!response.ok) {
       const errorText = await response.text();
       let errorMessage = `Request failed with status ${response.status}`;
-      
+
       try {
         const errorData = JSON.parse(errorText);
         errorMessage = errorData.message || errorData.error || errorText || errorMessage;
@@ -102,7 +102,7 @@ export async function refreshUserPlan(accessToken: string | null | undefined) {
         // If parsing fails, use the error text or default message
         errorMessage = errorText || errorMessage;
       }
-      
+
       throw new Error(errorMessage);
     }
 

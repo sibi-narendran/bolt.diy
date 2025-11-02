@@ -88,12 +88,14 @@ export function createServerSupabaseClientForRequest(
   const globalHeaders: Record<string, string> = {};
 
   if (accessToken) {
-    // Set Authorization header for all requests including RPC calls
-    // This is critical for RPC functions with security definer that use auth.uid()
+    /*
+     * Set Authorization header for all requests including RPC calls
+     * This is critical for RPC functions with security definer that use auth.uid()
+     */
     globalHeaders.Authorization = `Bearer ${accessToken}`;
-    
+
     // Also set the apikey header which Supabase might need
-    globalHeaders['apikey'] = key;
+    globalHeaders.apikey = key;
   }
 
   return createClient(url, key, {
