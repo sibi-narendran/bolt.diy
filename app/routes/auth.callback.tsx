@@ -20,6 +20,8 @@ function AuthCallback() {
         const supabase = getSupabaseClient();
 
         // Supabase automatically handles session from URL hash
+        // Wait for the session to be properly set
+        // This will extract tokens from both URL hash and localStorage
         const { data, error } = await supabase.auth.getSession();
 
         if (error || !data.session || !data.session.user) {
@@ -27,9 +29,27 @@ function AuthCallback() {
           return;
         }
 
+        // Ensure session is fully initialized
+        if (!data.session.access_token) {
+          navigate('/login?error=auth_failed');
+          return;
+        }
+
+        // Set the auth user in the store
         setAuthUser(data.session.user, data.session);
+
+        // Wait for session to be fully persisted and initialized
+        // This ensures components that depend on auth state are ready
+        await new Promise((resolve) => setTimeout(resolve, 200));
+
+        // Clean up URL hash if present
+        if (window.location.hash) {
+          window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+
         navigate('/');
-      } catch {
+      } catch (error) {
+        console.error('Auth callback error:', error);
         navigate('/login?error=auth_failed');
       }
     };

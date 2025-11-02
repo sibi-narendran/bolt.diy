@@ -28,8 +28,6 @@ async function signupAction({ request }: ActionFunctionArgs) {
     });
 
     if (error) {
-      console.error('Supabase magic-link signup failed:', error);
-
       const messageLower = error.message.toLowerCase();
       let errorMessage = 'Failed to send magic link. Please try again.';
 

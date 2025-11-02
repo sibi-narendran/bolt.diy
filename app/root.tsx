@@ -17,6 +17,10 @@ import xtermStyles from '@xterm/xterm/css/xterm.css?url';
 
 import 'virtual:uno.css';
 
+import { getSupabaseClient } from '~/lib/supabase/client';
+import { setAuthUser } from '~/lib/stores/auth';
+import { useLocation, useNavigate } from '@remix-run/react';
+
 const toastAnimation = cssTransition({
   enter: 'animated fadeInRight',
   exit: 'animated fadeOutRight',
@@ -114,6 +118,35 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 import { logStore } from './lib/stores/logs';
 
+function AuthInitializer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleAuthRedirect = async () => {
+      // Check for session info in the URL hash
+      if (location.hash.includes('access_token=')) {
+        const supabase = getSupabaseClient();
+        
+        // Let Supabase handle the session from the hash
+        const { data, error } = await supabase.auth.getSession();
+
+        if (!error && data.session?.user) {
+          // Session is valid, update our auth store
+          setAuthUser(data.session.user, data.session);
+          
+          // Clean the hash from the URL
+          navigate(location.pathname, { replace: true });
+        }
+      }
+    };
+
+    handleAuthRedirect();
+  }, [location, navigate]);
+
+  return null; // This component does not render anything
+}
+
 export default function App() {
   const theme = useStore(themeStore);
 
@@ -146,6 +179,7 @@ export default function App() {
 
   return (
     <Layout>
+      <ClientOnly fallback={null}>{() => <AuthInitializer />}</ClientOnly>
       <Outlet />
     </Layout>
   );
