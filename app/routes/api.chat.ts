@@ -52,7 +52,7 @@ async function chatAction({ context, request }: ActionFunctionArgs) {
   let authContext;
 
   try {
-    authContext = await requireSupabaseUser(request);
+    authContext = await requireSupabaseUser(request, context.cloudflare.env);
   } catch (error) {
     if (error instanceof Response) {
       return error;

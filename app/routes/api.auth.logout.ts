@@ -2,14 +2,18 @@ import { json, type ActionFunctionArgs } from '@remix-run/cloudflare';
 import { withSecurity } from '~/lib/security';
 import { createServerSupabaseClient } from '~/lib/supabase/client';
 
-async function logoutAction({ request }: ActionFunctionArgs) {
+async function logoutAction({ request, context }: ActionFunctionArgs) {
   if (request.method !== 'POST') {
     return json({ error: 'Method not allowed' }, { status: 405 });
   }
 
   try {
-    const supabase = createServerSupabaseClient();
-    await supabase.auth.signOut();
+    const supabase = createServerSupabaseClient(context.cloudflare.env);
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      // Silent fail - client will clear local state
+    }
   } catch {
     // Silent fail - client will clear local state
   }

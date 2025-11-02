@@ -20,7 +20,7 @@ export async function action(args: ActionFunctionArgs) {
 
 const logger = createScopedLogger('api.enhancher');
 
-async function enhancerAction({ context, request }: ActionFunctionArgs) {
+async function enhancerAction({ request, context }: ActionFunctionArgs) {
   const { message, model, provider } = await request.json<{
     message: string;
     model: string;
@@ -31,7 +31,7 @@ async function enhancerAction({ context, request }: ActionFunctionArgs) {
   let authContext;
 
   try {
-    authContext = await requireSupabaseUser(request);
+    authContext = await requireSupabaseUser(request, context.cloudflare.env);
   } catch (error) {
     if (error instanceof Response) {
       return error;
