@@ -8,11 +8,11 @@ import {
   UserPlanServiceError,
 } from '~/lib/services/userPlan.server';
 
-async function userPlanLoader({ request }: LoaderFunctionArgs) {
+async function userPlanLoader({ request, context }: LoaderFunctionArgs) {
   let authContext;
 
   try {
-    authContext = await requireSupabaseUser(request);
+    authContext = await requireSupabaseUser(request, context.cloudflare.env);
   } catch (error) {
     if (error instanceof Response) {
       return error;

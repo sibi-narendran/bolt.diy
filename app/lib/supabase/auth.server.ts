@@ -17,7 +17,7 @@ export function extractAccessToken(request: Request): string | null {
   return null;
 }
 
-export async function requireSupabaseUser(request: Request): Promise<SupabaseAuthContext> {
+export async function requireSupabaseUser(request: Request, env: any): Promise<SupabaseAuthContext> {
   const accessToken = extractAccessToken(request);
 
   if (!accessToken) {
