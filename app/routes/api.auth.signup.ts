@@ -7,7 +7,7 @@ const signupSchema = z.object({
   email: z.string().email('Invalid email address'),
 });
 
-async function signupAction({ request }: ActionFunctionArgs) {
+async function signupAction({ request, context }: ActionFunctionArgs) {
   if (request.method !== 'POST') {
     return json({ error: 'Method not allowed' }, { status: 405 });
   }
@@ -16,7 +16,7 @@ async function signupAction({ request }: ActionFunctionArgs) {
     const body = await request.json();
     const validatedData = signupSchema.parse(body);
 
-    const supabase = createServerSupabaseClient();
+    const supabase = createServerSupabaseClient(context.cloudflare.env);
     const url = new URL(request.url);
 
     const { error } = await supabase.auth.signInWithOtp({
@@ -28,6 +28,7 @@ async function signupAction({ request }: ActionFunctionArgs) {
     });
 
     if (error) {
+      console.error('Supabase signup error:', error);
       const messageLower = error.message.toLowerCase();
       let errorMessage = 'Failed to send magic link. Please try again.';
 
@@ -72,6 +73,7 @@ async function signupAction({ request }: ActionFunctionArgs) {
       );
     }
 
+    console.error('Unexpected signup error:', error);
     return json({ error: 'An unexpected error occurred' }, { status: 500 });
   }
 }

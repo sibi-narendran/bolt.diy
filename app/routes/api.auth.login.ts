@@ -7,7 +7,7 @@ const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
 });
 
-async function loginAction({ request }: ActionFunctionArgs) {
+async function loginAction({ request, context }: ActionFunctionArgs) {
   if (request.method !== 'POST') {
     return json({ error: 'Method not allowed' }, { status: 405 });
   }
@@ -16,7 +16,7 @@ async function loginAction({ request }: ActionFunctionArgs) {
     const body = await request.json();
     const validatedData = loginSchema.parse(body);
 
-    const supabase = createServerSupabaseClient();
+    const supabase = createServerSupabaseClient(context.cloudflare.env);
     const url = new URL(request.url);
 
     const { error } = await supabase.auth.signInWithOtp({
@@ -27,6 +27,7 @@ async function loginAction({ request }: ActionFunctionArgs) {
     });
 
     if (error) {
+      console.error('Supabase login error:', error);
       const errorMessage =
         error.message.includes('rate limit') || error.message.includes('too many')
           ? 'Too many requests. Please try again later.'
@@ -56,6 +57,7 @@ async function loginAction({ request }: ActionFunctionArgs) {
       );
     }
 
+    console.error('Unexpected login error:', error);
     return json({ error: 'An unexpected error occurred' }, { status: 500 });
   }
 }

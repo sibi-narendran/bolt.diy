@@ -57,18 +57,19 @@ export function getSupabaseClient() {
   return supabaseClient;
 }
 
-export function createServerSupabaseClient(supabaseUrl?: string, supabaseAnonKey?: string) {
-  const config = getSupabaseConfig();
-  const url = supabaseUrl || config.supabaseUrl;
-  const key = supabaseAnonKey || config.supabaseAnonKey;
+export function createServerSupabaseClient(env: any) {
+  const supabaseUrl = env.VITE_SUPABASE_URL;
+  const supabaseAnonKey = env.VITE_SUPABASE_ANON_KEY;
+  const supabaseServiceRoleKey = env.SUPABASE_SERVICE_ROLE_KEY;
 
-  if (!url || !key) {
+  if (!supabaseUrl || !supabaseAnonKey) {
     throw new Error(
       'Supabase configuration is missing. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY environment variables.',
     );
   }
 
-  return createClient(url, key, {
+  // On the server, use the service role key for elevated privileges.
+  return createClient(supabaseUrl, supabaseServiceRoleKey || supabaseAnonKey, {
     auth: {
       autoRefreshToken: false,
       persistSession: false,
