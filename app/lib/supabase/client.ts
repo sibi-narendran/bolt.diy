@@ -11,6 +11,14 @@ export function getSupabaseConfig() {
       ? (window as any).ENV?.VITE_SUPABASE_ANON_KEY || import.meta.env?.VITE_SUPABASE_ANON_KEY
       : process.env.VITE_SUPABASE_ANON_KEY;
 
+  if (typeof window === 'undefined') {
+    console.log('[PROD_DEBUG] Server-side Supabase URL:', supabaseUrl);
+    console.log('[PROD_DEBUG] Server-side Supabase Anon Key:', !!supabaseAnonKey);
+
+    const allSupabaseKeys = Object.keys(process.env).filter((key) => key.includes('SUPABASE'));
+    console.log('[PROD_DEBUG] Available Supabase ENV Keys:', allSupabaseKeys);
+  }
+
   return { supabaseUrl, supabaseAnonKey };
 }
 

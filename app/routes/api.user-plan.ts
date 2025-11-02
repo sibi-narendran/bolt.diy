@@ -36,8 +36,11 @@ async function userPlanLoader({ request }: LoaderFunctionArgs) {
       },
     });
   } catch (error) {
-    // Log the error for debugging
-    console.error('Error in ensureUserPlanExists:', error);
+    // Log the full error object for detailed debugging in production
+    console.error(
+      '[PROD_DEBUG] Critical error in userPlanLoader:',
+      JSON.stringify(error, Object.getOwnPropertyNames(error)),
+    );
 
     // Handle specific plan service errors
     if (error instanceof UnauthorizedPlanAccessError) {
