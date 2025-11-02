@@ -1,9 +1,8 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "bolt"
+name = "bolt-diy"
 compatibility_flags = ["nodejs_compat"]
-compatibility_date = "2025-03-28"
+compatibility_date = "2024-03-28"
 pages_build_output_dir = "./build/client"
-send_metrics = false
 
 # These variables are available to the build process as plain text.
 # ONLY public keys should be here.
