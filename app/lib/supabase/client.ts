@@ -79,11 +79,14 @@ export function createServerSupabaseClient(env: any) {
 
 export function createServerSupabaseClientForRequest(
   request: Request,
+  env?: any,
   options?: { supabaseUrl?: string; supabaseAnonKey?: string },
 ) {
   const config = getSupabaseConfig();
-  const url = options?.supabaseUrl || config.supabaseUrl;
-  const key = options?.supabaseAnonKey || config.supabaseAnonKey;
+  const url =
+    options?.supabaseUrl || env?.VITE_SUPABASE_URL || config.supabaseUrl;
+  const key =
+    options?.supabaseAnonKey || env?.VITE_SUPABASE_ANON_KEY || config.supabaseAnonKey;
 
   if (!url || !key) {
     throw new Error(

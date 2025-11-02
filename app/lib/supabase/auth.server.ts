@@ -25,7 +25,7 @@ export async function requireSupabaseUser(request: Request, env: any): Promise<S
   }
 
   // Create client with the environment context to ensure it has service_role key
-  const supabase = createServerSupabaseClientForRequest(request);
+  const supabase = createServerSupabaseClientForRequest(request, env);
 
   // Validate the user's token
   const { data, error } = await supabase.auth.getUser(accessToken);
