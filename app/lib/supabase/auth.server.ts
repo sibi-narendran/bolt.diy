@@ -31,6 +31,7 @@ export async function requireSupabaseUser(request: Request, env: any): Promise<S
   const { data, error } = await supabase.auth.getUser(accessToken);
 
   if (error || !data?.user) {
+    console.error('Supabase getUser failed:', error); // Log the specific Supabase error
     throw new Response('Unauthorized', { status: 401 });
   }
 

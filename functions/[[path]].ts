@@ -6,6 +6,13 @@ export const onRequest: PagesFunction = async (context) => {
 
   const handler = createPagesFunctionHandler({
     build: serverBuild,
+    getLoadContext: () => {
+      return {
+        cloudflare: {
+          env: context.env,
+        },
+      };
+    },
   });
 
   return handler(context);

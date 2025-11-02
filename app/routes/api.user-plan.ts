@@ -54,6 +54,8 @@ async function userPlanLoader({ request, context }: LoaderFunctionArgs) {
         JSON.stringify({
           error: true,
           message: 'Failed to load user plan',
+          // Add the original error message for debugging purposes
+          originalError: error.message,
         }),
         {
           status: 500,
