@@ -1,214 +1,214 @@
 /* Color Tokens Light Theme */
 :root,
 :root[data-theme='light'] {
-  --appza-elements-borderColor: theme('colors.alpha.gray.10');
-  --appza-elements-borderColorActive: theme('colors.accent.600');
+  --appzap-elements-borderColor: theme('colors.alpha.gray.10');
+  --appzap-elements-borderColorActive: theme('colors.accent.600');
 
-  --appza-elements-bg-depth-1: theme('colors.white');
-  --appza-elements-bg-depth-2: theme('colors.gray.50');
-  --appza-elements-bg-depth-3: theme('colors.gray.200');
-  --appza-elements-bg-depth-4: theme('colors.alpha.gray.5');
+  --appzap-elements-bg-depth-1: theme('colors.white');
+  --appzap-elements-bg-depth-2: theme('colors.gray.50');
+  --appzap-elements-bg-depth-3: theme('colors.gray.200');
+  --appzap-elements-bg-depth-4: theme('colors.alpha.gray.5');
 
-  --appza-elements-textPrimary: theme('colors.gray.950');
-  --appza-elements-textSecondary: theme('colors.gray.600');
-  --appza-elements-textTertiary: theme('colors.gray.500');
+  --appzap-elements-textPrimary: theme('colors.gray.950');
+  --appzap-elements-textSecondary: theme('colors.gray.600');
+  --appzap-elements-textTertiary: theme('colors.gray.500');
 
-  --appza-elements-code-background: theme('colors.gray.100');
-  --appza-elements-code-text: theme('colors.gray.950');
+  --appzap-elements-code-background: theme('colors.gray.100');
+  --appzap-elements-code-text: theme('colors.gray.950');
 
-  --appza-elements-button-primary-background: theme('colors.accent.500');
-  --appza-elements-button-primary-backgroundHover: theme('colors.accent.600');
-  --appza-elements-button-primary-text: theme('colors.white');
+  --appzap-elements-button-primary-background: theme('colors.accent.500');
+  --appzap-elements-button-primary-backgroundHover: theme('colors.accent.600');
+  --appzap-elements-button-primary-text: theme('colors.white');
 
-  --appza-elements-button-secondary-background: theme('colors.alpha.gray.5');
-  --appza-elements-button-secondary-backgroundHover: theme('colors.alpha.gray.10');
-  --appza-elements-button-secondary-text: theme('colors.gray.950');
+  --appzap-elements-button-secondary-background: theme('colors.alpha.gray.5');
+  --appzap-elements-button-secondary-backgroundHover: theme('colors.alpha.gray.10');
+  --appzap-elements-button-secondary-text: theme('colors.gray.950');
 
-  --appza-elements-button-danger-background: theme('colors.alpha.red.10');
-  --appza-elements-button-danger-backgroundHover: theme('colors.alpha.red.20');
-  --appza-elements-button-danger-text: theme('colors.red.500');
+  --appzap-elements-button-danger-background: theme('colors.alpha.red.10');
+  --appzap-elements-button-danger-backgroundHover: theme('colors.alpha.red.20');
+  --appzap-elements-button-danger-text: theme('colors.red.500');
 
-  --appza-elements-item-contentDefault: theme('colors.alpha.gray.50');
-  --appza-elements-item-contentActive: theme('colors.gray.950');
-  --appza-elements-item-contentAccent: theme('colors.accent.700');
-  --appza-elements-item-contentDanger: theme('colors.red.500');
-  --appza-elements-item-backgroundDefault: rgba(0, 0, 0, 0);
-  --appza-elements-item-backgroundActive: theme('colors.alpha.gray.5');
-  --appza-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
-  --appza-elements-item-backgroundDanger: theme('colors.alpha.red.10');
+  --appzap-elements-item-contentDefault: theme('colors.alpha.gray.50');
+  --appzap-elements-item-contentActive: theme('colors.gray.950');
+  --appzap-elements-item-contentAccent: theme('colors.accent.700');
+  --appzap-elements-item-contentDanger: theme('colors.red.500');
+  --appzap-elements-item-backgroundDefault: rgba(0, 0, 0, 0);
+  --appzap-elements-item-backgroundActive: theme('colors.alpha.gray.5');
+  --appzap-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
+  --appzap-elements-item-backgroundDanger: theme('colors.alpha.red.10');
 
-  --appza-elements-loader-background: theme('colors.alpha.gray.10');
-  --appza-elements-loader-progress: theme('colors.accent.500');
+  --appzap-elements-loader-background: theme('colors.alpha.gray.10');
+  --appzap-elements-loader-progress: theme('colors.accent.500');
 
-  --appza-elements-artifacts-background: theme('colors.white');
-  --appza-elements-artifacts-backgroundHover: theme('colors.alpha.gray.2');
-  --appza-elements-artifacts-borderColor: var(--appza-elements-borderColor);
-  --appza-elements-artifacts-inlineCode-background: theme('colors.gray.100');
-  --appza-elements-artifacts-inlineCode-text: var(--appza-elements-textPrimary);
+  --appzap-elements-artifacts-background: theme('colors.white');
+  --appzap-elements-artifacts-backgroundHover: theme('colors.alpha.gray.2');
+  --appzap-elements-artifacts-borderColor: var(--appzap-elements-borderColor);
+  --appzap-elements-artifacts-inlineCode-background: theme('colors.gray.100');
+  --appzap-elements-artifacts-inlineCode-text: var(--appzap-elements-textPrimary);
 
-  --appza-elements-actions-background: theme('colors.white');
-  --appza-elements-actions-code-background: theme('colors.gray.800');
+  --appzap-elements-actions-background: theme('colors.white');
+  --appzap-elements-actions-code-background: theme('colors.gray.800');
 
-  --appza-elements-messages-background: theme('colors.gray.100');
-  --appza-elements-messages-linkColor: theme('colors.accent.500');
-  --appza-elements-messages-code-background: theme('colors.gray.800');
-  --appza-elements-messages-inlineCode-background: theme('colors.gray.200');
-  --appza-elements-messages-inlineCode-text: theme('colors.gray.800');
+  --appzap-elements-messages-background: theme('colors.gray.100');
+  --appzap-elements-messages-linkColor: theme('colors.accent.500');
+  --appzap-elements-messages-code-background: theme('colors.gray.800');
+  --appzap-elements-messages-inlineCode-background: theme('colors.gray.200');
+  --appzap-elements-messages-inlineCode-text: theme('colors.gray.800');
 
-  --appza-elements-icon-success: theme('colors.green.500');
-  --appza-elements-icon-error: theme('colors.red.500');
-  --appza-elements-icon-primary: theme('colors.gray.950');
-  --appza-elements-icon-secondary: theme('colors.gray.600');
-  --appza-elements-icon-tertiary: theme('colors.gray.500');
+  --appzap-elements-icon-success: theme('colors.green.500');
+  --appzap-elements-icon-error: theme('colors.red.500');
+  --appzap-elements-icon-primary: theme('colors.gray.950');
+  --appzap-elements-icon-secondary: theme('colors.gray.600');
+  --appzap-elements-icon-tertiary: theme('colors.gray.500');
 
-  --appza-elements-dividerColor: theme('colors.gray.100');
+  --appzap-elements-dividerColor: theme('colors.gray.100');
 
-  --appza-elements-prompt-background: theme('colors.alpha.white.80');
+  --appzap-elements-prompt-background: theme('colors.alpha.white.80');
 
-  --appza-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.10');
-  --appza-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
-  --appza-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
-  --appza-elements-sidebar-buttonText: theme('colors.accent.700');
+  --appzap-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.10');
+  --appzap-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
+  --appzap-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
+  --appzap-elements-sidebar-buttonText: theme('colors.accent.700');
 
-  --appza-elements-preview-addressBar-background: theme('colors.gray.100');
-  --appza-elements-preview-addressBar-backgroundHover: theme('colors.alpha.gray.5');
-  --appza-elements-preview-addressBar-backgroundActive: theme('colors.white');
-  --appza-elements-preview-addressBar-text: var(--appza-elements-textSecondary);
-  --appza-elements-preview-addressBar-textActive: var(--appza-elements-textPrimary);
+  --appzap-elements-preview-addressBar-background: theme('colors.gray.100');
+  --appzap-elements-preview-addressBar-backgroundHover: theme('colors.alpha.gray.5');
+  --appzap-elements-preview-addressBar-backgroundActive: theme('colors.white');
+  --appzap-elements-preview-addressBar-text: var(--appzap-elements-textSecondary);
+  --appzap-elements-preview-addressBar-textActive: var(--appzap-elements-textPrimary);
 
-  --appza-elements-terminals-background: theme('colors.white');
-  --appza-elements-terminals-buttonBackground: var(--appza-elements-bg-depth-4);
+  --appzap-elements-terminals-background: theme('colors.white');
+  --appzap-elements-terminals-buttonBackground: var(--appzap-elements-bg-depth-4);
 
-  --appza-elements-cta-background: theme('colors.gray.100');
-  --appza-elements-cta-text: theme('colors.gray.950');
+  --appzap-elements-cta-background: theme('colors.gray.100');
+  --appzap-elements-cta-text: theme('colors.gray.950');
 
   /* Terminal Colors */
-  --appza-terminal-background: var(--appza-elements-terminals-background);
-  --appza-terminal-foreground: #333333;
-  --appza-terminal-selection-background: #00000040;
-  --appza-terminal-black: #000000;
-  --appza-terminal-red: #cd3131;
-  --appza-terminal-green: #00bc00;
-  --appza-terminal-yellow: #949800;
-  --appza-terminal-blue: #0451a5;
-  --appza-terminal-magenta: #bc05bc;
-  --appza-terminal-cyan: #0598bc;
-  --appza-terminal-white: #555555;
-  --appza-terminal-brightBlack: #686868;
-  --appza-terminal-brightRed: #cd3131;
-  --appza-terminal-brightGreen: #00bc00;
-  --appza-terminal-brightYellow: #949800;
-  --appza-terminal-brightBlue: #0451a5;
-  --appza-terminal-brightMagenta: #bc05bc;
-  --appza-terminal-brightCyan: #0598bc;
-  --appza-terminal-brightWhite: #a5a5a5;
+  --appzap-terminal-background: var(--appzap-elements-terminals-background);
+  --appzap-terminal-foreground: #333333;
+  --appzap-terminal-selection-background: #00000040;
+  --appzap-terminal-black: #000000;
+  --appzap-terminal-red: #cd3131;
+  --appzap-terminal-green: #00bc00;
+  --appzap-terminal-yellow: #949800;
+  --appzap-terminal-blue: #0451a5;
+  --appzap-terminal-magenta: #bc05bc;
+  --appzap-terminal-cyan: #0598bc;
+  --appzap-terminal-white: #555555;
+  --appzap-terminal-brightBlack: #686868;
+  --appzap-terminal-brightRed: #cd3131;
+  --appzap-terminal-brightGreen: #00bc00;
+  --appzap-terminal-brightYellow: #949800;
+  --appzap-terminal-brightBlue: #0451a5;
+  --appzap-terminal-brightMagenta: #bc05bc;
+  --appzap-terminal-brightCyan: #0598bc;
+  --appzap-terminal-brightWhite: #a5a5a5;
   --modern-scrollbar-thumb-background: rgba(100, 100, 100, 0.3); // Example light theme color
   --modern-scrollbar-thumb-backgroundHover: rgba(74, 74, 74, 0.8);
 }
 
 /* Color Tokens Dark Theme */
 :root[data-theme='dark'] {
-  --appza-elements-borderColor: theme('colors.alpha.white.10');
-  --appza-elements-borderColorActive: theme('colors.accent.500');
+  --appzap-elements-borderColor: theme('colors.alpha.white.10');
+  --appzap-elements-borderColorActive: theme('colors.accent.500');
 
-  --appza-elements-bg-depth-1: theme('colors.gray.950');
-  --appza-elements-bg-depth-2: theme('colors.gray.900');
-  --appza-elements-bg-depth-3: theme('colors.gray.800');
-  --appza-elements-bg-depth-4: theme('colors.alpha.white.5');
+  --appzap-elements-bg-depth-1: theme('colors.gray.950');
+  --appzap-elements-bg-depth-2: theme('colors.gray.900');
+  --appzap-elements-bg-depth-3: theme('colors.gray.800');
+  --appzap-elements-bg-depth-4: theme('colors.alpha.white.5');
 
-  --appza-elements-textPrimary: theme('colors.white');
-  --appza-elements-textSecondary: theme('colors.gray.400');
-  --appza-elements-textTertiary: theme('colors.gray.500');
+  --appzap-elements-textPrimary: theme('colors.white');
+  --appzap-elements-textSecondary: theme('colors.gray.400');
+  --appzap-elements-textTertiary: theme('colors.gray.500');
 
-  --appza-elements-code-background: theme('colors.gray.800');
-  --appza-elements-code-text: theme('colors.white');
+  --appzap-elements-code-background: theme('colors.gray.800');
+  --appzap-elements-code-text: theme('colors.white');
 
-  --appza-elements-button-primary-background: theme('colors.accent.500');
-  --appza-elements-button-primary-backgroundHover: theme('colors.accent.600');
-  --appza-elements-button-primary-text: theme('colors.white');
+  --appzap-elements-button-primary-background: theme('colors.accent.500');
+  --appzap-elements-button-primary-backgroundHover: theme('colors.accent.600');
+  --appzap-elements-button-primary-text: theme('colors.white');
 
-  --appza-elements-button-secondary-background: theme('colors.alpha.white.5');
-  --appza-elements-button-secondary-backgroundHover: theme('colors.alpha.white.10');
-  --appza-elements-button-secondary-text: theme('colors.white');
+  --appzap-elements-button-secondary-background: theme('colors.alpha.white.5');
+  --appzap-elements-button-secondary-backgroundHover: theme('colors.alpha.white.10');
+  --appzap-elements-button-secondary-text: theme('colors.white');
 
-  --appza-elements-button-danger-background: theme('colors.alpha.red.10');
-  --appza-elements-button-danger-backgroundHover: theme('colors.alpha.red.20');
-  --appza-elements-button-danger-text: theme('colors.red.500');
+  --appzap-elements-button-danger-background: theme('colors.alpha.red.10');
+  --appzap-elements-button-danger-backgroundHover: theme('colors.alpha.red.20');
+  --appzap-elements-button-danger-text: theme('colors.red.500');
 
-  --appza-elements-item-contentDefault: theme('colors.alpha.white.50');
-  --appza-elements-item-contentActive: theme('colors.white');
-  --appza-elements-item-contentAccent: theme('colors.accent.500');
-  --appza-elements-item-contentDanger: theme('colors.red.500');
-  --appza-elements-item-backgroundDefault: rgba(255, 255, 255, 0);
-  --appza-elements-item-backgroundActive: theme('colors.alpha.white.10');
-  --appza-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
-  --appza-elements-item-backgroundDanger: theme('colors.alpha.red.10');
+  --appzap-elements-item-contentDefault: theme('colors.alpha.white.50');
+  --appzap-elements-item-contentActive: theme('colors.white');
+  --appzap-elements-item-contentAccent: theme('colors.accent.500');
+  --appzap-elements-item-contentDanger: theme('colors.red.500');
+  --appzap-elements-item-backgroundDefault: rgba(255, 255, 255, 0);
+  --appzap-elements-item-backgroundActive: theme('colors.alpha.white.10');
+  --appzap-elements-item-backgroundAccent: theme('colors.alpha.accent.10');
+  --appzap-elements-item-backgroundDanger: theme('colors.alpha.red.10');
 
-  --appza-elements-loader-background: theme('colors.alpha.gray.10');
-  --appza-elements-loader-progress: theme('colors.accent.500');
+  --appzap-elements-loader-background: theme('colors.alpha.gray.10');
+  --appzap-elements-loader-progress: theme('colors.accent.500');
 
-  --appza-elements-artifacts-background: theme('colors.gray.900');
-  --appza-elements-artifacts-backgroundHover: theme('colors.alpha.white.5');
-  --appza-elements-artifacts-borderColor: var(--appza-elements-borderColor);
-  --appza-elements-artifacts-inlineCode-background: theme('colors.gray.800');
-  --appza-elements-artifacts-inlineCode-text: theme('colors.white');
+  --appzap-elements-artifacts-background: theme('colors.gray.900');
+  --appzap-elements-artifacts-backgroundHover: theme('colors.alpha.white.5');
+  --appzap-elements-artifacts-borderColor: var(--appzap-elements-borderColor);
+  --appzap-elements-artifacts-inlineCode-background: theme('colors.gray.800');
+  --appzap-elements-artifacts-inlineCode-text: theme('colors.white');
 
-  --appza-elements-actions-background: theme('colors.gray.900');
-  --appza-elements-actions-code-background: theme('colors.gray.800');
+  --appzap-elements-actions-background: theme('colors.gray.900');
+  --appzap-elements-actions-code-background: theme('colors.gray.800');
 
-  --appza-elements-messages-background: theme('colors.gray.800');
-  --appza-elements-messages-linkColor: theme('colors.accent.500');
-  --appza-elements-messages-code-background: theme('colors.gray.900');
-  --appza-elements-messages-inlineCode-background: theme('colors.gray.700');
-  --appza-elements-messages-inlineCode-text: var(--appza-elements-textPrimary);
+  --appzap-elements-messages-background: theme('colors.gray.800');
+  --appzap-elements-messages-linkColor: theme('colors.accent.500');
+  --appzap-elements-messages-code-background: theme('colors.gray.900');
+  --appzap-elements-messages-inlineCode-background: theme('colors.gray.700');
+  --appzap-elements-messages-inlineCode-text: var(--appzap-elements-textPrimary);
 
-  --appza-elements-icon-success: theme('colors.green.400');
-  --appza-elements-icon-error: theme('colors.red.400');
-  --appza-elements-icon-primary: theme('colors.gray.950');
-  --appza-elements-icon-secondary: theme('colors.gray.600');
-  --appza-elements-icon-tertiary: theme('colors.gray.500');
+  --appzap-elements-icon-success: theme('colors.green.400');
+  --appzap-elements-icon-error: theme('colors.red.400');
+  --appzap-elements-icon-primary: theme('colors.gray.950');
+  --appzap-elements-icon-secondary: theme('colors.gray.600');
+  --appzap-elements-icon-tertiary: theme('colors.gray.500');
 
-  --appza-elements-dividerColor: theme('colors.gray.100');
+  --appzap-elements-dividerColor: theme('colors.gray.100');
 
-  --appza-elements-prompt-background: theme('colors.alpha.gray.80');
+  --appzap-elements-prompt-background: theme('colors.alpha.gray.80');
 
-  --appza-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.30');
-  --appza-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
-  --appza-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
-  --appza-elements-sidebar-buttonText: theme('colors.accent.500');
+  --appzap-elements-sidebar-dropdownShadow: theme('colors.alpha.gray.30');
+  --appzap-elements-sidebar-buttonBackgroundDefault: theme('colors.alpha.accent.10');
+  --appzap-elements-sidebar-buttonBackgroundHover: theme('colors.alpha.accent.20');
+  --appzap-elements-sidebar-buttonText: theme('colors.accent.500');
 
-  --appza-elements-preview-addressBar-background: var(--appza-elements-bg-depth-1);
-  --appza-elements-preview-addressBar-backgroundHover: theme('colors.alpha.white.5');
-  --appza-elements-preview-addressBar-backgroundActive: var(--appza-elements-bg-depth-1);
-  --appza-elements-preview-addressBar-text: var(--appza-elements-textSecondary);
-  --appza-elements-preview-addressBar-textActive: var(--appza-elements-textPrimary);
+  --appzap-elements-preview-addressBar-background: var(--appzap-elements-bg-depth-1);
+  --appzap-elements-preview-addressBar-backgroundHover: theme('colors.alpha.white.5');
+  --appzap-elements-preview-addressBar-backgroundActive: var(--appzap-elements-bg-depth-1);
+  --appzap-elements-preview-addressBar-text: var(--appzap-elements-textSecondary);
+  --appzap-elements-preview-addressBar-textActive: var(--appzap-elements-textPrimary);
 
-  --appza-elements-terminals-background: var(--appza-elements-bg-depth-1);
-  --appza-elements-terminals-buttonBackground: var(--appza-elements-bg-depth-3);
+  --appzap-elements-terminals-background: var(--appzap-elements-bg-depth-1);
+  --appzap-elements-terminals-buttonBackground: var(--appzap-elements-bg-depth-3);
 
-  --appza-elements-cta-background: theme('colors.alpha.white.10');
-  --appza-elements-cta-text: theme('colors.white');
+  --appzap-elements-cta-background: theme('colors.alpha.white.10');
+  --appzap-elements-cta-text: theme('colors.white');
 
   /* Terminal Colors */
-  --appza-terminal-background: var(--appza-elements-terminals-background);
-  --appza-terminal-foreground: #eff0eb;
-  --appza-terminal-selection-background: #97979b33;
-  --appza-terminal-black: #000000;
-  --appza-terminal-red: #ff5c57;
-  --appza-terminal-green: #5af78e;
-  --appza-terminal-yellow: #f3f99d;
-  --appza-terminal-blue: #57c7ff;
-  --appza-terminal-magenta: #ff6ac1;
-  --appza-terminal-cyan: #9aedfe;
-  --appza-terminal-white: #f1f1f0;
-  --appza-terminal-brightBlack: #686868;
-  --appza-terminal-brightRed: #ff5c57;
-  --appza-terminal-brightGreen: #5af78e;
-  --appza-terminal-brightYellow: #f3f99d;
-  --appza-terminal-brightBlue: #57c7ff;
-  --appza-terminal-brightMagenta: #ff6ac1;
-  --appza-terminal-brightCyan: #9aedfe;
-  --appza-terminal-brightWhite: #f1f1f0;
+  --appzap-terminal-background: var(--appzap-elements-terminals-background);
+  --appzap-terminal-foreground: #eff0eb;
+  --appzap-terminal-selection-background: #97979b33;
+  --appzap-terminal-black: #000000;
+  --appzap-terminal-red: #ff5c57;
+  --appzap-terminal-green: #5af78e;
+  --appzap-terminal-yellow: #f3f99d;
+  --appzap-terminal-blue: #57c7ff;
+  --appzap-terminal-magenta: #ff6ac1;
+  --appzap-terminal-cyan: #9aedfe;
+  --appzap-terminal-white: #f1f1f0;
+  --appzap-terminal-brightBlack: #686868;
+  --appzap-terminal-brightRed: #ff5c57;
+  --appzap-terminal-brightGreen: #5af78e;
+  --appzap-terminal-brightYellow: #f3f99d;
+  --appzap-terminal-brightBlue: #57c7ff;
+  --appzap-terminal-brightMagenta: #ff6ac1;
+  --appzap-terminal-brightCyan: #9aedfe;
+  --appzap-terminal-brightWhite: #f1f1f0;
   --modern-scrollbar-thumb-background: rgba(100, 100, 100, 0.3); // Example dark theme color (adjust as needed)
   --modern-scrollbar-thumb-backgroundHover: rgba(10, 10, 10, 0.8);
 }
@@ -227,30 +227,30 @@
   --workbench-left: calc(100% - var(--workbench-width));
 
   /* Toasts */
-  --toastify-color-progress-success: var(--appza-elements-icon-success);
-  --toastify-color-progress-error: var(--appza-elements-icon-error);
+  --toastify-color-progress-success: var(--appzap-elements-icon-success);
+  --toastify-color-progress-error: var(--appzap-elements-icon-error);
 
   /* Terminal */
-  --appza-elements-terminal-backgroundColor: var(--appza-terminal-background);
-  --appza-elements-terminal-textColor: var(--appza-terminal-foreground);
-  --appza-elements-terminal-cursorColor: var(--appza-terminal-foreground);
-  --appza-elements-terminal-selection-backgroundColor: var(--appza-terminal-selection-background);
-  --appza-elements-terminal-color-black: var(--appza-terminal-black);
-  --appza-elements-terminal-color-red: var(--appza-terminal-red);
-  --appza-elements-terminal-color-green: var(--appza-terminal-green);
-  --appza-elements-terminal-color-yellow: var(--appza-terminal-yellow);
-  --appza-elements-terminal-color-blue: var(--appza-terminal-blue);
-  --appza-elements-terminal-color-magenta: var(--appza-terminal-magenta);
-  --appza-elements-terminal-color-cyan: var(--appza-terminal-cyan);
-  --appza-elements-terminal-color-white: var(--appza-terminal-white);
-  --appza-elements-terminal-color-brightBlack: var(--appza-terminal-brightBlack);
-  --appza-elements-terminal-color-brightRed: var(--appza-terminal-brightRed);
-  --appza-elements-terminal-color-brightGreen: var(--appza-terminal-brightGreen);
-  --appza-elements-terminal-color-brightYellow: var(--appza-terminal-brightYellow);
-  --appza-elements-terminal-color-brightBlue: var(--appza-terminal-brightBlue);
-  --appza-elements-terminal-color-brightMagenta: var(--appza-terminal-brightMagenta);
-  --appza-elements-terminal-color-brightCyan: var(--appza-terminal-brightCyan);
-  --appza-elements-terminal-color-brightWhite: var(--appza-terminal-brightWhite);
+  --appzap-elements-terminal-backgroundColor: var(--appzap-terminal-background);
+  --appzap-elements-terminal-textColor: var(--appzap-terminal-foreground);
+  --appzap-elements-terminal-cursorColor: var(--appzap-terminal-foreground);
+  --appzap-elements-terminal-selection-backgroundColor: var(--appzap-terminal-selection-background);
+  --appzap-elements-terminal-color-black: var(--appzap-terminal-black);
+  --appzap-elements-terminal-color-red: var(--appzap-terminal-red);
+  --appzap-elements-terminal-color-green: var(--appzap-terminal-green);
+  --appzap-elements-terminal-color-yellow: var(--appzap-terminal-yellow);
+  --appzap-elements-terminal-color-blue: var(--appzap-terminal-blue);
+  --appzap-elements-terminal-color-magenta: var(--appzap-terminal-magenta);
+  --appzap-elements-terminal-color-cyan: var(--appzap-terminal-cyan);
+  --appzap-elements-terminal-color-white: var(--appzap-terminal-white);
+  --appzap-elements-terminal-color-brightBlack: var(--appzap-terminal-brightBlack);
+  --appzap-elements-terminal-color-brightRed: var(--appzap-terminal-brightRed);
+  --appzap-elements-terminal-color-brightGreen: var(--appzap-terminal-brightGreen);
+  --appzap-elements-terminal-color-brightYellow: var(--appzap-terminal-brightYellow);
+  --appzap-elements-terminal-color-brightBlue: var(--appzap-terminal-brightBlue);
+  --appzap-elements-terminal-color-brightMagenta: var(--appzap-terminal-brightMagenta);
+  --appzap-elements-terminal-color-brightCyan: var(--appzap-terminal-brightCyan);
+  --appzap-elements-terminal-color-brightWhite: var(--appzap-terminal-brightWhite);
 }
 
 @media (max-width: 1024px) {

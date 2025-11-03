@@ -39,24 +39,24 @@ export function CodeBlock({
   return (
     <div
       className={classNames(
-        'rounded-lg overflow-hidden border border-appza-elements-borderColor dark:border-appza-elements-borderColor-dark',
-        'bg-appza-elements-background-depth-2 dark:bg-appza-elements-background-depth-3',
+        'rounded-lg overflow-hidden border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor-dark',
+        'bg-appzap-elements-background-depth-2 dark:bg-appzap-elements-background-depth-3',
         className,
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-2 bg-appza-elements-background-depth-3 dark:bg-appza-elements-background-depth-4 border-b border-appza-elements-borderColor dark:border-appza-elements-borderColor-dark">
+      <div className="flex items-center justify-between px-4 py-2 bg-appzap-elements-background-depth-3 dark:bg-appzap-elements-background-depth-4 border-b border-appzap-elements-borderColor dark:border-appzap-elements-borderColor-dark">
         <div className="flex items-center gap-2">
           {filename && (
             <>
               <FileIcon filename={filename} size="sm" />
-              <span className="text-xs font-medium text-appza-elements-textSecondary dark:text-appza-elements-textSecondary-dark">
+              <span className="text-xs font-medium text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary-dark">
                 {filename}
               </span>
             </>
           )}
           {language && !filename && (
-            <span className="text-xs font-medium text-appza-elements-textSecondary dark:text-appza-elements-textSecondary-dark uppercase">
+            <span className="text-xs font-medium text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary-dark uppercase">
               {language}
             </span>
           )}
@@ -64,7 +64,7 @@ export function CodeBlock({
         <Tooltip content={copied ? 'Copied!' : 'Copy code'}>
           <motion.button
             onClick={handleCopy}
-            className="p-1.5 rounded-md text-appza-elements-textTertiary hover:text-appza-elements-textSecondary dark:text-appza-elements-textTertiary-dark dark:hover:text-appza-elements-textSecondary-dark hover:bg-appza-elements-background-depth-2 dark:hover:bg-appza-elements-background-depth-3 transition-colors"
+            className="p-1.5 rounded-md text-appzap-elements-textTertiary hover:text-appzap-elements-textSecondary dark:text-appzap-elements-textTertiary-dark dark:hover:text-appzap-elements-textSecondary-dark hover:bg-appzap-elements-background-depth-2 dark:hover:bg-appzap-elements-background-depth-3 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -82,15 +82,15 @@ export function CodeBlock({
                 key={index}
                 className={classNames(
                   highlightLines.includes(index + 1) ? 'bg-purple-500/10 dark:bg-purple-500/20' : '',
-                  'hover:bg-appza-elements-background-depth-3 dark:hover:bg-appza-elements-background-depth-4',
+                  'hover:bg-appzap-elements-background-depth-3 dark:hover:bg-appzap-elements-background-depth-4',
                 )}
               >
                 {showLineNumbers && (
-                  <td className="py-1 pl-4 pr-2 text-right select-none text-appza-elements-textTertiary dark:text-appza-elements-textTertiary-dark border-r border-appza-elements-borderColor dark:border-appza-elements-borderColor-dark">
+                  <td className="py-1 pl-4 pr-2 text-right select-none text-appzap-elements-textTertiary dark:text-appzap-elements-textTertiary-dark border-r border-appzap-elements-borderColor dark:border-appzap-elements-borderColor-dark">
                     <span className="inline-block min-w-[1.5rem] text-xs">{index + 1}</span>
                   </td>
                 )}
-                <td className="py-1 pl-4 pr-4 text-appza-elements-textPrimary dark:text-appza-elements-textPrimary-dark whitespace-pre">
+                <td className="py-1 pl-4 pr-4 text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary-dark whitespace-pre">
                   {line || ' '}
                 </td>
               </tr>

@@ -12,7 +12,7 @@ const FilePreview: React.FC<FilePreviewProps> = ({ files, imageDataList, onRemov
   }
 
   return (
-    <div className="flex flex-row overflow-x-auto mx-2 -mt-1 p-2 bg-appza-elements-background-depth-3 border border-b-none border-appza-elements-borderColor rounded-lg rounded-b-none">
+    <div className="flex flex-row overflow-x-auto mx-2 -mt-1 p-2 bg-appzap-elements-background-depth-3 border border-b-none border-appzap-elements-borderColor rounded-lg rounded-b-none">
       {files.map((file, index) => (
         <div key={file.name + file.size} className="mr-2 relative">
           {imageDataList[index] && (
@@ -24,7 +24,7 @@ const FilePreview: React.FC<FilePreviewProps> = ({ files, imageDataList, onRemov
               >
                 <div className="i-ph:x w-3 h-3 text-gray-200" />
               </button>
-              <div className="absolute bottom-0 w-full h-5 flex items-center px-2 rounded-b-lg text-appza-elements-textTertiary font-thin text-xs bg-appza-elements-background-depth-2">
+              <div className="absolute bottom-0 w-full h-5 flex items-center px-2 rounded-b-lg text-appzap-elements-textTertiary font-thin text-xs bg-appzap-elements-background-depth-2">
                 <span className="truncate">{file.name}</span>
               </div>
             </div>

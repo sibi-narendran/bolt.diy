@@ -130,7 +130,7 @@ export function useChatHistory() {
                   role: 'assistant',
 
                   // Combine followup message and the artifact with files and command actions
-                  content: `appza Restored your chat from a snapshot. You can revert this message to load the full chat history.
+                  content: `appzap Restored your chat from a snapshot. You can revert this message to load the full chat history.
                   <appzaArtifact id="restored-project-setup" title="Restored Project & Setup" type="bundled">
                   ${Object.entries(snapshot?.files || {})
                     .map(([key, value]) => {

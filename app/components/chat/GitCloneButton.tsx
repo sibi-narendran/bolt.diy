@@ -171,10 +171,10 @@ ${escapeappzaTags(file.content)}
         variant="default"
         size="lg"
         className={classNames(
-          'gap-2 bg-appza-elements-background-depth-1',
-          'text-appza-elements-textPrimary',
-          'hover:bg-appza-elements-background-depth-2',
-          'border border-appza-elements-borderColor',
+          'gap-2 bg-appzap-elements-background-depth-1',
+          'text-appzap-elements-textPrimary',
+          'hover:bg-appzap-elements-background-depth-2',
+          'border border-appzap-elements-borderColor',
           'h-10 px-4 py-2 min-w-[120px] justify-center',
           'transition-all duration-200 ease-in-out',
           className,
@@ -191,15 +191,15 @@ ${escapeappzaTags(file.content)}
       {/* Provider Selection Dialog */}
       {isDialogOpen && !selectedProvider && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-gray-950 rounded-xl shadow-xl border border-appza-elements-borderColor dark:border-appza-elements-borderColor max-w-md w-full">
+          <div className="bg-white dark:bg-gray-950 rounded-xl shadow-xl border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor max-w-md w-full">
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-appza-elements-textPrimary dark:text-appza-elements-textPrimary">
+                <h3 className="text-lg font-semibold text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary">
                   Choose Repository Provider
                 </h3>
                 <button
                   onClick={() => setIsDialogOpen(false)}
-                  className="p-2 rounded-lg bg-transparent hover:bg-appza-elements-background-depth-1 dark:hover:bg-appza-elements-background-depth-1 text-appza-elements-textSecondary dark:text-appza-elements-textSecondary hover:text-appza-elements-textPrimary dark:hover:text-appza-elements-textPrimary transition-all duration-200 hover:scale-105 active:scale-95"
+                  className="p-2 rounded-lg bg-transparent hover:bg-appzap-elements-background-depth-1 dark:hover:bg-appzap-elements-background-depth-1 text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary hover:text-appzap-elements-textPrimary dark:hover:text-appzap-elements-textPrimary transition-all duration-200 hover:scale-105 active:scale-95"
                 >
                   <X className="w-5 h-5 transition-transform duration-200 hover:rotate-90" />
                 </button>
@@ -208,17 +208,17 @@ ${escapeappzaTags(file.content)}
               <div className="space-y-3">
                 <button
                   onClick={() => setSelectedProvider('github')}
-                  className="w-full p-4 rounded-lg bg-appza-elements-background-depth-1 dark:bg-appza-elements-background-depth-1 hover:bg-appza-elements-background-depth-2 dark:hover:bg-appza-elements-background-depth-2 border border-appza-elements-borderColor dark:border-appza-elements-borderColor hover:border-appza-elements-borderColorActive dark:hover:border-appza-elements-borderColorActive transition-all duration-200 text-left group"
+                  className="w-full p-4 rounded-lg bg-appzap-elements-background-depth-1 dark:bg-appzap-elements-background-depth-1 hover:bg-appzap-elements-background-depth-2 dark:hover:bg-appzap-elements-background-depth-2 border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor hover:border-appzap-elements-borderColorActive dark:hover:border-appzap-elements-borderColorActive transition-all duration-200 text-left group"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/20 dark:group-hover:bg-blue-500/30 transition-colors">
                       <Github className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                      <div className="font-medium text-appza-elements-textPrimary dark:text-appza-elements-textPrimary">
+                      <div className="font-medium text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary">
                         GitHub
                       </div>
-                      <div className="text-sm text-appza-elements-textSecondary dark:text-appza-elements-textSecondary">
+                      <div className="text-sm text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary">
                         Clone from GitHub repositories
                       </div>
                     </div>
@@ -227,17 +227,17 @@ ${escapeappzaTags(file.content)}
 
                 <button
                   onClick={() => setSelectedProvider('gitlab')}
-                  className="w-full p-4 rounded-lg bg-appza-elements-background-depth-1 dark:bg-appza-elements-background-depth-1 hover:bg-appza-elements-background-depth-2 dark:hover:bg-appza-elements-background-depth-2 border border-appza-elements-borderColor dark:border-appza-elements-borderColor hover:border-appza-elements-borderColorActive dark:hover:border-appza-elements-borderColorActive transition-all duration-200 text-left group"
+                  className="w-full p-4 rounded-lg bg-appzap-elements-background-depth-1 dark:bg-appzap-elements-background-depth-1 hover:bg-appzap-elements-background-depth-2 dark:hover:bg-appzap-elements-background-depth-2 border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor hover:border-appzap-elements-borderColorActive dark:hover:border-appzap-elements-borderColorActive transition-all duration-200 text-left group"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-orange-500/10 dark:bg-orange-500/20 flex items-center justify-center group-hover:bg-orange-500/20 dark:group-hover:bg-orange-500/30 transition-colors">
                       <GitBranch className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                     </div>
                     <div>
-                      <div className="font-medium text-appza-elements-textPrimary dark:text-appza-elements-textPrimary">
+                      <div className="font-medium text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary">
                         GitLab
                       </div>
-                      <div className="text-sm text-appza-elements-textSecondary dark:text-appza-elements-textSecondary">
+                      <div className="text-sm text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary">
                         Clone from GitLab repositories
                       </div>
                     </div>
@@ -252,17 +252,17 @@ ${escapeappzaTags(file.content)}
       {/* GitHub Repository Selection */}
       {isDialogOpen && selectedProvider === 'github' && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-gray-950 rounded-xl shadow-xl border border-appza-elements-borderColor dark:border-appza-elements-borderColor w-full max-w-4xl max-h-[90vh] overflow-hidden">
-            <div className="p-6 border-b border-appza-elements-borderColor dark:border-appza-elements-borderColor flex items-center justify-between">
+          <div className="bg-white dark:bg-gray-950 rounded-xl shadow-xl border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor w-full max-w-4xl max-h-[90vh] overflow-hidden">
+            <div className="p-6 border-b border-appzap-elements-borderColor dark:border-appzap-elements-borderColor flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 flex items-center justify-center">
                   <Github className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-appza-elements-textPrimary dark:text-appza-elements-textPrimary">
+                  <h3 className="text-lg font-semibold text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary">
                     Import GitHub Repository
                   </h3>
-                  <p className="text-sm text-appza-elements-textSecondary dark:text-appza-elements-textSecondary">
+                  <p className="text-sm text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary">
                     Clone a repository from GitHub to your workspace
                   </p>
                 </div>
@@ -272,7 +272,7 @@ ${escapeappzaTags(file.content)}
                   setIsDialogOpen(false);
                   setSelectedProvider(null);
                 }}
-                className="p-2 rounded-lg bg-transparent hover:bg-appza-elements-background-depth-1 dark:hover:bg-appza-elements-background-depth-1 text-appza-elements-textSecondary dark:text-appza-elements-textSecondary hover:text-appza-elements-textPrimary dark:hover:text-appza-elements-textPrimary transition-all duration-200 hover:scale-105 active:scale-95"
+                className="p-2 rounded-lg bg-transparent hover:bg-appzap-elements-background-depth-1 dark:hover:bg-appzap-elements-background-depth-1 text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary hover:text-appzap-elements-textPrimary dark:hover:text-appzap-elements-textPrimary transition-all duration-200 hover:scale-105 active:scale-95"
               >
                 <X className="w-5 h-5 transition-transform duration-200 hover:rotate-90" />
               </button>
@@ -288,17 +288,17 @@ ${escapeappzaTags(file.content)}
       {/* GitLab Repository Selection */}
       {isDialogOpen && selectedProvider === 'gitlab' && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-gray-950 rounded-xl shadow-xl border border-appza-elements-borderColor dark:border-appza-elements-borderColor w-full max-w-4xl max-h-[90vh] overflow-hidden">
-            <div className="p-6 border-b border-appza-elements-borderColor dark:border-appza-elements-borderColor flex items-center justify-between">
+          <div className="bg-white dark:bg-gray-950 rounded-xl shadow-xl border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor w-full max-w-4xl max-h-[90vh] overflow-hidden">
+            <div className="p-6 border-b border-appzap-elements-borderColor dark:border-appzap-elements-borderColor flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-orange-500/10 dark:bg-orange-500/20 flex items-center justify-center">
                   <GitBranch className="w-6 h-6 text-orange-600 dark:text-orange-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-appza-elements-textPrimary dark:text-appza-elements-textPrimary">
+                  <h3 className="text-lg font-semibold text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary">
                     Import GitLab Repository
                   </h3>
-                  <p className="text-sm text-appza-elements-textSecondary dark:text-appza-elements-textSecondary">
+                  <p className="text-sm text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary">
                     Clone a repository from GitLab to your workspace
                   </p>
                 </div>
@@ -308,7 +308,7 @@ ${escapeappzaTags(file.content)}
                   setIsDialogOpen(false);
                   setSelectedProvider(null);
                 }}
-                className="p-2 rounded-lg bg-transparent hover:bg-appza-elements-background-depth-1 dark:hover:bg-appza-elements-background-depth-1 text-appza-elements-textSecondary dark:text-appza-elements-textSecondary hover:text-appza-elements-textPrimary dark:hover:text-appza-elements-textPrimary transition-all duration-200 hover:scale-105 active:scale-95"
+                className="p-2 rounded-lg bg-transparent hover:bg-appzap-elements-background-depth-1 dark:hover:bg-appzap-elements-background-depth-1 text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary hover:text-appzap-elements-textPrimary dark:hover:text-appzap-elements-textPrimary transition-all duration-200 hover:scale-105 active:scale-95"
               >
                 <X className="w-5 h-5 transition-transform duration-200 hover:rotate-90" />
               </button>

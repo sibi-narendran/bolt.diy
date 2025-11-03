@@ -37,16 +37,16 @@ export default function ProgressCompilation({ data }: { data?: ProgressAnnotatio
     <AnimatePresence>
       <div
         className={classNames(
-          'bg-appza-elements-background-depth-2',
-          'border border-appza-elements-borderColor',
+          'bg-appzap-elements-background-depth-2',
+          'border border-appzap-elements-borderColor',
           'shadow-lg rounded-lg  relative w-full max-w-chat mx-auto z-prompt',
           'p-1',
         )}
       >
         <div
           className={classNames(
-            'bg-appza-elements-item-backgroundAccent',
-            'p-1 rounded-lg text-appza-elements-item-contentAccent',
+            'bg-appzap-elements-item-backgroundAccent',
+            'p-1 rounded-lg text-appzap-elements-item-contentAccent',
             'flex ',
           )}
         >
@@ -74,7 +74,7 @@ export default function ProgressCompilation({ data }: { data?: ProgressAnnotatio
             animate={{ width: 'auto' }}
             exit={{ width: 0 }}
             transition={{ duration: 0.15, ease: cubicEasingFn }}
-            className=" p-1 rounded-lg bg-appza-elements-item-backgroundAccent hover:bg-appza-elements-artifacts-backgroundHover"
+            className=" p-1 rounded-lg bg-appzap-elements-item-backgroundAccent hover:bg-appzap-elements-artifacts-backgroundHover"
             onClick={() => setExpanded((v) => !v)}
           >
             <div className={expanded ? 'i-ph:caret-up-bold' : 'i-ph:caret-down-bold'}></div>

@@ -13,7 +13,7 @@ export function StatsDisplay({ stats, onRefresh, isRefreshing }: StatsDisplayPro
     <div className="space-y-4">
       {/* Repository Stats */}
       <div>
-        <h5 className="text-sm font-medium text-appza-elements-textPrimary mb-2">Repository Stats</h5>
+        <h5 className="text-sm font-medium text-appzap-elements-textPrimary mb-2">Repository Stats</h5>
         <div className="grid grid-cols-2 gap-4">
           {[
             {
@@ -27,10 +27,10 @@ export function StatsDisplay({ stats, onRefresh, isRefreshing }: StatsDisplayPro
           ].map((stat, index) => (
             <div
               key={index}
-              className="flex flex-col p-3 rounded-lg bg-appza-elements-background-depth-2 border border-appza-elements-borderColor"
+              className="flex flex-col p-3 rounded-lg bg-appzap-elements-background-depth-2 border border-appzap-elements-borderColor"
             >
-              <span className="text-xs text-appza-elements-textSecondary">{stat.label}</span>
-              <span className="text-lg font-medium text-appza-elements-textPrimary">{stat.value}</span>
+              <span className="text-xs text-appzap-elements-textSecondary">{stat.label}</span>
+              <span className="text-lg font-medium text-appzap-elements-textPrimary">{stat.value}</span>
             </div>
           ))}
         </div>
@@ -38,34 +38,34 @@ export function StatsDisplay({ stats, onRefresh, isRefreshing }: StatsDisplayPro
 
       {/* Contribution Stats */}
       <div>
-        <h5 className="text-sm font-medium text-appza-elements-textPrimary mb-2">Contribution Stats</h5>
+        <h5 className="text-sm font-medium text-appzap-elements-textPrimary mb-2">Contribution Stats</h5>
         <div className="grid grid-cols-3 gap-4">
           {[
             {
               label: 'Stars',
               value: stats.stars || 0,
               icon: 'i-ph:star',
-              iconColor: 'text-appza-elements-icon-warning',
+              iconColor: 'text-appzap-elements-icon-warning',
             },
             {
               label: 'Forks',
               value: stats.forks || 0,
               icon: 'i-ph:git-fork',
-              iconColor: 'text-appza-elements-icon-info',
+              iconColor: 'text-appzap-elements-icon-info',
             },
             {
               label: 'Followers',
               value: stats.followers || 0,
               icon: 'i-ph:users',
-              iconColor: 'text-appza-elements-icon-success',
+              iconColor: 'text-appzap-elements-icon-success',
             },
           ].map((stat, index) => (
             <div
               key={index}
-              className="flex flex-col p-3 rounded-lg bg-appza-elements-background-depth-2 border border-appza-elements-borderColor"
+              className="flex flex-col p-3 rounded-lg bg-appzap-elements-background-depth-2 border border-appzap-elements-borderColor"
             >
-              <span className="text-xs text-appza-elements-textSecondary">{stat.label}</span>
-              <span className="text-lg font-medium text-appza-elements-textPrimary flex items-center gap-1">
+              <span className="text-xs text-appzap-elements-textSecondary">{stat.label}</span>
+              <span className="text-lg font-medium text-appzap-elements-textPrimary flex items-center gap-1">
                 <div className={`${stat.icon} w-4 h-4 ${stat.iconColor}`} />
                 {stat.value}
               </span>
@@ -74,9 +74,9 @@ export function StatsDisplay({ stats, onRefresh, isRefreshing }: StatsDisplayPro
         </div>
       </div>
 
-      <div className="pt-2 border-t border-appza-elements-borderColor">
+      <div className="pt-2 border-t border-appzap-elements-borderColor">
         <div className="flex items-center justify-between">
-          <span className="text-xs text-appza-elements-textSecondary">
+          <span className="text-xs text-appzap-elements-textSecondary">
             Last updated: {new Date(stats.lastUpdated).toLocaleString()}
           </span>
           {onRefresh && (

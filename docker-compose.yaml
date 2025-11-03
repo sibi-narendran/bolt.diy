@@ -1,10 +1,10 @@
 services:
   app-prod:
-    image: appza-ai:production
+    image: appzap-ai:production
     build:
       context: .
       dockerfile: Dockerfile
-      target: appza-ai-production
+      target: appzap-ai-production
     ports:
       - '5173:5173'
     env_file: 
@@ -36,7 +36,7 @@ services:
       - production
 
   app-dev:
-    image: appza-ai:development
+    image: appzap-ai:development
     build:
       context: .
       dockerfile: Dockerfile
@@ -80,7 +80,7 @@ services:
     profiles: ['development', 'default']
 
   app-prebuild:
-    image: ghcr.io/stackblitz-labs/appza.co:latest
+    image: ghcr.io/stackblitz-labs/appzap.co:latest
     ports:
       - '5173:5173'
     environment:

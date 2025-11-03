@@ -63,17 +63,17 @@ export const InspectorPanel = ({ selectedElement, isVisible, onClose }: Inspecto
   };
 
   return (
-    <div className="fixed right-4 top-20 w-80 bg-appza-elements-bg-depth-1 border border-appza-elements-borderColor rounded-lg shadow-lg z-40 max-h-[calc(100vh-6rem)] overflow-hidden">
+    <div className="fixed right-4 top-20 w-80 bg-appzap-elements-bg-depth-1 border border-appzap-elements-borderColor rounded-lg shadow-lg z-40 max-h-[calc(100vh-6rem)] overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between p-3 border-b border-appza-elements-borderColor">
-        <h3 className="font-medium text-appza-elements-textPrimary">Element Inspector</h3>
-        <button onClick={onClose} className="text-appza-elements-textSecondary hover:text-appza-elements-textPrimary">
+      <div className="flex items-center justify-between p-3 border-b border-appzap-elements-borderColor">
+        <h3 className="font-medium text-appzap-elements-textPrimary">Element Inspector</h3>
+        <button onClick={onClose} className="text-appzap-elements-textSecondary hover:text-appzap-elements-textPrimary">
           ✕
         </button>
       </div>
 
       {/* Element Info */}
-      <div className="p-3 border-b border-appza-elements-borderColor">
+      <div className="p-3 border-b border-appzap-elements-borderColor">
         <div className="text-sm">
           <div className="font-mono text-blue-500">
             {selectedElement.tagName.toLowerCase()}
@@ -83,7 +83,7 @@ export const InspectorPanel = ({ selectedElement, isVisible, onClose }: Inspecto
             )}
           </div>
           {selectedElement.textContent && (
-            <div className="mt-1 text-appza-elements-textSecondary text-xs truncate">
+            <div className="mt-1 text-appzap-elements-textSecondary text-xs truncate">
               "{selectedElement.textContent}"
             </div>
           )}
@@ -91,7 +91,7 @@ export const InspectorPanel = ({ selectedElement, isVisible, onClose }: Inspecto
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-appza-elements-borderColor">
+      <div className="flex border-b border-appzap-elements-borderColor">
         {(['styles', 'computed', 'box'] as const).map((tab) => (
           <button
             key={tab}
@@ -99,7 +99,7 @@ export const InspectorPanel = ({ selectedElement, isVisible, onClose }: Inspecto
             className={`px-3 py-2 text-sm capitalize ${
               activeTab === tab
                 ? 'border-b-2 border-blue-500 text-blue-500'
-                : 'text-appza-elements-textSecondary hover:text-appza-elements-textPrimary'
+                : 'text-appzap-elements-textSecondary hover:text-appzap-elements-textPrimary'
             }`}
           >
             {tab}
@@ -113,8 +113,8 @@ export const InspectorPanel = ({ selectedElement, isVisible, onClose }: Inspecto
           <div className="space-y-2">
             {Object.entries(getRelevantStyles(selectedElement.styles)).map(([prop, value]) => (
               <div key={prop} className="flex justify-between text-sm">
-                <span className="text-appza-elements-textSecondary">{prop}:</span>
-                <span className="text-appza-elements-textPrimary font-mono">{value}</span>
+                <span className="text-appzap-elements-textSecondary">{prop}:</span>
+                <span className="text-appzap-elements-textPrimary font-mono">{value}</span>
               </div>
             ))}
           </div>
@@ -123,20 +123,20 @@ export const InspectorPanel = ({ selectedElement, isVisible, onClose }: Inspecto
         {activeTab === 'box' && (
           <div className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <span className="text-appza-elements-textSecondary">Width:</span>
-              <span className="text-appza-elements-textPrimary">{Math.round(selectedElement.rect.width)}px</span>
+              <span className="text-appzap-elements-textSecondary">Width:</span>
+              <span className="text-appzap-elements-textPrimary">{Math.round(selectedElement.rect.width)}px</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-appza-elements-textSecondary">Height:</span>
-              <span className="text-appza-elements-textPrimary">{Math.round(selectedElement.rect.height)}px</span>
+              <span className="text-appzap-elements-textSecondary">Height:</span>
+              <span className="text-appzap-elements-textPrimary">{Math.round(selectedElement.rect.height)}px</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-appza-elements-textSecondary">Top:</span>
-              <span className="text-appza-elements-textPrimary">{Math.round(selectedElement.rect.top)}px</span>
+              <span className="text-appzap-elements-textSecondary">Top:</span>
+              <span className="text-appzap-elements-textPrimary">{Math.round(selectedElement.rect.top)}px</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-appza-elements-textSecondary">Left:</span>
-              <span className="text-appza-elements-textPrimary">{Math.round(selectedElement.rect.left)}px</span>
+              <span className="text-appzap-elements-textSecondary">Left:</span>
+              <span className="text-appzap-elements-textPrimary">{Math.round(selectedElement.rect.left)}px</span>
             </div>
           </div>
         )}

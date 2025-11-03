@@ -14,7 +14,7 @@ export const PanelHeaderButton = memo(
     return (
       <button
         className={classNames(
-          'flex items-center shrink-0 gap-1.5 px-1.5 rounded-md py-0.5 text-appza-elements-item-contentDefault bg-transparent enabled:hover:text-appza-elements-item-contentActive enabled:hover:bg-appza-elements-item-backgroundActive disabled:cursor-not-allowed',
+          'flex items-center shrink-0 gap-1.5 px-1.5 rounded-md py-0.5 text-appzap-elements-item-contentDefault bg-transparent enabled:hover:text-appzap-elements-item-contentActive enabled:hover:bg-appzap-elements-item-backgroundActive disabled:cursor-not-allowed',
           {
             [classNames('opacity-30', disabledClassName)]: disabled,
           },

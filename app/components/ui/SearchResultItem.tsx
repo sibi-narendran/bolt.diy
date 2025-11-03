@@ -27,7 +27,7 @@ export function SearchResultItem({
   subtitle,
   description,
   icon,
-  iconBackground = 'bg-appza-elements-background-depth-1/80 dark:bg-appza-elements-background-depth-4/80',
+  iconBackground = 'bg-appzap-elements-background-depth-1/80 dark:bg-appzap-elements-background-depth-4/80',
   iconColor = 'text-purple-500',
   tags,
   metadata,
@@ -39,7 +39,7 @@ export function SearchResultItem({
   return (
     <motion.div
       className={classNames(
-        'p-5 rounded-xl border border-appza-elements-borderColor dark:border-appza-elements-borderColor-dark hover:border-purple-500/40 transition-all duration-300 shadow-sm hover:shadow-md bg-appza-elements-background-depth-1/50 dark:bg-appza-elements-background-depth-3/50',
+        'p-5 rounded-xl border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor-dark hover:border-purple-500/40 transition-all duration-300 shadow-sm hover:shadow-md bg-appzap-elements-background-depth-1/50 dark:bg-appzap-elements-background-depth-3/50',
         onClick ? 'cursor-pointer' : '',
         className,
       )}
@@ -67,11 +67,11 @@ export function SearchResultItem({
             </div>
           )}
           <div>
-            <h3 className="font-medium text-appza-elements-textPrimary dark:text-appza-elements-textPrimary-dark text-base">
+            <h3 className="font-medium text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary-dark text-base">
               {title}
             </h3>
             {subtitle && (
-              <p className="text-xs text-appza-elements-textTertiary dark:text-appza-elements-textTertiary-dark flex items-center gap-1">
+              <p className="text-xs text-appzap-elements-textTertiary dark:text-appzap-elements-textTertiary-dark flex items-center gap-1">
                 {subtitle}
               </p>
             )}
@@ -94,8 +94,8 @@ export function SearchResultItem({
       </div>
 
       {description && (
-        <div className="mb-4 bg-appza-elements-background-depth-1/50 dark:bg-appza-elements-background-depth-4/50 backdrop-blur-sm p-3 rounded-lg border border-appza-elements-borderColor/30 dark:border-appza-elements-borderColor-dark/30">
-          <p className="text-sm text-appza-elements-textSecondary dark:text-appza-elements-textSecondary-dark line-clamp-2">
+        <div className="mb-4 bg-appzap-elements-background-depth-1/50 dark:bg-appzap-elements-background-depth-4/50 backdrop-blur-sm p-3 rounded-lg border border-appzap-elements-borderColor/30 dark:border-appzap-elements-borderColor-dark/30">
+          <p className="text-sm text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary-dark line-clamp-2">
             {description}
           </p>
         </div>
@@ -112,7 +112,7 @@ export function SearchResultItem({
       )}
 
       {metadata && metadata.length > 0 && (
-        <div className="flex flex-wrap items-center gap-3 text-xs text-appza-elements-textTertiary dark:text-appza-elements-textTertiary-dark">
+        <div className="flex flex-wrap items-center gap-3 text-xs text-appzap-elements-textTertiary dark:text-appzap-elements-textTertiary-dark">
           {metadata.map((item, index) => (
             <div key={index} className="flex items-center gap-1">
               {item.icon && <span className={classNames(item.icon, 'w-3.5 h-3.5')} />}
@@ -120,7 +120,7 @@ export function SearchResultItem({
                 {item.label}
                 {item.value !== undefined && ': '}
                 {item.value !== undefined && (
-                  <span className="text-appza-elements-textSecondary dark:text-appza-elements-textSecondary-dark">
+                  <span className="text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary-dark">
                     {item.value}
                   </span>
                 )}

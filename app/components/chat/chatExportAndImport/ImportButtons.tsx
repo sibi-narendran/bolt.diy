@@ -5,7 +5,7 @@ import { Button } from '~/components/ui/Button';
 import { classNames } from '~/utils/classNames';
 
 type ChatData = {
-  messages?: Message[]; // Standard appza format
+  messages?: Message[]; // Standard appzap format
   description?: string; // Optional description
 };
 
@@ -67,10 +67,10 @@ export function ImportButtons(importChat: ((description: string, messages: Messa
             variant="default"
             size="lg"
             className={classNames(
-              'gap-2 bg-appza-elements-background-depth-1',
-              'text-appza-elements-textPrimary',
-              'hover:bg-appza-elements-background-depth-2',
-              'border border-appza-elements-borderColor',
+              'gap-2 bg-appzap-elements-background-depth-1',
+              'text-appzap-elements-textPrimary',
+              'hover:bg-appzap-elements-background-depth-2',
+              'border border-appzap-elements-borderColor',
               'h-10 px-4 py-2 min-w-[120px] justify-center',
               'transition-all duration-200 ease-in-out',
             )}
@@ -81,9 +81,9 @@ export function ImportButtons(importChat: ((description: string, messages: Messa
           <ImportFolderButton
             importChat={importChat}
             className={classNames(
-              'gap-2 bg-appza-elements-background-depth-1',
-              'text-appza-elements-textPrimary',
-              'hover:bg-appza-elements-background-depth-2',
+              'gap-2 bg-appzap-elements-background-depth-1',
+              'text-appzap-elements-textPrimary',
+              'hover:bg-appzap-elements-background-depth-2',
               'border border-[rgba(0,0,0,0.08)] dark:border-[rgba(255,255,255,0.08)]',
               'h-10 px-4 py-2 min-w-[120px] justify-center',
               'transition-all duration-200 ease-in-out rounded-lg',

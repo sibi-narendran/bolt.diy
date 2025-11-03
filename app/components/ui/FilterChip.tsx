@@ -46,7 +46,7 @@ export function FilterChip({ label, value, onRemove, active = false, icon, class
         'inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all',
         active
           ? 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30'
-          : 'bg-appza-elements-background-depth-2 dark:bg-appza-elements-background-depth-3 text-appza-elements-textSecondary dark:text-appza-elements-textSecondary-dark border border-appza-elements-borderColor dark:border-appza-elements-borderColor-dark',
+          : 'bg-appzap-elements-background-depth-2 dark:bg-appzap-elements-background-depth-3 text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary-dark border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor-dark',
         onRemove && 'pr-1',
         className,
       )}
@@ -63,7 +63,7 @@ export function FilterChip({ label, value, onRemove, active = false, icon, class
             className={
               active
                 ? 'text-purple-700 dark:text-purple-300 font-semibold'
-                : 'text-appza-elements-textPrimary dark:text-appza-elements-textPrimary-dark'
+                : 'text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary-dark'
             }
           >
             {value}
@@ -77,10 +77,10 @@ export function FilterChip({ label, value, onRemove, active = false, icon, class
           type="button"
           onClick={onRemove}
           className={classNames(
-            'ml-1 p-0.5 rounded-full hover:bg-appza-elements-background-depth-3 dark:hover:bg-appza-elements-background-depth-4 transition-colors',
+            'ml-1 p-0.5 rounded-full hover:bg-appzap-elements-background-depth-3 dark:hover:bg-appzap-elements-background-depth-4 transition-colors',
             active
               ? 'text-purple-600 dark:text-purple-400'
-              : 'text-appza-elements-textTertiary dark:text-appza-elements-textTertiary-dark',
+              : 'text-appzap-elements-textTertiary dark:text-appzap-elements-textTertiary-dark',
           )}
           aria-label={`Remove ${label} filter`}
         >

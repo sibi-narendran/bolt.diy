@@ -1,9 +1,9 @@
 .actions .shiki {
-  background-color: var(--appza-elements-actions-code-background) !important;
+  background-color: var(--appzap-elements-actions-code-background) !important;
 }
 
 .shiki {
   &:not(:has(.actions), .actions *, .mcp-tool-invocation-code *) {
-    background-color: var(--appza-elements-messages-code-background) !important;
+    background-color: var(--appzap-elements-messages-code-background) !important;
   }
 }

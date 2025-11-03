@@ -105,7 +105,7 @@ export function useDataOperations({
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'appza-settings.json';
+      a.download = 'appzap-settings.json';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -200,7 +200,7 @@ export function useDataOperations({
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `appza-settings-${categoryIds.join('-')}.json`;
+        a.download = `appzap-settings-${categoryIds.join('-')}.json`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -326,7 +326,7 @@ export function useDataOperations({
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'appza-chats.json';
+      a.download = 'appzap-chats.json';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -437,7 +437,7 @@ export function useDataOperations({
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'appza-selected-chats.json';
+        a.download = 'appzap-selected-chats.json';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -936,7 +936,7 @@ export function useDataOperations({
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'appza-api-keys-template.json';
+      a.download = 'appzap-api-keys-template.json';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -1011,7 +1011,7 @@ export function useDataOperations({
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'appza-api-keys.json';
+      a.download = 'appzap-api-keys.json';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);

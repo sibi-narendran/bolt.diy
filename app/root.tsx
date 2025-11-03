@@ -96,10 +96,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         icon={({ type }) => {
           switch (type) {
             case 'success': {
-              return <div className="i-ph:check-bold text-appza-elements-icon-success text-2xl" />;
+              return <div className="i-ph:check-bold text-appzap-elements-icon-success text-2xl" />;
             }
             case 'error': {
-              return <div className="i-ph:warning-circle-bold text-appza-elements-icon-error text-2xl" />;
+              return <div className="i-ph:warning-circle-bold text-appzap-elements-icon-error text-2xl" />;
             }
           }
 

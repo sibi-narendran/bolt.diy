@@ -18,7 +18,7 @@ export const SpeechRecognitionButton = ({
       title={isListening ? 'Stop listening' : 'Start speech recognition'}
       disabled={disabled}
       className={classNames('transition-all', {
-        'text-appza-elements-item-contentAccent': isListening,
+        'text-appzap-elements-item-contentAccent': isListening,
       })}
       onClick={isListening ? onStop : onStart}
     >

@@ -21,7 +21,7 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3 }}
-        className={`rounded-lg border border-appza-elements-borderColor bg-appza-elements-background-depth-2 p-4 mb-2`}
+        className={`rounded-lg border border-appzap-elements-borderColor bg-appzap-elements-background-depth-2 p-4 mb-2`}
       >
         <div className="flex items-start">
           {/* Icon */}
@@ -35,10 +35,10 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
               className={classNames(
                 'text-xl',
                 type === 'success'
-                  ? 'i-ph:check-circle-duotone text-appza-elements-icon-success'
+                  ? 'i-ph:check-circle-duotone text-appzap-elements-icon-success'
                   : type === 'error'
-                    ? 'i-ph:warning-duotone text-appza-elements-button-danger-text'
-                    : 'i-ph:info-duotone text-appza-elements-loader-progress',
+                    ? 'i-ph:warning-duotone text-appzap-elements-button-danger-text'
+                    : 'i-ph:info-duotone text-appzap-elements-loader-progress',
               )}
             ></div>
           </motion.div>
@@ -48,7 +48,7 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className={`text-sm font-medium text-appza-elements-textPrimary`}
+              className={`text-sm font-medium text-appzap-elements-textPrimary`}
             >
               {title}
             </motion.h3>
@@ -56,7 +56,7 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className={`mt-2 text-sm text-appza-elements-textSecondary`}
+              className={`mt-2 text-sm text-appzap-elements-textSecondary`}
             >
               <p>{description}</p>
 
@@ -70,12 +70,12 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
                         className={classNames(
                           'w-6 h-6 rounded-full flex items-center justify-center',
                           buildStatus === 'running'
-                            ? 'bg-appza-elements-loader-progress'
+                            ? 'bg-appzap-elements-loader-progress'
                             : buildStatus === 'complete'
-                              ? 'bg-appza-elements-icon-success'
+                              ? 'bg-appzap-elements-icon-success'
                               : buildStatus === 'failed'
-                                ? 'bg-appza-elements-button-danger-background'
-                                : 'bg-appza-elements-textTertiary',
+                                ? 'bg-appzap-elements-button-danger-background'
+                                : 'bg-appzap-elements-textTertiary',
                         )}
                       >
                         {buildStatus === 'running' ? (
@@ -95,7 +95,7 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
                     <div
                       className={classNames(
                         'h-0.5 w-8',
-                        buildStatus === 'complete' ? 'bg-appza-elements-icon-success' : 'bg-appza-elements-textTertiary',
+                        buildStatus === 'complete' ? 'bg-appzap-elements-icon-success' : 'bg-appzap-elements-textTertiary',
                       )}
                     ></div>
 
@@ -105,12 +105,12 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
                         className={classNames(
                           'w-6 h-6 rounded-full flex items-center justify-center',
                           deployStatus === 'running'
-                            ? 'bg-appza-elements-loader-progress'
+                            ? 'bg-appzap-elements-loader-progress'
                             : deployStatus === 'complete'
-                              ? 'bg-appza-elements-icon-success'
+                              ? 'bg-appzap-elements-icon-success'
                               : deployStatus === 'failed'
-                                ? 'bg-appza-elements-button-danger-background'
-                                : 'bg-appza-elements-textTertiary',
+                                ? 'bg-appzap-elements-button-danger-background'
+                                : 'bg-appzap-elements-textTertiary',
                         )}
                       >
                         {deployStatus === 'running' ? (
@@ -130,7 +130,7 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
               )}
 
               {content && (
-                <div className="text-xs text-appza-elements-textSecondary p-2 bg-appza-elements-background-depth-3 rounded mt-4 mb-4">
+                <div className="text-xs text-appzap-elements-textSecondary p-2 bg-appzap-elements-background-depth-3 rounded mt-4 mb-4">
                   {content}
                 </div>
               )}
@@ -140,7 +140,7 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-appza-elements-item-contentAccent hover:underline flex items-center"
+                    className="text-appzap-elements-item-contentAccent hover:underline flex items-center"
                   >
                     <span className="mr-1">View deployed site</span>
                     <div className="i-ph:arrow-square-out"></div>
@@ -164,25 +164,25 @@ export default function DeployChatAlert({ alert, clearAlert, postMessage }: Depl
                     }
                     className={classNames(
                       `px-2 py-1.5 rounded-md text-sm font-medium`,
-                      'bg-appza-elements-button-primary-background',
-                      'hover:bg-appza-elements-button-primary-backgroundHover',
-                      'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-appza-elements-button-danger-background',
-                      'text-appza-elements-button-primary-text',
+                      'bg-appzap-elements-button-primary-background',
+                      'hover:bg-appzap-elements-button-primary-backgroundHover',
+                      'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-appzap-elements-button-danger-background',
+                      'text-appzap-elements-button-primary-text',
                       'flex items-center gap-1.5',
                     )}
                   >
                     <div className="i-ph:chat-circle-duotone"></div>
-                    Ask appza
+                    Ask appzap
                   </button>
                 )}
                 <button
                   onClick={clearAlert}
                   className={classNames(
                     `px-2 py-1.5 rounded-md text-sm font-medium`,
-                    'bg-appza-elements-button-secondary-background',
-                    'hover:bg-appza-elements-button-secondary-backgroundHover',
-                    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-appza-elements-button-secondary-background',
-                    'text-appza-elements-button-secondary-text',
+                    'bg-appzap-elements-button-secondary-background',
+                    'hover:bg-appzap-elements-button-secondary-backgroundHover',
+                    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-appzap-elements-button-secondary-background',
+                    'text-appzap-elements-button-secondary-text',
                   )}
                 >
                   Dismiss

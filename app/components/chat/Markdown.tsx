@@ -67,16 +67,16 @@ export const Markdown = memo(
             }
 
             return (
-              <div className="bg-appza-elements-background-depth-3 border border-appza-elements-borderColor rounded-lg p-3 my-2">
+              <div className="bg-appzap-elements-background-depth-3 border border-appzap-elements-borderColor rounded-lg p-3 my-2">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-xs font-mono bg-appza-elements-background-depth-2 px-2 py-1 rounded text-appza-elements-textTer">
+                  <span className="text-xs font-mono bg-appzap-elements-background-depth-2 px-2 py-1 rounded text-appzap-elements-textTer">
                     {elementData?.tagName}
                   </span>
                   {elementData?.className && (
-                    <span className="text-xs text-appza-elements-textSecondary">.{elementData.className}</span>
+                    <span className="text-xs text-appzap-elements-textSecondary">.{elementData.className}</span>
                   )}
                 </div>
-                <code className="block text-sm !text-appza-elements-textSecondary !bg-appza-elements-background-depth-2 border border-appza-elements-borderColor p-2 rounded">
+                <code className="block text-sm !text-appzap-elements-textSecondary !bg-appzap-elements-background-depth-2 border border-appzap-elements-borderColor p-2 rounded">
                   {elementData?.displayText}
                 </code>
               </div>
@@ -140,7 +140,7 @@ export const Markdown = memo(
 
             return (
               <button
-                className="rounded-md justify-center px-3 py-1.5 text-xs bg-appza-elements-item-backgroundAccent text-appza-elements-item-contentAccent opacity-90 hover:opacity-100 flex items-center gap-2 cursor-pointer"
+                className="rounded-md justify-center px-3 py-1.5 text-xs bg-appzap-elements-item-backgroundAccent text-appzap-elements-item-contentAccent opacity-90 hover:opacity-100 flex items-center gap-2 cursor-pointer"
                 data-type={type}
                 data-message={message}
                 data-path={path}

@@ -1,135 +1,135 @@
 :root {
-  --cm-backgroundColor: var(--appza-elements-editor-backgroundColor, var(--appza-elements-bg-depth-1));
-  --cm-textColor: var(--appza-elements-editor-textColor, var(--appza-elements-textPrimary));
+  --cm-backgroundColor: var(--appzap-elements-editor-backgroundColor, var(--appzap-elements-bg-depth-1));
+  --cm-textColor: var(--appzap-elements-editor-textColor, var(--appzap-elements-textPrimary));
 
   /* Gutter */
 
-  --cm-gutter-backgroundColor: var(--appza-elements-editor-gutter-backgroundColor, var(--cm-backgroundColor));
-  --cm-gutter-textColor: var(--appza-elements-editor-gutter-textColor, var(--appza-elements-textSecondary));
-  --cm-gutter-activeLineTextColor: var(--appza-elements-editor-gutter-activeLineTextColor, var(--cm-gutter-textColor));
+  --cm-gutter-backgroundColor: var(--appzap-elements-editor-gutter-backgroundColor, var(--cm-backgroundColor));
+  --cm-gutter-textColor: var(--appzap-elements-editor-gutter-textColor, var(--appzap-elements-textSecondary));
+  --cm-gutter-activeLineTextColor: var(--appzap-elements-editor-gutter-activeLineTextColor, var(--cm-gutter-textColor));
 
   /* Fold Gutter */
 
-  --cm-foldGutter-textColor: var(--appza-elements-editor-foldGutter-textColor, var(--cm-gutter-textColor));
-  --cm-foldGutter-textColorHover: var(--appza-elements-editor-foldGutter-textColorHover, var(--cm-gutter-textColor));
+  --cm-foldGutter-textColor: var(--appzap-elements-editor-foldGutter-textColor, var(--cm-gutter-textColor));
+  --cm-foldGutter-textColorHover: var(--appzap-elements-editor-foldGutter-textColorHover, var(--cm-gutter-textColor));
 
   /* Active Line */
 
-  --cm-activeLineBackgroundColor: var(--appza-elements-editor-activeLineBackgroundColor, rgb(224 231 235 / 30%));
+  --cm-activeLineBackgroundColor: var(--appzap-elements-editor-activeLineBackgroundColor, rgb(224 231 235 / 30%));
 
   /* Cursor */
 
   --cm-cursor-width: 2px;
-  --cm-cursor-backgroundColor: var(--appza-elements-editor-cursorColor, var(--appza-elements-textSecondary));
+  --cm-cursor-backgroundColor: var(--appzap-elements-editor-cursorColor, var(--appzap-elements-textSecondary));
 
   /* Matching Brackets */
 
-  --cm-matching-bracket: var(--appza-elements-editor-matchingBracketBackgroundColor, rgb(50 140 130 / 0.3));
+  --cm-matching-bracket: var(--appzap-elements-editor-matchingBracketBackgroundColor, rgb(50 140 130 / 0.3));
 
   /* Selection */
 
-  --cm-selection-backgroundColorFocused: var(--appza-elements-editor-selection-backgroundColor, #42b4ff);
-  --cm-selection-backgroundOpacityFocused: var(--appza-elements-editor-selection-backgroundOpacity, 0.3);
-  --cm-selection-backgroundColorBlured: var(--appza-elements-editor-selection-inactiveBackgroundColor, #c9e9ff);
-  --cm-selection-backgroundOpacityBlured: var(--appza-elements-editor-selection-inactiveBackgroundOpacity, 0.3);
+  --cm-selection-backgroundColorFocused: var(--appzap-elements-editor-selection-backgroundColor, #42b4ff);
+  --cm-selection-backgroundOpacityFocused: var(--appzap-elements-editor-selection-backgroundOpacity, 0.3);
+  --cm-selection-backgroundColorBlured: var(--appzap-elements-editor-selection-inactiveBackgroundColor, #c9e9ff);
+  --cm-selection-backgroundOpacityBlured: var(--appzap-elements-editor-selection-inactiveBackgroundOpacity, 0.3);
 
   /* Panels */
 
-  --cm-panels-borderColor: var(--appza-elements-editor-panels-borderColor, var(--appza-elements-borderColor));
+  --cm-panels-borderColor: var(--appzap-elements-editor-panels-borderColor, var(--appzap-elements-borderColor));
 
   /* Search */
 
-  --cm-search-backgroundColor: var(--appza-elements-editor-search-backgroundColor, var(--cm-backgroundColor));
-  --cm-search-textColor: var(--appza-elements-editor-search-textColor, var(--appza-elements-textSecondary));
-  --cm-search-closeButton-backgroundColor: var(--appza-elements-editor-search-closeButton-backgroundColor, transparent);
+  --cm-search-backgroundColor: var(--appzap-elements-editor-search-backgroundColor, var(--cm-backgroundColor));
+  --cm-search-textColor: var(--appzap-elements-editor-search-textColor, var(--appzap-elements-textSecondary));
+  --cm-search-closeButton-backgroundColor: var(--appzap-elements-editor-search-closeButton-backgroundColor, transparent);
 
   --cm-search-closeButton-backgroundColorHover: var(
-    --appza-elements-editor-search-closeButton-backgroundColorHover,
-    var(--appza-elements-item-backgroundActive)
+    --appzap-elements-editor-search-closeButton-backgroundColorHover,
+    var(--appzap-elements-item-backgroundActive)
   );
 
   --cm-search-closeButton-textColor: var(
-    --appza-elements-editor-search-closeButton-textColor,
-    var(--appza-elements-item-contentDefault)
+    --appzap-elements-editor-search-closeButton-textColor,
+    var(--appzap-elements-item-contentDefault)
   );
 
   --cm-search-closeButton-textColorHover: var(
-    --appza-elements-editor-search-closeButton-textColorHover,
-    var(--appza-elements-item-contentActive)
+    --appzap-elements-editor-search-closeButton-textColorHover,
+    var(--appzap-elements-item-contentActive)
   );
 
   --cm-search-button-backgroundColor: var(
-    --appza-elements-editor-search-button-backgroundColor,
-    var(--appza-elements-item-backgroundDefault)
+    --appzap-elements-editor-search-button-backgroundColor,
+    var(--appzap-elements-item-backgroundDefault)
   );
 
   --cm-search-button-backgroundColorHover: var(
-    --appza-elements-editor-search-button-backgroundColorHover,
-    var(--appza-elements-item-backgroundActive)
+    --appzap-elements-editor-search-button-backgroundColorHover,
+    var(--appzap-elements-item-backgroundActive)
   );
 
-  --cm-search-button-textColor: var(--appza-elements-editor-search-button-textColor, var(--appza-elements-textSecondary));
+  --cm-search-button-textColor: var(--appzap-elements-editor-search-button-textColor, var(--appzap-elements-textSecondary));
 
   --cm-search-button-textColorHover: var(
-    --appza-elements-editor-search-button-textColorHover,
-    var(--appza-elements-textPrimary)
+    --appzap-elements-editor-search-button-textColorHover,
+    var(--appzap-elements-textPrimary)
   );
 
-  --cm-search-button-borderColor: var(--appza-elements-editor-search-button-borderColor, transparent);
-  --cm-search-button-borderColorHover: var(--appza-elements-editor-search-button-borderColorHover, transparent);
+  --cm-search-button-borderColor: var(--appzap-elements-editor-search-button-borderColor, transparent);
+  --cm-search-button-borderColorHover: var(--appzap-elements-editor-search-button-borderColorHover, transparent);
 
   --cm-search-button-borderColorFocused: var(
-    --appza-elements-editor-search-button-borderColorFocused,
-    var(--appza-elements-borderColorActive)
+    --appzap-elements-editor-search-button-borderColorFocused,
+    var(--appzap-elements-borderColorActive)
   );
 
-  --cm-search-input-backgroundColor: var(--appza-elements-editor-search-input-backgroundColor, transparent);
-  --cm-search-input-textColor: var(--appza-elements-editor-search-input-textColor, var(--appza-elements-textPrimary));
-  --cm-search-input-borderColor: var(--appza-elements-editor-search-input-borderColor, var(--appza-elements-borderColor));
+  --cm-search-input-backgroundColor: var(--appzap-elements-editor-search-input-backgroundColor, transparent);
+  --cm-search-input-textColor: var(--appzap-elements-editor-search-input-textColor, var(--appzap-elements-textPrimary));
+  --cm-search-input-borderColor: var(--appzap-elements-editor-search-input-borderColor, var(--appzap-elements-borderColor));
 
   --cm-search-input-borderColorFocused: var(
-    --appza-elements-editor-search-input-borderColorFocused,
-    var(--appza-elements-borderColorActive)
+    --appzap-elements-editor-search-input-borderColorFocused,
+    var(--appzap-elements-borderColorActive)
   );
 
   /* Tooltip */
 
-  --cm-tooltip-backgroundColor: var(--appza-elements-editor-tooltip-backgroundColor, var(--cm-backgroundColor));
-  --cm-tooltip-textColor: var(--appza-elements-editor-tooltip-textColor, var(--appza-elements-textPrimary));
+  --cm-tooltip-backgroundColor: var(--appzap-elements-editor-tooltip-backgroundColor, var(--cm-backgroundColor));
+  --cm-tooltip-textColor: var(--appzap-elements-editor-tooltip-textColor, var(--appzap-elements-textPrimary));
 
   --cm-tooltip-backgroundColorSelected: var(
-    --appza-elements-editor-tooltip-backgroundColorSelected,
+    --appzap-elements-editor-tooltip-backgroundColorSelected,
     theme('colors.alpha.accent.30')
   );
 
   --cm-tooltip-textColorSelected: var(
-    --appza-elements-editor-tooltip-textColorSelected,
-    var(--appza-elements-textPrimary)
+    --appzap-elements-editor-tooltip-textColorSelected,
+    var(--appzap-elements-textPrimary)
   );
 
-  --cm-tooltip-borderColor: var(--appza-elements-editor-tooltip-borderColor, var(--appza-elements-borderColor));
+  --cm-tooltip-borderColor: var(--appzap-elements-editor-tooltip-borderColor, var(--appzap-elements-borderColor));
 
-  --cm-searchMatch-backgroundColor: var(--appza-elements-editor-searchMatch-backgroundColor, rgba(234, 92, 0, 0.33));
+  --cm-searchMatch-backgroundColor: var(--appzap-elements-editor-searchMatch-backgroundColor, rgba(234, 92, 0, 0.33));
 }
 
 html[data-theme='light'] {
-  --appza-elements-editor-gutter-textColor: #237893;
-  --appza-elements-editor-gutter-activeLineTextColor: var(--appza-elements-textPrimary);
-  --appza-elements-editor-foldGutter-textColorHover: var(--appza-elements-textPrimary);
-  --appza-elements-editor-activeLineBackgroundColor: rgb(50 53 63 / 5%);
-  --appza-elements-editor-tooltip-backgroundColorSelected: theme('colors.alpha.accent.20');
-  --appza-elements-editor-search-button-backgroundColor: theme('colors.gray.100');
-  --appza-elements-editor-search-button-backgroundColorHover: theme('colors.alpha.gray.10');
+  --appzap-elements-editor-gutter-textColor: #237893;
+  --appzap-elements-editor-gutter-activeLineTextColor: var(--appzap-elements-textPrimary);
+  --appzap-elements-editor-foldGutter-textColorHover: var(--appzap-elements-textPrimary);
+  --appzap-elements-editor-activeLineBackgroundColor: rgb(50 53 63 / 5%);
+  --appzap-elements-editor-tooltip-backgroundColorSelected: theme('colors.alpha.accent.20');
+  --appzap-elements-editor-search-button-backgroundColor: theme('colors.gray.100');
+  --appzap-elements-editor-search-button-backgroundColorHover: theme('colors.alpha.gray.10');
 }
 
 html[data-theme='dark'] {
-  --cm-backgroundColor: var(--appza-elements-bg-depth-2);
-  --appza-elements-editor-gutter-textColor: var(--appza-elements-textTertiary);
-  --appza-elements-editor-gutter-activeLineTextColor: var(--appza-elements-textSecondary);
-  --appza-elements-editor-selection-inactiveBackgroundOpacity: 0.3;
-  --appza-elements-editor-activeLineBackgroundColor: rgb(50 53 63 / 50%);
-  --appza-elements-editor-foldGutter-textColorHover: var(--appza-elements-textPrimary);
-  --appza-elements-editor-matchingBracketBackgroundColor: rgba(66, 180, 255, 0.3);
-  --appza-elements-editor-search-button-backgroundColor: theme('colors.gray.800');
-  --appza-elements-editor-search-button-backgroundColorHover: theme('colors.alpha.white.10');
+  --cm-backgroundColor: var(--appzap-elements-bg-depth-2);
+  --appzap-elements-editor-gutter-textColor: var(--appzap-elements-textTertiary);
+  --appzap-elements-editor-gutter-activeLineTextColor: var(--appzap-elements-textSecondary);
+  --appzap-elements-editor-selection-inactiveBackgroundOpacity: 0.3;
+  --appzap-elements-editor-activeLineBackgroundColor: rgb(50 53 63 / 50%);
+  --appzap-elements-editor-foldGutter-textColorHover: var(--appzap-elements-textPrimary);
+  --appzap-elements-editor-matchingBracketBackgroundColor: rgba(66, 180, 255, 0.3);
+  --appzap-elements-editor-search-button-backgroundColor: theme('colors.gray.800');
+  --appzap-elements-editor-search-button-backgroundColorHover: theme('colors.alpha.white.10');
 }

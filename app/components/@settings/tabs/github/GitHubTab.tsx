@@ -94,7 +94,7 @@ export default function GitHubTab() {
       <div className="space-y-6">
         <div className="flex items-center gap-2">
           <GithubLogo />
-          <h2 className="text-lg font-medium text-appza-elements-textPrimary">GitHub Integration</h2>
+          <h2 className="text-lg font-medium text-appzap-elements-textPrimary">GitHub Integration</h2>
         </div>
         <LoadingState message="Checking GitHub connection..." />
       </div>
@@ -107,7 +107,7 @@ export default function GitHubTab() {
       <div className="space-y-6">
         <div className="flex items-center gap-2">
           <GithubLogo />
-          <h2 className="text-lg font-medium text-appza-elements-textPrimary">GitHub Integration</h2>
+          <h2 className="text-lg font-medium text-appzap-elements-textPrimary">GitHub Integration</h2>
         </div>
         <ErrorState
           title="Connection Error"
@@ -125,9 +125,9 @@ export default function GitHubTab() {
       <div className="space-y-6">
         <div className="flex items-center gap-2">
           <GithubLogo />
-          <h2 className="text-lg font-medium text-appza-elements-textPrimary">GitHub Integration</h2>
+          <h2 className="text-lg font-medium text-appzap-elements-textPrimary">GitHub Integration</h2>
         </div>
-        <p className="text-sm text-appza-elements-textSecondary">
+        <p className="text-sm text-appzap-elements-textSecondary">
           Connect your GitHub account to enable advanced repository management features, statistics, and seamless
           integration.
         </p>
@@ -148,15 +148,15 @@ export default function GitHubTab() {
         >
           <div className="flex items-center gap-2">
             <GithubLogo />
-            <h2 className="text-lg font-medium text-appza-elements-textPrimary dark:text-appza-elements-textPrimary">
+            <h2 className="text-lg font-medium text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary">
               GitHub Integration
             </h2>
           </div>
           <div className="flex items-center gap-2">
             {connection?.rateLimit && (
-              <div className="flex items-center gap-2 px-3 py-1 bg-appza-elements-background-depth-1 rounded-lg text-xs">
-                <div className="i-ph:cloud w-4 h-4 text-appza-elements-textSecondary" />
-                <span className="text-appza-elements-textSecondary">
+              <div className="flex items-center gap-2 px-3 py-1 bg-appzap-elements-background-depth-1 rounded-lg text-xs">
+                <div className="i-ph:cloud w-4 h-4 text-appzap-elements-textSecondary" />
+                <span className="text-appzap-elements-textSecondary">
                   API: {connection.rateLimit.remaining}/{connection.rateLimit.limit}
                 </span>
               </div>
@@ -164,7 +164,7 @@ export default function GitHubTab() {
           </div>
         </motion.div>
 
-        <p className="text-sm text-appza-elements-textSecondary dark:text-appza-elements-textSecondary">
+        <p className="text-sm text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary">
           Manage your GitHub integration with advanced repository features and comprehensive statistics
         </p>
 
@@ -190,20 +190,20 @@ export default function GitHubTab() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="border-t border-appza-elements-borderColor pt-6"
+            className="border-t border-appzap-elements-borderColor pt-6"
           >
             <Collapsible open={isReposExpanded} onOpenChange={setIsReposExpanded}>
               <CollapsibleTrigger asChild>
-                <div className="flex items-center justify-between p-4 rounded-lg bg-appza-elements-background dark:bg-appza-elements-background-depth-2 border border-appza-elements-borderColor dark:border-appza-elements-borderColor hover:border-appza-elements-borderColorActive/70 dark:hover:border-appza-elements-borderColorActive/70 transition-all duration-200">
+                <div className="flex items-center justify-between p-4 rounded-lg bg-appzap-elements-background dark:bg-appzap-elements-background-depth-2 border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor hover:border-appzap-elements-borderColorActive/70 dark:hover:border-appzap-elements-borderColorActive/70 transition-all duration-200">
                   <div className="flex items-center gap-2">
-                    <div className="i-ph:folder w-4 h-4 text-appza-elements-item-contentAccent" />
-                    <span className="text-sm font-medium text-appza-elements-textPrimary">
+                    <div className="i-ph:folder w-4 h-4 text-appzap-elements-item-contentAccent" />
+                    <span className="text-sm font-medium text-appzap-elements-textPrimary">
                       All Repositories ({stats.repos.length})
                     </span>
                   </div>
                   <ChevronDown
                     className={classNames(
-                      'w-4 h-4 transform transition-transform duration-200 text-appza-elements-textSecondary',
+                      'w-4 h-4 transform transition-transform duration-200 text-appzap-elements-textSecondary',
                       isReposExpanded ? 'rotate-180' : '',
                     )}
                   />
@@ -230,7 +230,7 @@ export default function GitHubTab() {
                       <Button
                         variant="outline"
                         onClick={() => setIsReposExpanded(true)}
-                        className="text-appza-elements-textSecondary hover:text-appza-elements-textPrimary"
+                        className="text-appzap-elements-textSecondary hover:text-appzap-elements-textPrimary"
                       >
                         Show {stats.repos.length - 12} more repositories
                       </Button>
@@ -271,7 +271,7 @@ export default function GitHubTab() {
 
         {/* Cache Management Section - Only show when connected */}
         {isConnected && connection && (
-          <div className="mt-8 pt-6 border-t border-appza-elements-borderColor">
+          <div className="mt-8 pt-6 border-t border-appzap-elements-borderColor">
             <GitHubCacheManager showStats={true} />
           </div>
         )}

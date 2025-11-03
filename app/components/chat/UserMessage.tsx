@@ -47,7 +47,7 @@ export function UserMessage({ content, parts }: UserMessageProps) {
                 loading="eager"
                 decoding="sync"
               />
-              <span className="text-appza-elements-textPrimary text-sm">
+              <span className="text-appzap-elements-textPrimary text-sm">
                 {profile?.username ? profile.username : ''}
               </span>
             </div>
@@ -77,7 +77,7 @@ export function UserMessage({ content, parts }: UserMessageProps) {
     <div className="flex flex-col bg-accent-500/10 backdrop-blur-sm px-5 p-3.5 w-auto rounded-lg ml-auto">
       <div className="flex gap-3.5 mb-4">
         {images.map((item, index) => (
-          <div className="relative flex rounded-lg border border-appza-elements-borderColor overflow-hidden">
+          <div className="relative flex rounded-lg border border-appzap-elements-borderColor overflow-hidden">
             <div className="h-16 w-16 bg-transparent outline-none">
               <img
                 key={index}

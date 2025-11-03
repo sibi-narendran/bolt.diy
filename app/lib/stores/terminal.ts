@@ -30,7 +30,7 @@ export class TerminalStore {
       const wc = await this.#webcontainer;
       await this.#appzaTerminal.init(wc, terminal);
     } catch (error: any) {
-      terminal.write(coloredText.red('Failed to spawn appza shell\n\n') + error.message);
+      terminal.write(coloredText.red('Failed to spawn appzap shell\n\n') + error.message);
       return;
     }
   }

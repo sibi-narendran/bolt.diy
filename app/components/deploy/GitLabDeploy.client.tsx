@@ -151,7 +151,7 @@ export function useGitLabDeploy() {
       return {
         success: true,
         files: fileContents,
-        projectName: artifact.title || 'appza-project',
+        projectName: artifact.title || 'appzap-project',
       };
     } catch (err) {
       console.error('GitLab deploy error:', err);

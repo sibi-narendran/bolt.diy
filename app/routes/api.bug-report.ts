@@ -114,7 +114,7 @@ function formatIssueBody(data: z.infer<typeof bugReportSchema>): string {
     }
 
     if (data.environmentInfo.appzaVersion) {
-      body += `- appza.co: ${data.environmentInfo.appzaVersion}\n`;
+      body += `- appzap.co: ${data.environmentInfo.appzaVersion}\n`;
     }
 
     if (data.environmentInfo.aiProviders) {
@@ -136,7 +136,7 @@ function formatIssueBody(data: z.infer<typeof bugReportSchema>): string {
     body += `**Contact:** ${data.contactEmail}\n\n`;
   }
 
-  body += '---\n*Submitted via appza.co bug report feature*';
+  body += '---\n*Submitted via appzap.co bug report feature*';
 
   return body;
 }
@@ -194,7 +194,7 @@ export async function action({ request, context }: ActionFunctionArgs) {
     const githubToken =
       (context?.cloudflare?.env as any)?.GITHUB_BUG_REPORT_TOKEN || process.env.GITHUB_BUG_REPORT_TOKEN;
     const targetRepo =
-      (context?.cloudflare?.env as any)?.BUG_REPORT_REPO || process.env.BUG_REPORT_REPO || 'stackblitz-labs/appza.co';
+      (context?.cloudflare?.env as any)?.BUG_REPORT_REPO || process.env.BUG_REPORT_REPO || 'stackblitz-labs/appzap.co';
 
     if (!githubToken) {
       console.error('GitHub bug report token not configured');
@@ -207,7 +207,7 @@ export async function action({ request, context }: ActionFunctionArgs) {
     // Initialize GitHub client
     const octokit = new Octokit({
       auth: githubToken,
-      userAgent: 'appza.co-bug-reporter',
+      userAgent: 'appzap.co-bug-reporter',
     });
 
     // Create GitHub issue

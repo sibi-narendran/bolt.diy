@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: appza.new related issues
-    url: https://github.com/stackblitz/appza.new/issues/new/choose
-    about: Report issues related to appza.new (not appza.co)
+  - name: appzap.new related issues
+    url: https://github.com/stackblitz/appzap.new/issues/new/choose
+    about: Report issues related to appzap.new (not appzap.co)
   - name: Chat
     url: https://thinktank.ottomator.ai
-    about: Ask questions and discuss with other appza.co users.
+    about: Ask questions and discuss with other appzap.co users.

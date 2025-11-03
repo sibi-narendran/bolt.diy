@@ -9,7 +9,7 @@ export function HeaderAuth() {
   if (isLoading) {
     return (
       <nav className="flex items-center gap-2">
-        <div className="h-8 w-20 bg-appza-elements-background-depth-2 animate-pulse rounded-md" />
+        <div className="h-8 w-20 bg-appzap-elements-background-depth-2 animate-pulse rounded-md" />
       </nav>
     );
   }
@@ -22,7 +22,7 @@ export function HeaderAuth() {
             <Button
               variant="ghost"
               size="sm"
-              className="flex items-center gap-2 text-appza-elements-textPrimary bg-appza-elements-background-depth-2 hover:bg-appza-elements-background-depth-2"
+              className="flex items-center gap-2 text-appzap-elements-textPrimary bg-appzap-elements-background-depth-2 hover:bg-appzap-elements-background-depth-2"
               aria-label="User menu"
             >
               <div className="i-ph:user-circle text-lg" aria-hidden="true" />

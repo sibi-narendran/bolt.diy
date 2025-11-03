@@ -89,7 +89,7 @@ export const APIKeyManager: React.FC<APIKeyManagerProps> = ({ provider, apiKey, 
     <div className="flex items-center justify-between py-3 px-1">
       <div className="flex items-center gap-2 flex-1">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-appza-elements-textSecondary">{provider?.name} API Key:</span>
+          <span className="text-sm font-medium text-appzap-elements-textSecondary">{provider?.name} API Key:</span>
           {!isEditing && (
             <div className="flex items-center gap-2">
               {apiKey ? (
@@ -121,9 +121,9 @@ export const APIKeyManager: React.FC<APIKeyManagerProps> = ({ provider, apiKey, 
               value={tempKey}
               placeholder="Enter API Key"
               onChange={(e) => setTempKey(e.target.value)}
-              className="w-[300px] px-3 py-1.5 text-sm rounded border border-appza-elements-borderColor 
-                        bg-appza-elements-prompt-background text-appza-elements-textPrimary 
-                        focus:outline-none focus:ring-2 focus:ring-appza-elements-focus"
+              className="w-[300px] px-3 py-1.5 text-sm rounded border border-appzap-elements-borderColor 
+                        bg-appzap-elements-prompt-background text-appzap-elements-textPrimary 
+                        focus:outline-none focus:ring-2 focus:ring-appzap-elements-focus"
             />
             <IconButton
               onClick={handleSave}

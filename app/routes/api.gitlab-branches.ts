@@ -40,7 +40,7 @@ async function gitlabBranchesLoader({ request }: { request: Request }) {
       headers: {
         Authorization: `Bearer ${token}`,
         Accept: 'application/json',
-        'User-Agent': 'appza.co-app',
+        'User-Agent': 'appzap.co-app',
       },
     });
 
@@ -72,7 +72,7 @@ async function gitlabBranchesLoader({ request }: { request: Request }) {
       headers: {
         Authorization: `Bearer ${token}`,
         Accept: 'application/json',
-        'User-Agent': 'appza.co-app',
+        'User-Agent': 'appzap.co-app',
       },
     });
 

@@ -336,7 +336,7 @@ export const Menu = () => {
         style={{ width: 'min(320px, 90vw)' }}
         className={classNames(
           'flex selection-accent flex-col side-menu fixed top-0 left-0 h-full lg:w-[340px] lg:rounded-r-2xl',
-          'bg-white dark:bg-gray-950 border-r border-appza-elements-borderColor',
+          'bg-white dark:bg-gray-950 border-r border-appzap-elements-borderColor',
           'shadow-sm text-sm transition-theme',
           isSettingsOpen ? 'z-40' : 'z-sidebar',
           open ? 'pointer-events-auto' : 'pointer-events-none lg:pointer-events-auto',
@@ -349,12 +349,12 @@ export const Menu = () => {
             <button
               type="button"
               onClick={closeSidebar}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-appza-elements-borderColor text-appza-elements-textSecondary hover:text-appza-elements-textPrimary hover:bg-appza-elements-background-depth-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 lg:hidden"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-appzap-elements-borderColor text-appzap-elements-textSecondary hover:text-appzap-elements-textPrimary hover:bg-appzap-elements-background-depth-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 lg:hidden"
               aria-label="Close sidebar"
             >
               <div className="i-ph:x text-lg" />
             </button>
-            <HelpButton onClick={() => window.open('https://stackblitz-labs.github.io/appza.co/', '_blank')} />
+            <HelpButton onClick={() => window.open('https://stackblitz-labs.github.io/appzap.co/', '_blank')} />
             <span className="font-medium text-sm text-gray-900 dark:text-white truncate">
               {profile?.username || 'Guest User'}
             </span>

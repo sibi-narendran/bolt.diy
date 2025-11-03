@@ -9,24 +9,24 @@ interface GitHubUserProfileProps {
 export function GitHubUserProfile({ user, className = '' }: GitHubUserProfileProps) {
   return (
     <div
-      className={`flex items-center gap-4 p-4 bg-appza-elements-background-depth-1 dark:bg-appza-elements-background-depth-1 rounded-lg ${className}`}
+      className={`flex items-center gap-4 p-4 bg-appzap-elements-background-depth-1 dark:bg-appzap-elements-background-depth-1 rounded-lg ${className}`}
     >
       <img
         src={user.avatar_url}
         alt={user.login}
-        className="w-12 h-12 rounded-full border-2 border-appza-elements-item-contentAccent dark:border-appza-elements-item-contentAccent"
+        className="w-12 h-12 rounded-full border-2 border-appzap-elements-item-contentAccent dark:border-appzap-elements-item-contentAccent"
       />
       <div>
-        <h4 className="text-sm font-medium text-appza-elements-textPrimary dark:text-appza-elements-textPrimary">
+        <h4 className="text-sm font-medium text-appzap-elements-textPrimary dark:text-appzap-elements-textPrimary">
           {user.name || user.login}
         </h4>
-        <p className="text-sm text-appza-elements-textSecondary dark:text-appza-elements-textSecondary">@{user.login}</p>
+        <p className="text-sm text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary">@{user.login}</p>
         {user.bio && (
-          <p className="text-xs text-appza-elements-textTertiary dark:text-appza-elements-textTertiary mt-1">
+          <p className="text-xs text-appzap-elements-textTertiary dark:text-appzap-elements-textTertiary mt-1">
             {user.bio}
           </p>
         )}
-        <div className="flex items-center gap-4 mt-2 text-xs text-appza-elements-textSecondary">
+        <div className="flex items-center gap-4 mt-2 text-xs text-appzap-elements-textSecondary">
           <span className="flex items-center gap-1">
             <div className="i-ph:users w-3 h-3" />
             {user.followers} followers

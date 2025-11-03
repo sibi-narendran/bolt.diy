@@ -1,7 +1,7 @@
 import React from 'react';
 
 const EXAMPLE_PROMPTS = [
-  { text: 'Create a mobile app about appza.co' },
+  { text: 'Create a mobile app about appzap.co' },
   { text: 'Build a todo app in React using Tailwind' },
   { text: 'Build a simple blog using Astro' },
   { text: 'Create a cookie consent form using Material UI' },
@@ -25,7 +25,7 @@ export function ExamplePrompts(sendMessage?: { (event: React.UIEvent, messageInp
               onClick={(event) => {
                 sendMessage?.(event, examplePrompt.text);
               }}
-              className="border border-appza-elements-borderColor rounded-full bg-gray-50 hover:bg-gray-100 dark:bg-gray-950 dark:hover:bg-gray-900 text-appza-elements-textSecondary hover:text-appza-elements-textPrimary px-3 py-1 text-xs transition-theme"
+              className="border border-appzap-elements-borderColor rounded-full bg-gray-50 hover:bg-gray-100 dark:bg-gray-950 dark:hover:bg-gray-900 text-appzap-elements-textSecondary hover:text-appzap-elements-textPrimary px-3 py-1 text-xs transition-theme"
             >
               {examplePrompt.text}
             </button>

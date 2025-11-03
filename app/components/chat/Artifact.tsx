@@ -79,26 +79,26 @@ export const Artifact = memo(({ artifactId }: ArtifactProps) => {
 
   return (
     <>
-      <div className="artifact border border-appza-elements-borderColor flex flex-col overflow-hidden rounded-lg w-full transition-border duration-150">
+      <div className="artifact border border-appzap-elements-borderColor flex flex-col overflow-hidden rounded-lg w-full transition-border duration-150">
         <div className="flex">
           <button
-            className="flex items-stretch bg-appza-elements-artifacts-background hover:bg-appza-elements-artifacts-backgroundHover w-full overflow-hidden"
+            className="flex items-stretch bg-appzap-elements-artifacts-background hover:bg-appzap-elements-artifacts-backgroundHover w-full overflow-hidden"
             onClick={() => {
               const showWorkbench = workbenchStore.showWorkbench.get();
               workbenchStore.showWorkbench.set(!showWorkbench);
             }}
           >
             <div className="px-5 p-3.5 w-full text-left">
-              <div className="w-full text-appza-elements-textPrimary font-medium leading-5 text-sm">
+              <div className="w-full text-appzap-elements-textPrimary font-medium leading-5 text-sm">
                 {/* Use the dynamic title here */}
                 {dynamicTitle}
               </div>
-              <div className="w-full w-full text-appza-elements-textSecondary text-xs mt-0.5">
+              <div className="w-full w-full text-appzap-elements-textSecondary text-xs mt-0.5">
                 Click to open Workbench
               </div>
             </div>
           </button>
-          {artifact.type !== 'bundled' && <div className="bg-appza-elements-artifacts-borderColor w-[1px]" />}
+          {artifact.type !== 'bundled' && <div className="bg-appzap-elements-artifacts-borderColor w-[1px]" />}
           <AnimatePresence>
             {actions.length && artifact.type !== 'bundled' && (
               <motion.button
@@ -106,7 +106,7 @@ export const Artifact = memo(({ artifactId }: ArtifactProps) => {
                 animate={{ width: 'auto' }}
                 exit={{ width: 0 }}
                 transition={{ duration: 0.15, ease: cubicEasingFn }}
-                className="bg-appza-elements-artifacts-background hover:bg-appza-elements-artifacts-backgroundHover"
+                className="bg-appzap-elements-artifacts-background hover:bg-appzap-elements-artifacts-backgroundHover"
                 onClick={toggleActions}
               >
                 <div className="p-4">
@@ -117,7 +117,7 @@ export const Artifact = memo(({ artifactId }: ArtifactProps) => {
           </AnimatePresence>
         </div>
         {artifact.type === 'bundled' && (
-          <div className="flex items-center gap-1.5 p-5 bg-appza-elements-actions-background border-t border-appza-elements-artifacts-borderColor">
+          <div className="flex items-center gap-1.5 p-5 bg-appzap-elements-actions-background border-t border-appzap-elements-artifacts-borderColor">
             <div className={classNames('text-lg', getIconColor(allActionFinished ? 'complete' : 'running'))}>
               {allActionFinished ? (
                 <div className="i-ph:check"></div>
@@ -125,7 +125,7 @@ export const Artifact = memo(({ artifactId }: ArtifactProps) => {
                 <div className="i-svg-spinners:90-ring-with-bg"></div>
               )}
             </div>
-            <div className="text-appza-elements-textPrimary font-medium leading-5 text-sm">
+            <div className="text-appzap-elements-textPrimary font-medium leading-5 text-sm">
               {/* This status text remains the same */}
               {allActionFinished
                 ? artifact.id === 'restored-project-setup'
@@ -144,9 +144,9 @@ export const Artifact = memo(({ artifactId }: ArtifactProps) => {
               exit={{ height: '0px' }}
               transition={{ duration: 0.15 }}
             >
-              <div className="bg-appza-elements-artifacts-borderColor h-[1px]" />
+              <div className="bg-appzap-elements-artifacts-borderColor h-[1px]" />
 
-              <div className="p-5 text-left bg-appza-elements-actions-background">
+              <div className="p-5 text-left bg-appzap-elements-actions-background">
                 <ActionList actions={actions} />
               </div>
             </motion.div>
@@ -234,7 +234,7 @@ const ActionList = memo(({ actions }: ActionListProps) => {
                   <div>
                     Create{' '}
                     <code
-                      className="bg-appza-elements-artifacts-inlineCode-background text-appza-elements-artifacts-inlineCode-text px-1.5 py-1 rounded-md text-appza-elements-item-contentAccent hover:underline cursor-pointer"
+                      className="bg-appzap-elements-artifacts-inlineCode-background text-appzap-elements-artifacts-inlineCode-text px-1.5 py-1 rounded-md text-appzap-elements-item-contentAccent hover:underline cursor-pointer"
                       onClick={() => openArtifactInWorkbench(action.filePath)}
                     >
                       {action.filePath}
@@ -275,19 +275,19 @@ const ActionList = memo(({ actions }: ActionListProps) => {
 function getIconColor(status: ActionState['status']) {
   switch (status) {
     case 'pending': {
-      return 'text-appza-elements-textTertiary';
+      return 'text-appzap-elements-textTertiary';
     }
     case 'running': {
-      return 'text-appza-elements-loader-progress';
+      return 'text-appzap-elements-loader-progress';
     }
     case 'complete': {
-      return 'text-appza-elements-icon-success';
+      return 'text-appzap-elements-icon-success';
     }
     case 'aborted': {
-      return 'text-appza-elements-textSecondary';
+      return 'text-appzap-elements-textSecondary';
     }
     case 'failed': {
-      return 'text-appza-elements-icon-error';
+      return 'text-appzap-elements-icon-error';
     }
     default: {
       return undefined;

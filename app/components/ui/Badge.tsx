@@ -5,23 +5,23 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { classNames } from '~/utils/classNames';
 
 const badgeVariants = cva(
-  'inline-flex items-center gap-1 transition-colors focus:outline-none focus:ring-2 focus:ring-appza-elements-ring focus:ring-offset-2',
+  'inline-flex items-center gap-1 transition-colors focus:outline-none focus:ring-2 focus:ring-appzap-elements-ring focus:ring-offset-2',
   {
     variants: {
       variant: {
         default:
-          'border-transparent bg-appza-elements-background text-appza-elements-textPrimary hover:bg-appza-elements-background/80',
+          'border-transparent bg-appzap-elements-background text-appzap-elements-textPrimary hover:bg-appzap-elements-background/80',
         secondary:
-          'border-transparent bg-appza-elements-background text-appza-elements-textSecondary hover:bg-appza-elements-background/80',
+          'border-transparent bg-appzap-elements-background text-appzap-elements-textSecondary hover:bg-appzap-elements-background/80',
         destructive: 'border-transparent bg-red-500/10 text-red-500 hover:bg-red-500/20',
-        outline: 'text-appza-elements-textPrimary',
+        outline: 'text-appzap-elements-textPrimary',
         primary: 'bg-purple-500/10 text-purple-600 dark:text-purple-400',
         success: 'bg-green-500/10 text-green-600 dark:text-green-400',
         warning: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400',
         danger: 'bg-red-500/10 text-red-600 dark:text-red-400',
         info: 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
         subtle:
-          'border border-appza-elements-borderColor/30 dark:border-appza-elements-borderColor-dark/30 bg-white/50 dark:bg-appza-elements-background-depth-4/50 backdrop-blur-sm text-appza-elements-textSecondary dark:text-appza-elements-textSecondary-dark',
+          'border border-appzap-elements-borderColor/30 dark:border-appzap-elements-borderColor-dark/30 bg-white/50 dark:bg-appzap-elements-background-depth-4/50 backdrop-blur-sm text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary-dark',
       },
       size: {
         default: 'rounded-full px-2.5 py-0.5 text-xs font-semibold',

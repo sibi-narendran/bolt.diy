@@ -43,7 +43,7 @@ export default function LlmErrorAlert({ alert, clearAlert }: Props) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3 }}
-        className="rounded-lg border border-appza-elements-borderColor bg-appza-elements-background-depth-2 p-4 mb-2"
+        className="rounded-lg border border-appzap-elements-borderColor bg-appzap-elements-background-depth-2 p-4 mb-2"
       >
         <div className="flex items-start">
           <motion.div
@@ -52,7 +52,7 @@ export default function LlmErrorAlert({ alert, clearAlert }: Props) {
             animate={{ scale: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <div className={`${getErrorIcon()} text-xl text-appza-elements-button-danger-text`}></div>
+            <div className={`${getErrorIcon()} text-xl text-appzap-elements-button-danger-text`}></div>
           </motion.div>
 
           <div className="ml-3 flex-1">
@@ -60,7 +60,7 @@ export default function LlmErrorAlert({ alert, clearAlert }: Props) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.1 }}
-              className="text-sm font-medium text-appza-elements-textPrimary"
+              className="text-sm font-medium text-appzap-elements-textPrimary"
             >
               {title}
             </motion.h3>
@@ -69,12 +69,12 @@ export default function LlmErrorAlert({ alert, clearAlert }: Props) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="mt-2 text-sm text-appza-elements-textSecondary"
+              className="mt-2 text-sm text-appzap-elements-textSecondary"
             >
               <p>{getErrorMessage()}</p>
 
               {description && (
-                <div className="text-xs text-appza-elements-textSecondary p-2 bg-appza-elements-background-depth-3 rounded mt-4 mb-4">
+                <div className="text-xs text-appzap-elements-textSecondary p-2 bg-appzap-elements-background-depth-3 rounded mt-4 mb-4">
                   Error Details: {description}
                 </div>
               )}
@@ -91,10 +91,10 @@ export default function LlmErrorAlert({ alert, clearAlert }: Props) {
                   onClick={clearAlert}
                   className={classNames(
                     'px-2 py-1.5 rounded-md text-sm font-medium',
-                    'bg-appza-elements-button-secondary-background',
-                    'hover:bg-appza-elements-button-secondary-backgroundHover',
-                    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-appza-elements-button-secondary-background',
-                    'text-appza-elements-button-secondary-text',
+                    'bg-appzap-elements-button-secondary-background',
+                    'hover:bg-appzap-elements-button-secondary-backgroundHover',
+                    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-appzap-elements-button-secondary-background',
+                    'text-appzap-elements-button-secondary-text',
                   )}
                 >
                   Dismiss

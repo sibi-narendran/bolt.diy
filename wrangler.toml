@@ -1,5 +1,5 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "appza-diy"
+name = "appzap-diy"
 compatibility_flags = ["nodejs_compat"]
 compatibility_date = "2025-10-30"
 pages_build_output_dir = "./build/client"

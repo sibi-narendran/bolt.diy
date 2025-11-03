@@ -11,7 +11,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={classNames(
-      'inline-flex h-10 items-center justify-center rounded-md bg-appza-elements-background-depth-1 dark:bg-appza-elements-background-depth-3-dark p-1 text-appza-elements-textSecondary dark:text-appza-elements-textSecondary-dark border border-appza-elements-borderColor dark:border-appza-elements-borderColor-dark',
+      'inline-flex h-10 items-center justify-center rounded-md bg-appzap-elements-background-depth-1 dark:bg-appzap-elements-background-depth-3-dark p-1 text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary-dark border border-appzap-elements-borderColor dark:border-appzap-elements-borderColor-dark',
       className,
     )}
     {...props}
@@ -26,7 +26,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={classNames(
-      'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-appza-elements-background dark:ring-offset-appza-elements-background-dark transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-appza-elements-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-appza-elements-background-depth-0 dark:data-[state=active]:bg-appza-elements-background-depth-2-dark data-[state=active]:text-appza-elements-textPrimary dark:data-[state=active]:text-appza-elements-textPrimary-dark data-[state=active]:shadow-sm',
+      'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-appzap-elements-background dark:ring-offset-appzap-elements-background-dark transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-appzap-elements-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-appzap-elements-background-depth-0 dark:data-[state=active]:bg-appzap-elements-background-depth-2-dark data-[state=active]:text-appzap-elements-textPrimary dark:data-[state=active]:text-appzap-elements-textPrimary-dark data-[state=active]:shadow-sm',
       className,
     )}
     {...props}
@@ -41,7 +41,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={classNames(
-      'mt-2 ring-offset-appza-elements-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-appza-elements-ring focus-visible:ring-offset-2',
+      'mt-2 ring-offset-appzap-elements-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-appzap-elements-ring focus-visible:ring-offset-2',
       className,
     )}
     {...props}

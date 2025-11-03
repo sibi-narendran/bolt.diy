@@ -29,7 +29,7 @@ describe('StreamingMessageParser', () => {
       ['Foo bar <', 'Foo bar '],
       ['Foo bar <p', 'Foo bar <p'],
       [['Foo bar <', 's', 'p', 'an>some text</span>'], 'Foo bar <span>some text</span>'],
-    ])('should correctly parse chunks and strip out appza artifacts (%#)', (input, expected) => {
+    ])('should correctly parse chunks and strip out appzap artifacts (%#)', (input, expected) => {
       runTest(input, expected);
     });
   });
@@ -39,13 +39,13 @@ describe('StreamingMessageParser', () => {
       ['Foo bar <b', 'Foo bar '],
       ['Foo bar <ba', 'Foo bar <ba'],
       ['Foo bar <bol', 'Foo bar '],
-      ['Foo bar <appza', 'Foo bar '],
+      ['Foo bar <appzap', 'Foo bar '],
       ['Foo bar <appzaa', 'Foo bar <appzaa'],
       ['Foo bar <appzaA', 'Foo bar '],
       ['Foo bar <appzaArtifacs></appzaArtifact>', 'Foo bar <appzaArtifacs></appzaArtifact>'],
       ['Before <oltArtfiact>foo</appzaArtifact> After', 'Before <oltArtfiact>foo</appzaArtifact> After'],
       ['Before <appzaArtifactt>foo</appzaArtifact> After', 'Before <appzaArtifactt>foo</appzaArtifact> After'],
-    ])('should correctly parse chunks and strip out appza artifacts (%#)', (input, expected) => {
+    ])('should correctly parse chunks and strip out appzap artifacts (%#)', (input, expected) => {
       runTest(input, expected);
     });
   });
@@ -132,7 +132,7 @@ describe('StreamingMessageParser', () => {
           callbacks: { onArtifactOpen: 1, onArtifactClose: 1, onActionOpen: 0, onActionClose: 0 },
         },
       ],
-    ])('should correctly parse chunks and strip out appza artifacts (%#)', (input, expected) => {
+    ])('should correctly parse chunks and strip out appzap artifacts (%#)', (input, expected) => {
       runTest(input, expected);
     });
   });
@@ -153,7 +153,7 @@ describe('StreamingMessageParser', () => {
           callbacks: { onArtifactOpen: 1, onArtifactClose: 1, onActionOpen: 2, onActionClose: 2 },
         },
       ],
-    ])('should correctly parse chunks and strip out appza artifacts (%#)', (input, expected) => {
+    ])('should correctly parse chunks and strip out appzap artifacts (%#)', (input, expected) => {
       runTest(input, expected);
     });
   });

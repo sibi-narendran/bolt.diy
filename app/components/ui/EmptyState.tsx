@@ -87,8 +87,8 @@ export function EmptyState({
     <div
       className={classNames(
         'flex flex-col items-center justify-center',
-        'text-appza-elements-textSecondary dark:text-appza-elements-textSecondary-dark',
-        'bg-appza-elements-background-depth-2 dark:bg-appza-elements-background-depth-3 rounded-lg',
+        'text-appzap-elements-textSecondary dark:text-appzap-elements-textSecondary-dark',
+        'bg-appzap-elements-background-depth-2 dark:bg-appzap-elements-background-depth-3 rounded-lg',
         styles.container,
         className,
       )}
@@ -96,7 +96,7 @@ export function EmptyState({
       {/* Icon */}
       <div
         className={classNames(
-          'rounded-full bg-appza-elements-background-depth-3 dark:bg-appza-elements-background-depth-4 flex items-center justify-center',
+          'rounded-full bg-appzap-elements-background-depth-3 dark:bg-appzap-elements-background-depth-4 flex items-center justify-center',
           styles.icon.container,
         )}
       >
@@ -104,7 +104,7 @@ export function EmptyState({
           className={classNames(
             icon,
             styles.icon.size,
-            'text-appza-elements-textTertiary dark:text-appza-elements-textTertiary-dark',
+            'text-appzap-elements-textTertiary dark:text-appzap-elements-textTertiary-dark',
           )}
         />
       </div>
@@ -116,7 +116,7 @@ export function EmptyState({
       {description && (
         <p
           className={classNames(
-            'text-appza-elements-textTertiary dark:text-appza-elements-textTertiary-dark text-center max-w-xs',
+            'text-appzap-elements-textTertiary dark:text-appzap-elements-textTertiary-dark text-center max-w-xs',
             styles.description,
           )}
         >

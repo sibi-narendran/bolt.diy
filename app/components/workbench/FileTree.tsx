@@ -216,7 +216,7 @@ function ContextMenuItem({ onSelect, children }: { onSelect?: () => void; childr
   return (
     <ContextMenu.Item
       onSelect={onSelect}
-      className="flex items-center gap-2 px-2 py-1.5 outline-0 text-sm text-appza-elements-textPrimary cursor-pointer ws-nowrap text-appza-elements-item-contentDefault hover:text-appza-elements-item-contentActive hover:bg-appza-elements-item-backgroundActive rounded-md"
+      className="flex items-center gap-2 px-2 py-1.5 outline-0 text-sm text-appzap-elements-textPrimary cursor-pointer ws-nowrap text-appzap-elements-item-contentDefault hover:text-appzap-elements-item-contentActive hover:bg-appzap-elements-item-backgroundActive rounded-md"
     >
       <span className="size-4 shrink-0"></span>
       <span>{children}</span>
@@ -256,14 +256,14 @@ function InlineInput({ depth, placeholder, initialValue = '', onSubmit, onCancel
 
   return (
     <div
-      className="flex items-center w-full px-2 bg-appza-elements-background-depth-4 border border-appza-elements-item-contentAccent py-0.5 text-appza-elements-textPrimary"
+      className="flex items-center w-full px-2 bg-appzap-elements-background-depth-4 border border-appzap-elements-item-contentAccent py-0.5 text-appzap-elements-textPrimary"
       style={{ paddingLeft: `${6 + depth * NODE_PADDING_LEFT}px` }}
     >
-      <div className="scale-120 shrink-0 i-ph:file-plus text-appza-elements-textTertiary" />
+      <div className="scale-120 shrink-0 i-ph:file-plus text-appzap-elements-textTertiary" />
       <input
         ref={inputRef}
         type="text"
-        className="ml-2 flex-1 bg-transparent border-none outline-none py-0.5 text-sm text-appza-elements-textPrimary placeholder:text-appza-elements-textTertiary min-w-0"
+        className="ml-2 flex-1 bg-transparent border-none outline-none py-0.5 text-sm text-appzap-elements-textPrimary placeholder:text-appzap-elements-textTertiary min-w-0"
         placeholder={placeholder}
         onKeyDown={handleKeyDown}
         onBlur={() => {
@@ -491,7 +491,7 @@ function FileContextMenu({
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
             className={classNames('relative', {
-              'bg-appza-elements-background-depth-2 border border-dashed border-appza-elements-item-contentAccent rounded-md':
+              'bg-appzap-elements-background-depth-2 border border-dashed border-appzap-elements-item-contentAccent rounded-md':
                 isDragging,
             })}
           >
@@ -501,9 +501,9 @@ function FileContextMenu({
         <ContextMenu.Portal>
           <ContextMenu.Content
             style={{ zIndex: 998 }}
-            className="border border-appza-elements-borderColor rounded-md z-context-menu bg-appza-elements-background-depth-1 dark:bg-appza-elements-background-depth-2 data-[state=open]:animate-in animate-duration-100 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-98 w-56"
+            className="border border-appzap-elements-borderColor rounded-md z-context-menu bg-appzap-elements-background-depth-1 dark:bg-appzap-elements-background-depth-2 data-[state=open]:animate-in animate-duration-100 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-98 w-56"
           >
-            <ContextMenu.Group className="p-1 border-b-px border-solid border-appza-elements-borderColor">
+            <ContextMenu.Group className="p-1 border-b-px border-solid border-appzap-elements-borderColor">
               <ContextMenuItem onSelect={() => setIsCreatingFile(true)}>
                 <div className="flex items-center gap-2">
                   <div className="i-ph:file-plus" />
@@ -522,7 +522,7 @@ function FileContextMenu({
               <ContextMenuItem onSelect={onCopyRelativePath}>Copy relative path</ContextMenuItem>
             </ContextMenu.Group>
             {/* Add lock/unlock options for files and folders */}
-            <ContextMenu.Group className="p-1 border-t-px border-solid border-appza-elements-borderColor">
+            <ContextMenu.Group className="p-1 border-t-px border-solid border-appzap-elements-borderColor">
               {!isFolder ? (
                 <>
                   <ContextMenuItem onSelect={handleLockFile}>
@@ -556,7 +556,7 @@ function FileContextMenu({
               )}
             </ContextMenu.Group>
             {/* Add delete option in a new group */}
-            <ContextMenu.Group className="p-1 border-t-px border-solid border-appza-elements-borderColor">
+            <ContextMenu.Group className="p-1 border-t-px border-solid border-appzap-elements-borderColor">
               <ContextMenuItem onSelect={handleDelete}>
                 <div className="flex items-center gap-2 text-red-500">
                   <div className="i-ph:trash" />
@@ -595,9 +595,9 @@ function Folder({ folder, collapsed, selected = false, onCopyPath, onCopyRelativ
     <FileContextMenu onCopyPath={onCopyPath} onCopyRelativePath={onCopyRelativePath} fullPath={folder.fullPath}>
       <NodeButton
         className={classNames('group', {
-          'bg-transparent text-appza-elements-item-contentDefault hover:text-appza-elements-item-contentActive hover:bg-appza-elements-item-backgroundActive':
+          'bg-transparent text-appzap-elements-item-contentDefault hover:text-appzap-elements-item-contentActive hover:bg-appzap-elements-item-backgroundActive':
             !selected,
-          'bg-appza-elements-item-backgroundAccent text-appza-elements-item-contentAccent': selected,
+          'bg-appzap-elements-item-backgroundAccent text-appzap-elements-item-contentAccent': selected,
         })}
         depth={folder.depth}
         iconClasses={classNames({
@@ -687,19 +687,19 @@ function File({
     <FileContextMenu onCopyPath={onCopyPath} onCopyRelativePath={onCopyRelativePath} fullPath={fullPath}>
       <NodeButton
         className={classNames('group', {
-          'bg-transparent hover:bg-appza-elements-item-backgroundActive text-appza-elements-item-contentDefault':
+          'bg-transparent hover:bg-appzap-elements-item-backgroundActive text-appzap-elements-item-contentDefault':
             !selected,
-          'bg-appza-elements-item-backgroundAccent text-appza-elements-item-contentAccent': selected,
+          'bg-appzap-elements-item-backgroundAccent text-appzap-elements-item-contentAccent': selected,
         })}
         depth={depth}
         iconClasses={classNames('i-ph:file-duotone scale-98', {
-          'group-hover:text-appza-elements-item-contentActive': !selected,
+          'group-hover:text-appzap-elements-item-contentActive': !selected,
         })}
         onClick={onClick}
       >
         <div
           className={classNames('flex items-center', {
-            'group-hover:text-appza-elements-item-contentActive': !selected,
+            'group-hover:text-appzap-elements-item-contentActive': !selected,
           })}
         >
           <div className="flex-1 truncate pr-2">{name}</div>

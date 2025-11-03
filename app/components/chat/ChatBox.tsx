@@ -86,7 +86,7 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 
   return (
     <div className="w-full max-w-chat mx-auto">
-      <div className="relative flex flex-col gap-3 rounded-xl border border-appza-elements-borderColor bg-appza-elements-background-depth-2/95 backdrop-blur-xl p-3 sm:p-4 shadow-sm">
+      <div className="relative flex flex-col gap-3 rounded-xl border border-appzap-elements-borderColor bg-appzap-elements-background-depth-2/95 backdrop-blur-xl p-3 sm:p-4 shadow-sm">
         <FilePreview
           files={uploadedFiles}
           imageDataList={imageDataList}
@@ -106,7 +106,7 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
           )}
         </ClientOnly>
         {selectedElement && (
-          <div className="flex items-center justify-between gap-2 rounded-lg border border-appza-elements-borderColor bg-appza-elements-background-depth-1/70 px-3 py-2 text-xs font-medium text-appza-elements-textPrimary">
+          <div className="flex items-center justify-between gap-2 rounded-lg border border-appzap-elements-borderColor bg-appzap-elements-background-depth-1/70 px-3 py-2 text-xs font-medium text-appzap-elements-textPrimary">
             <div className="flex items-center gap-2 lowercase">
               <code className="rounded px-1.5 py-1 bg-accent-500 text-white">{selectedElement?.tagName}</code>
               selected for inspection
@@ -116,10 +116,10 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
             </button>
           </div>
         )}
-        <div className="relative rounded-lg border border-appza-elements-borderColor/80 bg-appza-elements-background-depth-1/70 transition-theme focus-within:border-appza-elements-borderColorActive">
+        <div className="relative rounded-lg border border-appzap-elements-borderColor/80 bg-appzap-elements-background-depth-1/70 transition-theme focus-within:border-appzap-elements-borderColorActive">
           <textarea
             ref={textareaRef}
-            className="w-full resize-none bg-transparent px-3 sm:px-4 pt-3 sm:pt-4 pb-10 sm:pb-12 text-sm sm:text-base text-appza-elements-textPrimary placeholder:text-appza-elements-textTertiary outline-none transition-all duration-200"
+            className="w-full resize-none bg-transparent px-3 sm:px-4 pt-3 sm:pt-4 pb-10 sm:pb-12 text-sm sm:text-base text-appzap-elements-textPrimary placeholder:text-appzap-elements-textTertiary outline-none transition-all duration-200"
             onDragEnter={(event) => {
               event.preventDefault();
               event.currentTarget.style.border = '2px solid #1488fc';
@@ -130,11 +130,11 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
             }}
             onDragLeave={(event) => {
               event.preventDefault();
-              event.currentTarget.style.border = '1px solid var(--appza-elements-borderColor)';
+              event.currentTarget.style.border = '1px solid var(--appzap-elements-borderColor)';
             }}
             onDrop={(event) => {
               event.preventDefault();
-              event.currentTarget.style.border = '1px solid var(--appza-elements-borderColor)';
+              event.currentTarget.style.border = '1px solid var(--appzap-elements-borderColor)';
 
               const files = Array.from(event.dataTransfer.files);
               files.forEach((file) => {
@@ -218,9 +218,9 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
             }}
           >
             {enhancingPrompt ? (
-              <div className="i-svg-spinners:90-ring-with-bg text-appza-elements-loader-progress text-xl animate-spin" />
+              <div className="i-svg-spinners:90-ring-with-bg text-appzap-elements-loader-progress text-xl animate-spin" />
             ) : (
-              <div className="i-appza:stars text-xl" />
+              <div className="i-appzap:stars text-xl" />
             )}
           </IconButton>
           <SpeechRecognitionButton
@@ -235,8 +235,8 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
               className={classNames(
                 'transition-theme flex items-center gap-1 px-1.5',
                 chatMode === 'discuss'
-                  ? '!bg-appza-elements-item-backgroundAccent !text-appza-elements-item-contentAccent'
-                  : 'bg-appza-elements-item-backgroundDefault text-appza-elements-item-contentDefault',
+                  ? '!bg-appzap-elements-item-backgroundAccent !text-appzap-elements-item-contentAccent'
+                  : 'bg-appzap-elements-item-backgroundDefault text-appzap-elements-item-contentDefault',
               )}
               onClick={() => {
                 setChatMode?.(chatMode === 'discuss' ? 'build' : 'discuss');
@@ -249,7 +249,7 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
         </div>
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
           {showShortcutHint ? (
-            <div className="text-appza-elements-textTertiary">
+            <div className="text-appzap-elements-textTertiary">
               Use <kbd className="kdb px-1.5 py-0.5">Shift</kbd> + <kbd className="kdb px-1.5 py-0.5">Return</kbd> for a
               new line
             </div>

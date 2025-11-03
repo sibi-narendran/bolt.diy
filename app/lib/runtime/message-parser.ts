@@ -7,8 +7,8 @@ const ARTIFACT_TAG_OPEN = '<appzaArtifact';
 const ARTIFACT_TAG_CLOSE = '</appzaArtifact>';
 const ARTIFACT_ACTION_TAG_OPEN = '<appzaAction';
 const ARTIFACT_ACTION_TAG_CLOSE = '</appzaAction>';
-const appza_QUICK_ACTIONS_OPEN = '<appza-quick-actions>';
-const appza_QUICK_ACTIONS_CLOSE = '</appza-quick-actions>';
+const appza_QUICK_ACTIONS_OPEN = '<appzap-quick-actions>';
+const appza_QUICK_ACTIONS_CLOSE = '</appzap-quick-actions>';
 
 const logger = createScopedLogger('MessageParser');
 
@@ -106,8 +106,8 @@ export class StreamingMessageParser {
         if (actionsBlockEnd !== -1) {
           const actionsBlockContent = input.slice(i + appza_QUICK_ACTIONS_OPEN.length, actionsBlockEnd);
 
-          // Find all <appza-quick-action ...>label</appza-quick-action> inside
-          const quickActionRegex = /<appza-quick-action([^>]*)>([\s\S]*?)<\/appza-quick-action>/g;
+          // Find all <appzap-quick-action ...>label</appzap-quick-action> inside
+          const quickActionRegex = /<appzap-quick-action([^>]*)>([\s\S]*?)<\/appzap-quick-action>/g;
           let match;
           const buttons = [];
 
@@ -404,7 +404,7 @@ function camelToDashCase(input: string) {
 function createQuickActionElement(props: Record<string, string>, label: string) {
   const elementProps = [
     'class="__appzaQuickAction__"',
-    'data-appza-quick-action="true"',
+    'data-appzap-quick-action="true"',
     ...Object.entries(props).map(([key, value]) => `data-${camelToDashCase(key)}=${JSON.stringify(value)}`),
   ];
 
@@ -412,5 +412,5 @@ function createQuickActionElement(props: Record<string, string>, label: string) 
 }
 
 function createQuickActionGroup(buttons: string[]) {
-  return `<div class=\"__appzaQuickAction__\" data-appza-quick-action=\"true\">${buttons.join('')}</div>`;
+  return `<div class=\"__appzaQuickAction__\" data-appzap-quick-action=\"true\">${buttons.join('')}</div>`;
 }

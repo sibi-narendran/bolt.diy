@@ -127,11 +127,11 @@ export const DeployButton = ({
 
   return (
     <>
-      <div className="flex border border-appza-elements-borderColor rounded-md overflow-hidden text-sm">
+      <div className="flex border border-appzap-elements-borderColor rounded-md overflow-hidden text-sm">
         <DropdownMenu.Root>
           <DropdownMenu.Trigger
             disabled={isDeploying || !activePreview || isStreaming}
-            className="rounded-md items-center justify-center [&:is(:disabled,.disabled)]:cursor-not-allowed [&:is(:disabled,.disabled)]:opacity-60 px-3 py-1.5 text-xs bg-accent-500 text-white hover:text-appza-elements-item-contentAccent [&:not(:disabled,.disabled)]:hover:bg-appza-elements-button-primary-backgroundHover outline-accent-500 flex gap-1.7"
+            className="rounded-md items-center justify-center [&:is(:disabled,.disabled)]:cursor-not-allowed [&:is(:disabled,.disabled)]:opacity-60 px-3 py-1.5 text-xs bg-accent-500 text-white hover:text-appzap-elements-item-contentAccent [&:not(:disabled,.disabled)]:hover:bg-appzap-elements-button-primary-backgroundHover outline-accent-500 flex gap-1.7"
           >
             {isDeploying ? `Deploying to ${deployingTo}...` : 'Deploy'}
             <span className={classNames('i-ph:caret-down transition-transform')} />
@@ -139,9 +139,9 @@ export const DeployButton = ({
           <DropdownMenu.Content
             className={classNames(
               'z-[250]',
-              'bg-appza-elements-background-depth-2',
+              'bg-appzap-elements-background-depth-2',
               'rounded-lg shadow-lg',
-              'border border-appza-elements-borderColor',
+              'border border-appzap-elements-borderColor',
               'animate-in fade-in-0 zoom-in-95',
               'py-1',
             )}
@@ -150,7 +150,7 @@ export const DeployButton = ({
           >
             <DropdownMenu.Item
               className={classNames(
-                'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-appza-elements-textPrimary hover:bg-appza-elements-item-backgroundActive gap-2 rounded-md group relative',
+                'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-appzap-elements-textPrimary hover:bg-appzap-elements-item-backgroundActive gap-2 rounded-md group relative',
                 {
                   'opacity-60 cursor-not-allowed': isDeploying || !activePreview || !netlifyConn.user,
                 },
@@ -173,7 +173,7 @@ export const DeployButton = ({
 
             <DropdownMenu.Item
               className={classNames(
-                'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-appza-elements-textPrimary hover:bg-appza-elements-item-backgroundActive gap-2 rounded-md group relative',
+                'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-appzap-elements-textPrimary hover:bg-appzap-elements-item-backgroundActive gap-2 rounded-md group relative',
                 {
                   'opacity-60 cursor-not-allowed': isDeploying || !activePreview || !vercelConn.user,
                 },
@@ -195,7 +195,7 @@ export const DeployButton = ({
 
             <DropdownMenu.Item
               className={classNames(
-                'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-appza-elements-textPrimary hover:bg-appza-elements-item-backgroundActive gap-2 rounded-md group relative',
+                'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-appzap-elements-textPrimary hover:bg-appzap-elements-item-backgroundActive gap-2 rounded-md group relative',
                 {
                   'opacity-60 cursor-not-allowed': isDeploying || !activePreview,
                 },
@@ -216,7 +216,7 @@ export const DeployButton = ({
 
             <DropdownMenu.Item
               className={classNames(
-                'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-appza-elements-textPrimary hover:bg-appza-elements-item-backgroundActive gap-2 rounded-md group relative',
+                'cursor-pointer flex items-center w-full px-4 py-2 text-sm text-appzap-elements-textPrimary hover:bg-appzap-elements-item-backgroundActive gap-2 rounded-md group relative',
                 {
                   'opacity-60 cursor-not-allowed': isDeploying || !activePreview || !gitlabIsConnected,
                 },
@@ -237,7 +237,7 @@ export const DeployButton = ({
 
             <DropdownMenu.Item
               disabled
-              className="flex items-center w-full rounded-md px-4 py-2 text-sm text-appza-elements-textTertiary gap-2 opacity-60 cursor-not-allowed"
+              className="flex items-center w-full rounded-md px-4 py-2 text-sm text-appzap-elements-textTertiary gap-2 opacity-60 cursor-not-allowed"
             >
               <img
                 className="w-5 h-5"

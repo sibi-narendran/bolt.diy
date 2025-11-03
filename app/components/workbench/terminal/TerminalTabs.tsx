@@ -37,7 +37,7 @@ export const TerminalTabs = memo(() => {
     (index: number) => {
       if (index === 0) {
         return;
-      } // Can't close appza terminal
+      } // Can't close appzap terminal
 
       const terminalRef = terminalRefs.current.get(index);
 
@@ -131,8 +131,8 @@ export const TerminalTabs = memo(() => {
       }}
     >
       <div className="h-full">
-        <div className="bg-appza-elements-terminals-background h-full flex flex-col">
-          <div className="flex items-center bg-appza-elements-background-depth-2 border-y border-appza-elements-borderColor gap-1.5 min-h-[34px] p-2">
+        <div className="bg-appzap-elements-terminals-background h-full flex flex-col">
+          <div className="flex items-center bg-appzap-elements-background-depth-2 border-y border-appzap-elements-borderColor gap-1.5 min-h-[34px] p-2">
             {Array.from({ length: terminalCount + 1 }, (_, index) => {
               const isActive = activeTerminal === index;
 
@@ -144,16 +144,16 @@ export const TerminalTabs = memo(() => {
                       className={classNames(
                         'flex items-center text-sm cursor-pointer gap-1.5 px-3 py-2 h-full whitespace-nowrap rounded-full',
                         {
-                          'bg-appza-elements-terminals-buttonBackground text-appza-elements-textSecondary hover:text-appza-elements-textPrimary':
+                          'bg-appzap-elements-terminals-buttonBackground text-appzap-elements-textSecondary hover:text-appzap-elements-textPrimary':
                             isActive,
-                          'bg-appza-elements-background-depth-2 text-appza-elements-textSecondary hover:bg-appza-elements-terminals-buttonBackground':
+                          'bg-appzap-elements-background-depth-2 text-appzap-elements-textSecondary hover:bg-appzap-elements-terminals-buttonBackground':
                             !isActive,
                         },
                       )}
                       onClick={() => setActiveTerminal(index)}
                     >
                       <div className="i-ph:terminal-window-duotone text-lg" />
-                      appza Terminal
+                      appzap Terminal
                     </button>
                   ) : (
                     <React.Fragment>
@@ -162,8 +162,8 @@ export const TerminalTabs = memo(() => {
                         className={classNames(
                           'flex items-center text-sm cursor-pointer gap-1.5 px-3 py-2 h-full whitespace-nowrap rounded-full',
                           {
-                            'bg-appza-elements-terminals-buttonBackground text-appza-elements-textPrimary': isActive,
-                            'bg-appza-elements-background-depth-2 text-appza-elements-textSecondary hover:bg-appza-elements-terminals-buttonBackground':
+                            'bg-appzap-elements-terminals-buttonBackground text-appzap-elements-textPrimary': isActive,
+                            'bg-appzap-elements-background-depth-2 text-appzap-elements-textSecondary hover:bg-appzap-elements-terminals-buttonBackground':
                               !isActive,
                           },
                         )}
@@ -172,7 +172,7 @@ export const TerminalTabs = memo(() => {
                         <div className="i-ph:terminal-window-duotone text-lg" />
                         Terminal {terminalCount > 1 && index}
                         <button
-                          className="bg-transparent text-appza-elements-textTertiary hover:text-appza-elements-textPrimary hover:bg-transparent rounded"
+                          className="bg-transparent text-appzap-elements-textTertiary hover:text-appzap-elements-textPrimary hover:bg-transparent rounded"
                           onClick={(e) => {
                             e.stopPropagation();
                             closeTerminal(index);
@@ -218,7 +218,7 @@ export const TerminalTabs = memo(() => {
           {Array.from({ length: terminalCount + 1 }, (_, index) => {
             const isActive = activeTerminal === index;
 
-            logger.debug(`Starting appza terminal [${index}]`);
+            logger.debug(`Starting appzap terminal [${index}]`);
 
             if (index == 0) {
               return (

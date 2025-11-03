@@ -225,7 +225,7 @@ export async function selectContext(props: {
   logger.info(`Total files: ${totalFiles}`);
 
   if (totalFiles == 0) {
-    throw new Error(`appza failed to select files`);
+    throw new Error(`appzap failed to select files`);
   }
 
   return filteredFiles;

@@ -5,7 +5,7 @@ import { defineConfig, presetIcons, presetUno, transformerDirectives } from 'uno
 
 const iconPaths = globSync('./icons/*.svg');
 
-const collectionName = 'appza';
+const collectionName = 'appzap';
 
 const customIconCollection = iconPaths.reduce(
   (acc, iconPath) => {
@@ -99,7 +99,7 @@ const COLOR_PRIMITIVES = {
 
 export default defineConfig({
   safelist: [
-    ...Object.keys(customIconCollection[collectionName] || {}).map((x) => `i-appza:${x}`),
+    ...Object.keys(customIconCollection[collectionName] || {}).map((x) => `i-appzap:${x}`),
     'i-ph:arrow-right',
     'i-ph:arrow-right-bold',
     'i-ph:stop-circle-bold',
@@ -107,9 +107,9 @@ export default defineConfig({
     'i-ph:rocket-launch',
   ],
   shortcuts: {
-    'appza-ease-cubic-bezier': 'ease-[cubic-bezier(0.4,0,0.2,1)]',
-    'transition-theme': 'transition-[background-color,border-color,color] duration-150 appza-ease-cubic-bezier',
-    kdb: 'bg-appza-elements-code-background text-appza-elements-code-text py-1 px-1.5 rounded-md',
+    'appzap-ease-cubic-bezier': 'ease-[cubic-bezier(0.4,0,0.2,1)]',
+    'transition-theme': 'transition-[background-color,border-color,color] duration-150 appzap-ease-cubic-bezier',
+    kdb: 'bg-appzap-elements-code-background text-appzap-elements-code-text py-1 px-1.5 rounded-md',
     'max-w-chat': 'max-w-[var(--chat-max-width)]',
   },
   rules: [
@@ -122,115 +122,115 @@ export default defineConfig({
   theme: {
     colors: {
       ...COLOR_PRIMITIVES,
-      appza: {
+      appzap: {
         elements: {
-          borderColor: 'var(--appza-elements-borderColor)',
-          borderColorActive: 'var(--appza-elements-borderColorActive)',
+          borderColor: 'var(--appzap-elements-borderColor)',
+          borderColorActive: 'var(--appzap-elements-borderColorActive)',
           background: {
             depth: {
-              1: 'var(--appza-elements-bg-depth-1)',
-              2: 'var(--appza-elements-bg-depth-2)',
-              3: 'var(--appza-elements-bg-depth-3)',
-              4: 'var(--appza-elements-bg-depth-4)',
+              1: 'var(--appzap-elements-bg-depth-1)',
+              2: 'var(--appzap-elements-bg-depth-2)',
+              3: 'var(--appzap-elements-bg-depth-3)',
+              4: 'var(--appzap-elements-bg-depth-4)',
             },
           },
-          textPrimary: 'var(--appza-elements-textPrimary)',
-          textSecondary: 'var(--appza-elements-textSecondary)',
-          textTertiary: 'var(--appza-elements-textTertiary)',
+          textPrimary: 'var(--appzap-elements-textPrimary)',
+          textSecondary: 'var(--appzap-elements-textSecondary)',
+          textTertiary: 'var(--appzap-elements-textTertiary)',
           code: {
-            background: 'var(--appza-elements-code-background)',
-            text: 'var(--appza-elements-code-text)',
+            background: 'var(--appzap-elements-code-background)',
+            text: 'var(--appzap-elements-code-text)',
           },
           button: {
             primary: {
-              background: 'var(--appza-elements-button-primary-background)',
-              backgroundHover: 'var(--appza-elements-button-primary-backgroundHover)',
-              text: 'var(--appza-elements-button-primary-text)',
+              background: 'var(--appzap-elements-button-primary-background)',
+              backgroundHover: 'var(--appzap-elements-button-primary-backgroundHover)',
+              text: 'var(--appzap-elements-button-primary-text)',
             },
             secondary: {
-              background: 'var(--appza-elements-button-secondary-background)',
-              backgroundHover: 'var(--appza-elements-button-secondary-backgroundHover)',
-              text: 'var(--appza-elements-button-secondary-text)',
+              background: 'var(--appzap-elements-button-secondary-background)',
+              backgroundHover: 'var(--appzap-elements-button-secondary-backgroundHover)',
+              text: 'var(--appzap-elements-button-secondary-text)',
             },
             danger: {
-              background: 'var(--appza-elements-button-danger-background)',
-              backgroundHover: 'var(--appza-elements-button-danger-backgroundHover)',
-              text: 'var(--appza-elements-button-danger-text)',
+              background: 'var(--appzap-elements-button-danger-background)',
+              backgroundHover: 'var(--appzap-elements-button-danger-backgroundHover)',
+              text: 'var(--appzap-elements-button-danger-text)',
             },
           },
           item: {
-            contentDefault: 'var(--appza-elements-item-contentDefault)',
-            contentActive: 'var(--appza-elements-item-contentActive)',
-            contentAccent: 'var(--appza-elements-item-contentAccent)',
-            contentDanger: 'var(--appza-elements-item-contentDanger)',
-            backgroundDefault: 'var(--appza-elements-item-backgroundDefault)',
-            backgroundActive: 'var(--appza-elements-item-backgroundActive)',
-            backgroundAccent: 'var(--appza-elements-item-backgroundAccent)',
-            backgroundDanger: 'var(--appza-elements-item-backgroundDanger)',
+            contentDefault: 'var(--appzap-elements-item-contentDefault)',
+            contentActive: 'var(--appzap-elements-item-contentActive)',
+            contentAccent: 'var(--appzap-elements-item-contentAccent)',
+            contentDanger: 'var(--appzap-elements-item-contentDanger)',
+            backgroundDefault: 'var(--appzap-elements-item-backgroundDefault)',
+            backgroundActive: 'var(--appzap-elements-item-backgroundActive)',
+            backgroundAccent: 'var(--appzap-elements-item-backgroundAccent)',
+            backgroundDanger: 'var(--appzap-elements-item-backgroundDanger)',
           },
           actions: {
-            background: 'var(--appza-elements-actions-background)',
+            background: 'var(--appzap-elements-actions-background)',
             code: {
-              background: 'var(--appza-elements-actions-code-background)',
+              background: 'var(--appzap-elements-actions-code-background)',
             },
           },
           artifacts: {
-            background: 'var(--appza-elements-artifacts-background)',
-            backgroundHover: 'var(--appza-elements-artifacts-backgroundHover)',
-            borderColor: 'var(--appza-elements-artifacts-borderColor)',
+            background: 'var(--appzap-elements-artifacts-background)',
+            backgroundHover: 'var(--appzap-elements-artifacts-backgroundHover)',
+            borderColor: 'var(--appzap-elements-artifacts-borderColor)',
             inlineCode: {
-              background: 'var(--appza-elements-artifacts-inlineCode-background)',
-              text: 'var(--appza-elements-artifacts-inlineCode-text)',
+              background: 'var(--appzap-elements-artifacts-inlineCode-background)',
+              text: 'var(--appzap-elements-artifacts-inlineCode-text)',
             },
           },
           messages: {
-            background: 'var(--appza-elements-messages-background)',
-            linkColor: 'var(--appza-elements-messages-linkColor)',
+            background: 'var(--appzap-elements-messages-background)',
+            linkColor: 'var(--appzap-elements-messages-linkColor)',
             code: {
-              background: 'var(--appza-elements-messages-code-background)',
+              background: 'var(--appzap-elements-messages-code-background)',
             },
             inlineCode: {
-              background: 'var(--appza-elements-messages-inlineCode-background)',
-              text: 'var(--appza-elements-messages-inlineCode-text)',
+              background: 'var(--appzap-elements-messages-inlineCode-background)',
+              text: 'var(--appzap-elements-messages-inlineCode-text)',
             },
           },
           icon: {
-            success: 'var(--appza-elements-icon-success)',
-            error: 'var(--appza-elements-icon-error)',
-            primary: 'var(--appza-elements-icon-primary)',
-            secondary: 'var(--appza-elements-icon-secondary)',
-            tertiary: 'var(--appza-elements-icon-tertiary)',
+            success: 'var(--appzap-elements-icon-success)',
+            error: 'var(--appzap-elements-icon-error)',
+            primary: 'var(--appzap-elements-icon-primary)',
+            secondary: 'var(--appzap-elements-icon-secondary)',
+            tertiary: 'var(--appzap-elements-icon-tertiary)',
           },
           preview: {
             addressBar: {
-              background: 'var(--appza-elements-preview-addressBar-background)',
-              backgroundHover: 'var(--appza-elements-preview-addressBar-backgroundHover)',
-              backgroundActive: 'var(--appza-elements-preview-addressBar-backgroundActive)',
-              text: 'var(--appza-elements-preview-addressBar-text)',
-              textActive: 'var(--appza-elements-preview-addressBar-textActive)',
+              background: 'var(--appzap-elements-preview-addressBar-background)',
+              backgroundHover: 'var(--appzap-elements-preview-addressBar-backgroundHover)',
+              backgroundActive: 'var(--appzap-elements-preview-addressBar-backgroundActive)',
+              text: 'var(--appzap-elements-preview-addressBar-text)',
+              textActive: 'var(--appzap-elements-preview-addressBar-textActive)',
             },
           },
           terminals: {
-            background: 'var(--appza-elements-terminals-background)',
-            buttonBackground: 'var(--appza-elements-terminals-buttonBackground)',
+            background: 'var(--appzap-elements-terminals-background)',
+            buttonBackground: 'var(--appzap-elements-terminals-buttonBackground)',
           },
-          dividerColor: 'var(--appza-elements-dividerColor)',
+          dividerColor: 'var(--appzap-elements-dividerColor)',
           loader: {
-            background: 'var(--appza-elements-loader-background)',
-            progress: 'var(--appza-elements-loader-progress)',
+            background: 'var(--appzap-elements-loader-background)',
+            progress: 'var(--appzap-elements-loader-progress)',
           },
           prompt: {
-            background: 'var(--appza-elements-prompt-background)',
+            background: 'var(--appzap-elements-prompt-background)',
           },
           sidebar: {
-            dropdownShadow: 'var(--appza-elements-sidebar-dropdownShadow)',
-            buttonBackgroundDefault: 'var(--appza-elements-sidebar-buttonBackgroundDefault)',
-            buttonBackgroundHover: 'var(--appza-elements-sidebar-buttonBackgroundHover)',
-            buttonText: 'var(--appza-elements-sidebar-buttonText)',
+            dropdownShadow: 'var(--appzap-elements-sidebar-dropdownShadow)',
+            buttonBackgroundDefault: 'var(--appzap-elements-sidebar-buttonBackgroundDefault)',
+            buttonBackgroundHover: 'var(--appzap-elements-sidebar-buttonBackgroundHover)',
+            buttonText: 'var(--appzap-elements-sidebar-buttonText)',
           },
           cta: {
-            background: 'var(--appza-elements-cta-background)',
-            text: 'var(--appza-elements-cta-text)',
+            background: 'var(--appzap-elements-cta-background)',
+            text: 'var(--appzap-elements-cta-text)',
           },
         },
       },

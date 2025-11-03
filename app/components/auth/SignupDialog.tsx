@@ -19,7 +19,7 @@ export function SignupDialog({ isOpen, onClose }: SignupDialogProps) {
     >
       {isOpen && (
         <Dialog
-          className="w-full max-w-md overflow-hidden border border-appza-elements-borderColor bg-appza-elements-background-depth-2 shadow-2xl transition-theme"
+          className="w-full max-w-md overflow-hidden border border-appzap-elements-borderColor bg-appzap-elements-background-depth-2 shadow-2xl transition-theme"
           onBackdrop={onClose}
           onClose={onClose}
         >
@@ -28,12 +28,12 @@ export function SignupDialog({ isOpen, onClose }: SignupDialogProps) {
             <div className="p-6 pt-8 space-y-6">
               <div className="space-y-3">
                 <DialogTitle className="text-xl font-semibold">Create Account</DialogTitle>
-                <DialogDescription className="text-sm leading-relaxed text-appza-elements-textSecondary">
+                <DialogDescription className="text-sm leading-relaxed text-appzap-elements-textSecondary">
                   Enter your email to receive a magic link.
                 </DialogDescription>
               </div>
               <SignupForm autoFocus submitLabel="Send Magic Link" />
-              <div className="text-sm text-center text-appza-elements-textSecondary">
+              <div className="text-sm text-center text-appzap-elements-textSecondary">
                 Already have an account?{' '}
                 <Link to="/login" className="text-accent hover:underline">
                   Sign in

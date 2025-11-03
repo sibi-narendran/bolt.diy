@@ -32,8 +32,8 @@ export function CloseButton({ onClick, className, size = 'md' }: CloseButtonProp
       type="button"
       onClick={onClick}
       className={classNames(
-        'text-appza-elements-textTertiary hover:text-appza-elements-textSecondary dark:text-appza-elements-textTertiary-dark dark:hover:text-appza-elements-textSecondary-dark',
-        'rounded-lg hover:bg-appza-elements-background-depth-2 dark:hover:bg-appza-elements-background-depth-3',
+        'text-appzap-elements-textTertiary hover:text-appzap-elements-textSecondary dark:text-appzap-elements-textTertiary-dark dark:hover:text-appzap-elements-textSecondary-dark',
+        'rounded-lg hover:bg-appzap-elements-background-depth-2 dark:hover:bg-appzap-elements-background-depth-3',
         'transition-colors duration-200',
         'focus:outline-none focus:ring-2 focus:ring-purple-500/50',
         sizeClasses[size],

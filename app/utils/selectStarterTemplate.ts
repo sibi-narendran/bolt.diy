@@ -206,11 +206,11 @@ export async function getTemplates(templateName: string, title?: string) {
      */
   }
 
-  // exclude    .appza
-  filteredFiles = filteredFiles.filter((x) => x.path.startsWith('.appza') == false);
+  // exclude    .appzap
+  filteredFiles = filteredFiles.filter((x) => x.path.startsWith('.appzap') == false);
 
-  // check for ignore file in .appza folder
-  const templateIgnoreFile = files.find((x) => x.path.startsWith('.appza') && x.name == 'ignore');
+  // check for ignore file in .appzap folder
+  const templateIgnoreFile = files.find((x) => x.path.startsWith('.appzap') && x.name == 'ignore');
 
   const filesToImport = {
     files: filteredFiles,
@@ -243,7 +243,7 @@ ${file.content}
 </appzaArtifact>
 `;
   let userMessage = ``;
-  const templatePromptFile = files.filter((x) => x.path.startsWith('.appza')).find((x) => x.name == 'prompt');
+  const templatePromptFile = files.filter((x) => x.path.startsWith('.appzap')).find((x) => x.name == 'prompt');
 
   if (templatePromptFile) {
     userMessage = `
