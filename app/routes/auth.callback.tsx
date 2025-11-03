@@ -62,10 +62,10 @@ function AuthCallback() {
   }, [navigate]);
 
   return (
-    <div className="flex flex-col h-screen w-full bg-bolt-elements-background-depth-1 items-center justify-center">
+    <div className="flex flex-col h-screen w-full bg-appza-elements-background-depth-1 items-center justify-center">
       <div className="text-center space-y-4">
         <div className="i-ph:spinner animate-spin text-4xl text-accent mx-auto" />
-        <p className="text-bolt-elements-textPrimary">Authenticating...</p>
+        <p className="text-appza-elements-textPrimary">Authenticating...</p>
       </div>
     </div>
   );

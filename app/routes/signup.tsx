@@ -29,7 +29,7 @@ export default function SignupPage() {
   }, [auth.isAuthenticated, auth.user, navigate]);
 
   return (
-    <div className="flex flex-col h-screen w-full bg-bolt-elements-background-depth-1">
+    <div className="flex flex-col h-screen w-full bg-appza-elements-background-depth-1">
       <Header />
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-md">
@@ -41,7 +41,7 @@ export default function SignupPage() {
             <SignupForm autoFocus className="pt-1" />
           </CardContent>
           <CardFooter className="flex flex-col space-y-2">
-            <div className="text-sm text-center text-bolt-elements-textSecondary">
+            <div className="text-sm text-center text-appza-elements-textSecondary">
               Already have an account?{' '}
               <Link to="/login" className="text-accent hover:underline">
                 Sign in

@@ -1,29 +1,29 @@
-# Code Owners for bolt.diy
+# Code Owners for appza.co
 # These users/teams will automatically be requested for review when files are modified
 
 # Global ownership - repository maintainers
-* @stackblitz-labs/bolt-maintainers
+* @stackblitz-labs/appza-maintainers
 
 # GitHub workflows and CI/CD configuration - require maintainer review
-/.github/ @stackblitz-labs/bolt-maintainers
-/package.json @stackblitz-labs/bolt-maintainers
-/pnpm-lock.yaml @stackblitz-labs/bolt-maintainers
+/.github/ @stackblitz-labs/appza-maintainers
+/package.json @stackblitz-labs/appza-maintainers
+/pnpm-lock.yaml @stackblitz-labs/appza-maintainers
 
 # Security-sensitive configurations - require maintainer review
-/.env* @stackblitz-labs/bolt-maintainers
-/wrangler.toml @stackblitz-labs/bolt-maintainers  
-/Dockerfile @stackblitz-labs/bolt-maintainers
-/docker-compose.yaml @stackblitz-labs/bolt-maintainers
+/.env* @stackblitz-labs/appza-maintainers
+/wrangler.toml @stackblitz-labs/appza-maintainers  
+/Dockerfile @stackblitz-labs/appza-maintainers
+/docker-compose.yaml @stackblitz-labs/appza-maintainers
 
 # Core application architecture - require maintainer review
-/app/lib/.server/ @stackblitz-labs/bolt-maintainers
-/app/routes/api.* @stackblitz-labs/bolt-maintainers
+/app/lib/.server/ @stackblitz-labs/appza-maintainers
+/app/routes/api.* @stackblitz-labs/appza-maintainers
 
 # Build and deployment configuration - require maintainer review
-/vite*.config.ts @stackblitz-labs/bolt-maintainers
-/tsconfig.json @stackblitz-labs/bolt-maintainers
-/uno.config.ts @stackblitz-labs/bolt-maintainers
-/eslint.config.mjs @stackblitz-labs/bolt-maintainers
+/vite*.config.ts @stackblitz-labs/appza-maintainers
+/tsconfig.json @stackblitz-labs/appza-maintainers
+/uno.config.ts @stackblitz-labs/appza-maintainers
+/eslint.config.mjs @stackblitz-labs/appza-maintainers
 
 # Documentation (optional review)
 /*.md

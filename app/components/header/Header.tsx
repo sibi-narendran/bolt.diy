@@ -16,14 +16,14 @@ export function Header() {
     <header
       className={classNames('flex items-center gap-3 px-3 sm:px-4 border-b h-[var(--header-height)]', {
         'border-transparent': !chat.started,
-        'border-bolt-elements-borderColor': chat.started,
+        'border-appza-elements-borderColor': chat.started,
       })}
     >
-      <div className="flex items-center gap-2 sm:gap-3 min-w-0 text-bolt-elements-textPrimary">
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0 text-appza-elements-textPrimary">
         <button
           type="button"
           onClick={toggleSidebar}
-          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-bolt-elements-borderColor bg-bolt-elements-background-depth-2 text-bolt-elements-textPrimary transition-theme hover:bg-bolt-elements-background-depth-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 lg:hidden"
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-appza-elements-borderColor bg-appza-elements-background-depth-2 text-appza-elements-textPrimary transition-theme hover:bg-appza-elements-background-depth-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 lg:hidden"
           aria-label="Open sidebar"
         >
           <div className="i-ph:list text-lg" />
@@ -33,7 +33,7 @@ export function Header() {
         </a>
       </div>
       {chat.started ? (
-        <span className="hidden flex-1 px-2 sm:px-4 truncate text-center text-sm sm:text-base text-bolt-elements-textPrimary md:block">
+        <span className="hidden flex-1 px-2 sm:px-4 truncate text-center text-sm sm:text-base text-appza-elements-textPrimary md:block">
           <ClientOnly>{() => <ChatDescription />}</ClientOnly>
         </span>
       ) : (

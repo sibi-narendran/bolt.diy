@@ -1,11 +1,11 @@
 // vite.config.ts
-import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy, vitePlugin as remixVitePlugin } from "file:///C:/codes/bolt/bolt.diy/node_modules/.pnpm/@remix-run+dev@2.17.2_@remix-run+react@2.17.2_react-dom@18.3.1_react@18.3.1__react@18.3.1_typ_sjdadrmynvdbwlkpp2hz5mxthi/node_modules/@remix-run/dev/dist/index.js";
-import UnoCSS from "file:///C:/codes/bolt/bolt.diy/node_modules/.pnpm/unocss@0.61.9_postcss@8.5.6_rollup@4.52.5_vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3_/node_modules/unocss/dist/vite.mjs";
-import { defineConfig } from "file:///C:/codes/bolt/bolt.diy/node_modules/.pnpm/vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3/node_modules/vite/dist/node/index.js";
-import { nodePolyfills } from "file:///C:/codes/bolt/bolt.diy/node_modules/.pnpm/vite-plugin-node-polyfills@0.22.0_rollup@4.52.5_vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3_/node_modules/vite-plugin-node-polyfills/dist/index.js";
-import { optimizeCssModules } from "file:///C:/codes/bolt/bolt.diy/node_modules/.pnpm/vite-plugin-optimize-css-modules@1.2.0_vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3_/node_modules/vite-plugin-optimize-css-modules/dist/index.mjs";
-import tsconfigPaths from "file:///C:/codes/bolt/bolt.diy/node_modules/.pnpm/vite-tsconfig-paths@4.3.2_typescript@5.9.3_vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3_/node_modules/vite-tsconfig-paths/dist/index.mjs";
-import * as dotenv from "file:///C:/codes/bolt/bolt.diy/node_modules/.pnpm/dotenv@16.6.1/node_modules/dotenv/lib/main.js";
+import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy, vitePlugin as remixVitePlugin } from "file:///C:/codes/appza/appza.co/node_modules/.pnpm/@remix-run+dev@2.17.2_@remix-run+react@2.17.2_react-dom@18.3.1_react@18.3.1__react@18.3.1_typ_sjdadrmynvdbwlkpp2hz5mxthi/node_modules/@remix-run/dev/dist/index.js";
+import UnoCSS from "file:///C:/codes/appza/appza.co/node_modules/.pnpm/unocss@0.61.9_postcss@8.5.6_rollup@4.52.5_vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3_/node_modules/unocss/dist/vite.mjs";
+import { defineConfig } from "file:///C:/codes/appza/appza.co/node_modules/.pnpm/vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3/node_modules/vite/dist/node/index.js";
+import { nodePolyfills } from "file:///C:/codes/appza/appza.co/node_modules/.pnpm/vite-plugin-node-polyfills@0.22.0_rollup@4.52.5_vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3_/node_modules/vite-plugin-node-polyfills/dist/index.js";
+import { optimizeCssModules } from "file:///C:/codes/appza/appza.co/node_modules/.pnpm/vite-plugin-optimize-css-modules@1.2.0_vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3_/node_modules/vite-plugin-optimize-css-modules/dist/index.mjs";
+import tsconfigPaths from "file:///C:/codes/appza/appza.co/node_modules/.pnpm/vite-tsconfig-paths@4.3.2_typescript@5.9.3_vite@5.4.21_@types+node@24.9.2_sass-embedded@1.93.3_sass@1.93.3_/node_modules/vite-tsconfig-paths/dist/index.mjs";
+import * as dotenv from "file:///C:/codes/appza/appza.co/node_modules/.pnpm/dotenv@16.6.1/node_modules/dotenv/lib/main.js";
 dotenv.config({ path: ".env.local" });
 dotenv.config({ path: ".env" });
 dotenv.config();
@@ -94,7 +94,7 @@ function chrome129IssuePlugin() {
           if (version === 129) {
             res.setHeader("content-type", "text/html");
             res.end(
-              '<body><h1>Please use Chrome Canary for testing.</h1><p>Chrome 129 has an issue with JavaScript modules & Vite local development, see <a href="https://github.com/stackblitz/bolt.new/issues/86#issuecomment-2395519258">for more information.</a></p><p><b>Note:</b> This only impacts <u>local development</u>. `pnpm run build` and `pnpm run start` will work fine in this browser.</p></body>'
+              '<body><h1>Please use Chrome Canary for testing.</h1><p>Chrome 129 has an issue with JavaScript modules & Vite local development, see <a href="https://github.com/stackblitz/appza.new/issues/86#issuecomment-2395519258">for more information.</a></p><p><b>Note:</b> This only impacts <u>local development</u>. `pnpm run build` and `pnpm run start` will work fine in this browser.</p></body>'
             );
             return;
           }

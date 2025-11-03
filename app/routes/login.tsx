@@ -86,7 +86,7 @@ export default function LoginPage() {
   const isSubmitting = navigation.state === 'submitting' || isLoading;
 
   return (
-    <div className="flex flex-col h-screen w-full bg-bolt-elements-background-depth-1">
+    <div className="flex flex-col h-screen w-full bg-appza-elements-background-depth-1">
       <Header />
       <div className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-md">
@@ -126,7 +126,7 @@ export default function LoginPage() {
             </Form>
           </CardContent>
           <CardFooter className="flex flex-col space-y-2">
-            <div className="text-sm text-center text-bolt-elements-textSecondary">
+            <div className="text-sm text-center text-appza-elements-textSecondary">
               Don't have an account?{' '}
               <Link to="/signup" className="text-accent hover:underline">
                 Sign up

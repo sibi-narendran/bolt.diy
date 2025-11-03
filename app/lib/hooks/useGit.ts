@@ -65,7 +65,7 @@ export function useGit() {
       const headers: {
         [x: string]: string;
       } = {
-        'User-Agent': 'bolt.diy',
+        'User-Agent': 'appza.co',
       };
 
       const auth = lookupSavedPassword(url);

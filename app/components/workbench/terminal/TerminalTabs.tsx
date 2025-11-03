@@ -37,7 +37,7 @@ export const TerminalTabs = memo(() => {
     (index: number) => {
       if (index === 0) {
         return;
-      } // Can't close bolt terminal
+      } // Can't close appza terminal
 
       const terminalRef = terminalRefs.current.get(index);
 
@@ -131,8 +131,8 @@ export const TerminalTabs = memo(() => {
       }}
     >
       <div className="h-full">
-        <div className="bg-bolt-elements-terminals-background h-full flex flex-col">
-          <div className="flex items-center bg-bolt-elements-background-depth-2 border-y border-bolt-elements-borderColor gap-1.5 min-h-[34px] p-2">
+        <div className="bg-appza-elements-terminals-background h-full flex flex-col">
+          <div className="flex items-center bg-appza-elements-background-depth-2 border-y border-appza-elements-borderColor gap-1.5 min-h-[34px] p-2">
             {Array.from({ length: terminalCount + 1 }, (_, index) => {
               const isActive = activeTerminal === index;
 
@@ -144,16 +144,16 @@ export const TerminalTabs = memo(() => {
                       className={classNames(
                         'flex items-center text-sm cursor-pointer gap-1.5 px-3 py-2 h-full whitespace-nowrap rounded-full',
                         {
-                          'bg-bolt-elements-terminals-buttonBackground text-bolt-elements-textSecondary hover:text-bolt-elements-textPrimary':
+                          'bg-appza-elements-terminals-buttonBackground text-appza-elements-textSecondary hover:text-appza-elements-textPrimary':
                             isActive,
-                          'bg-bolt-elements-background-depth-2 text-bolt-elements-textSecondary hover:bg-bolt-elements-terminals-buttonBackground':
+                          'bg-appza-elements-background-depth-2 text-appza-elements-textSecondary hover:bg-appza-elements-terminals-buttonBackground':
                             !isActive,
                         },
                       )}
                       onClick={() => setActiveTerminal(index)}
                     >
                       <div className="i-ph:terminal-window-duotone text-lg" />
-                      Bolt Terminal
+                      appza Terminal
                     </button>
                   ) : (
                     <React.Fragment>
@@ -162,8 +162,8 @@ export const TerminalTabs = memo(() => {
                         className={classNames(
                           'flex items-center text-sm cursor-pointer gap-1.5 px-3 py-2 h-full whitespace-nowrap rounded-full',
                           {
-                            'bg-bolt-elements-terminals-buttonBackground text-bolt-elements-textPrimary': isActive,
-                            'bg-bolt-elements-background-depth-2 text-bolt-elements-textSecondary hover:bg-bolt-elements-terminals-buttonBackground':
+                            'bg-appza-elements-terminals-buttonBackground text-appza-elements-textPrimary': isActive,
+                            'bg-appza-elements-background-depth-2 text-appza-elements-textSecondary hover:bg-appza-elements-terminals-buttonBackground':
                               !isActive,
                           },
                         )}
@@ -172,7 +172,7 @@ export const TerminalTabs = memo(() => {
                         <div className="i-ph:terminal-window-duotone text-lg" />
                         Terminal {terminalCount > 1 && index}
                         <button
-                          className="bg-transparent text-bolt-elements-textTertiary hover:text-bolt-elements-textPrimary hover:bg-transparent rounded"
+                          className="bg-transparent text-appza-elements-textTertiary hover:text-appza-elements-textPrimary hover:bg-transparent rounded"
                           onClick={(e) => {
                             e.stopPropagation();
                             closeTerminal(index);
@@ -200,7 +200,7 @@ export const TerminalTabs = memo(() => {
                   terminal.focus();
 
                   if (activeTerminal === 0) {
-                    workbenchStore.attachBoltTerminal(terminal);
+                    workbenchStore.attachappzaTerminal(terminal);
                   } else {
                     workbenchStore.attachTerminal(terminal);
                   }
@@ -218,7 +218,7 @@ export const TerminalTabs = memo(() => {
           {Array.from({ length: terminalCount + 1 }, (_, index) => {
             const isActive = activeTerminal === index;
 
-            logger.debug(`Starting bolt terminal [${index}]`);
+            logger.debug(`Starting appza terminal [${index}]`);
 
             if (index == 0) {
               return (
@@ -234,7 +234,7 @@ export const TerminalTabs = memo(() => {
                         terminalRefs.current.set(index, ref);
                       }
                     }}
-                    onTerminalReady={(terminal) => workbenchStore.attachBoltTerminal(terminal)}
+                    onTerminalReady={(terminal) => workbenchStore.attachappzaTerminal(terminal)}
                     onTerminalResize={(cols, rows) => workbenchStore.onTerminalResize(cols, rows)}
                     theme={theme}
                   />

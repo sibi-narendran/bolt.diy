@@ -7,17 +7,17 @@
 .Toastify__toast {
   --at-apply: shadow-md;
 
-  background-color: var(--bolt-elements-bg-depth-2);
-  color: var(--bolt-elements-textPrimary);
-  border: 1px solid var(--bolt-elements-borderColor);
+  background-color: var(--appza-elements-bg-depth-2);
+  color: var(--appza-elements-textPrimary);
+  border: 1px solid var(--appza-elements-borderColor);
 }
 
 .Toastify__close-button {
-  color: var(--bolt-elements-item-contentDefault);
+  color: var(--appza-elements-item-contentDefault);
   opacity: 1;
   transition: none;
 
   &:hover {
-    color: var(--bolt-elements-item-contentActive);
+    color: var(--appza-elements-item-contentActive);
   }
 }
